@@ -6,6 +6,10 @@ export default class AssignNewTasks extends Component {
   }
 
   render() {
-    return <div>Assign New Tasks</div>;
+    return (
+      <div>
+        <button>Assign New Tasks </button>
+      </div>
+    );
   }
 }
