@@ -6,6 +6,12 @@ export default class NewCohort extends Component {
   }
 
   render() {
-    return <div>NewCohort</div>;
+    return (
+      <div>
+        <div>
+          <p>NewCohort</p>
+        </div>
+      </div>
+    );
   }
 }
