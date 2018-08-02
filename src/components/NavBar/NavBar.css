@@ -1,0 +1,14 @@
+.nb_navbar {
+  background-color: #333333;
+  color: white;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 10%;
+}
+
+.nb_links {
+  text-decoration: none;
+  color: white;
+}

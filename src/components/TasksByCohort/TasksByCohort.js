@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import TBC from "./TasksByCohort.css";
 
 export default class TasksByCohort extends Component {
   constructor() {
@@ -6,6 +7,12 @@ export default class TasksByCohort extends Component {
   }
 
   render() {
-    return <div>TASKS BY COHORT</div>;
+    return (
+      <div>
+        <div className="tbc_headline">
+          <h1> Upcoming Tasks</h1>
+        </div>
+      </div>
+    );
   }
 }
