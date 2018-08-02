@@ -1,4 +1,4 @@
-const tc = require("./controller");
+// const tc = require("./controller");
 const express = require("express");
 
 const bodyParser = require("body-parser");

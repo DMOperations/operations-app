@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import List from "./components/List";
-import NavBar from "./components/NavBar";
-
-import logo from "./logo.svg";
+import NavBar from "./components/NavBar/NavBar";
 import "./App.css";
 
 class App extends Component {
@@ -10,7 +7,6 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <List />
       </div>
     );
   }
