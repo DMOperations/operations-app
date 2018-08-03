@@ -1,0 +1,1 @@
+SELECT * FROM successuser WHERE auth_id = $1;
