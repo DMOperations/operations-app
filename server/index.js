@@ -6,9 +6,11 @@ const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 const session = require("express-session");
 const cors = require("cors");
+const port = process.env.port || 4000;
 require("dotenv").config();
 
 const app = express();
+
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -93,10 +95,19 @@ function authenticated(req, res, next) {
   }
 }
 
+// app.post("/api/cohortId",    (req, res) => {
+//   app
+//     .get("db")
+//     .addcohort([cohort.cohortId, cohort.startDate, cohort.breakDates])
+//     .then(res => {
+//       return done(null, res[0]);
+//     })
+//     .catch(err => console.log(err));
+// });
+
 //TASK ENDPOINTS
 app.get("/api/tasks", tc.getAllTasks);
 
-const port = process.env.port || 4000;
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
