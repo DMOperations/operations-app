@@ -8,11 +8,11 @@ export default class List extends Component {
   render() {
     return (
       <div className="nb_navbar nb_navbar_box  nb_links">
-        <p>Menu</p>
+        {/* <p>Menu</p> */}
 
-        <Link className="nb_links" to="/">
+        {/* <Link className="nb_links" to="/">
           <p> Home </p>
-        </Link>
+        </Link> */}
 
         <Link className="nb_links" to="/dashboard">
           <p> Dashboard </p>
