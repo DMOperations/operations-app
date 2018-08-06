@@ -1,4 +1,4 @@
-// const tc = require("./controller");
+const tc = require("./controller");
 const express = require("express");
 const bodyParser = require("body-parser");
 const massive = require("massive");
@@ -82,7 +82,7 @@ app.get(
   "/login",
 
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000/#/",
+    successRedirect: "http://localhost:3000/#/dashboard",
     failureRedirect: "/login"
   })
 );
@@ -104,6 +104,9 @@ function authenticated(req, res, next) {
 //     })
 //     .catch(err => console.log(err));
 // });
+
+//TASK ENDPOINTS
+app.get("/api/tasks", tc.getAllTasks);
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

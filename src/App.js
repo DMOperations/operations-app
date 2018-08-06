@@ -10,12 +10,6 @@ class App extends Component {
     super();
   }
 
-  loginHandle = () => {
-    (window.location.href = "http://localhost:4000/login").then(res => {
-      console.log(res);
-    });
-  };
-
   render() {
     return (
       <div className="App">
@@ -23,7 +17,6 @@ class App extends Component {
           <NavBar />
 
           <div className="body_position_rel">{routes}</div>
-          <button onClick={this.loginHandle}>Login</button>
         </div>
       </div>
     );
