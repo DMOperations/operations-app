@@ -1,4 +1,4 @@
-// const tc = require("./controller");
+const tc = require("./controller");
 const express = require("express");
 const bodyParser = require("body-parser");
 const massive = require("massive");
@@ -80,7 +80,7 @@ app.get(
   "/login",
 
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000/#/",
+    successRedirect: "http://localhost:3000/#/dashboard",
     failureRedirect: "/login"
   })
 );
@@ -92,6 +92,9 @@ function authenticated(req, res, next) {
     res.sendStatus(401);
   }
 }
+
+//TASK ENDPOINTS
+app.get("/api/tasks", tc.getAllTasks);
 
 const port = process.env.port || 4000;
 app.listen(port, () => {
