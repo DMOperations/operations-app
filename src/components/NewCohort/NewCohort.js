@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Moment from "react-moment";
+import moment from "moment";
+
 import "./NewCohort.css";
 
 export default class NewCohort extends Component {
@@ -8,10 +11,10 @@ export default class NewCohort extends Component {
 
     this.state = {
       cohortId: "",
-      startDate: "",
-      breakDate: ""
+      startDate: ""
     };
     this.createCohort = this.createCohort.bind(this);
+
     // assign values to state
     // on submit, post to DB
   }
@@ -20,25 +23,30 @@ export default class NewCohort extends Component {
   }
 
   updateCohortStart(value) {
-    this.setState({ startDate: value });
-  }
-
-  updateBreakStart(value) {
-    this.setState({ breakDate: value });
+    this.setState({
+      startDate: value,
+      breakDate: moment(this.state.startDate, "YYYY-MM-DD").add(7, "weeks")
+    });
+    console.log(this.state.startDate);
   }
 
   createCohort() {
     axios
       .post(`/api/cohortId`, {
         cohortId: this.state.cohortId,
-        startDate: this.state.startDate,
-        breakDate: this.state.breakDate
+        startDate: this.state.startDate
       })
       .then(console.log("Eureka!!"));
   }
 
+  handleChange() {
+    this.setState({
+      checked: !this.state.checked
+    });
+  }
+
   render() {
-    const { cohortId, startDate, breakDate } = this.state;
+    const { cohortId, startDate } = this.state;
 
     return (
       <div>
@@ -55,16 +63,15 @@ export default class NewCohort extends Component {
             />
             <h2>Start Date</h2>{" "}
             <input
-              placeholder="Cohort Start Date"
+              type="date"
+              placeholder="MM DD YYYY"
               value={startDate}
               onChange={e => this.updateCohortStart(e.target.value)}
             />
-            <h2>Interim Week</h2>{" "}
-            <input
-              placeholder="Interim Week"
-              value={breakDate}
-              onChange={e => this.updateBreakStart(e.target.value)}
-            />
+            <h2>Interim Week:</h2>
+            <Moment parse="YYYY-MM-DD" format="MMMM DD YYYY" add={{ weeks: 6 }}>
+              {this.state.startDate}{" "}
+            </Moment>
             <button onClick={this.createCohort}>Next</button>
           </div>
         </div>
