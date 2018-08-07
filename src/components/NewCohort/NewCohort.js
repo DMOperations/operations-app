@@ -8,9 +8,10 @@ export default class NewCohort extends Component {
 
     this.state = {
       cohortId: "",
-      startDate: ""
+      startDate: "",
+      breakDate: ""
     };
-
+    this.createCohort = this.createCohort.bind(this);
     // assign values to state
     // on submit, post to DB
   }
@@ -18,16 +19,26 @@ export default class NewCohort extends Component {
     this.setState({ cohortId: value });
   }
 
-  createCohort(cohortId) {
-    axios.post(`/api/cohortId`).then(results => {
-      this.setState({
-        cohortId: results.data
-      });
-    });
+  updateCohortStart(value) {
+    this.setState({ startDate: value });
+  }
+
+  updateBreakStart(value) {
+    this.setState({ breakDate: value });
+  }
+
+  createCohort() {
+    axios
+      .post(`/api/cohortId`, {
+        cohortId: this.state.cohortId,
+        startDate: this.state.startDate,
+        breakDate: this.state.breakDate
+      })
+      .then(console.log("Eureka!!"));
   }
 
   render() {
-    const { cohortId } = this.state;
+    const { cohortId, startDate, breakDate } = this.state;
 
     return (
       <div>
@@ -42,7 +53,18 @@ export default class NewCohort extends Component {
               value={cohortId}
               onChange={e => this.updateCohortName(e.target.value)}
             />
-            <h2>Start Date</h2> <input />
+            <h2>Start Date</h2>{" "}
+            <input
+              placeholder="Cohort Start Date"
+              value={startDate}
+              onChange={e => this.updateCohortStart(e.target.value)}
+            />
+            <h2>Interim Week</h2>{" "}
+            <input
+              placeholder="Interim Week"
+              value={breakDate}
+              onChange={e => this.updateBreakStart(e.target.value)}
+            />
             <button onClick={this.createCohort}>Next</button>
           </div>
         </div>

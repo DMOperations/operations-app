@@ -95,18 +95,9 @@ function authenticated(req, res, next) {
   }
 }
 
-// app.post("/api/cohortId",    (req, res) => {
-//   app
-//     .get("db")
-//     .addcohort([cohort.cohortId, cohort.startDate, cohort.breakDates])
-//     .then(res => {
-//       return done(null, res[0]);
-//     })
-//     .catch(err => console.log(err));
-// });
-
 //TASK ENDPOINTS
 app.get("/api/tasks", tc.getAllTasks);
+app.post("/api/cohortId", tc.createNewCohort);
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
