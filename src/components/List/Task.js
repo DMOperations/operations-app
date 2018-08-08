@@ -2,7 +2,6 @@ import React from "react";
 import "./Task.css";
 
 const Task = props => {
-  console.log(props);
   return (
     <div className="task">
       <p>Week: {props.week}</p>
