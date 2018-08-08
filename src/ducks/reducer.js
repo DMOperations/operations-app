@@ -8,8 +8,12 @@ const GET_USER = "GET_USER";
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case GET_USER:
+    case `${GET_USER}_FULFILLED`:
+      console.log("ACTION.PAYLOAD: ", action.payload);
       return Object.assign({}, state, { user: action.payload.data });
+    // case `${GET_USER}_REJECTED`:
+    //   console.log("REJECTED: ", action.payload);
+    //   return Object.assign({}, state, { user: action.payload.data });
     default:
       return state;
   }
