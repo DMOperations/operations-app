@@ -95,6 +95,15 @@ function authenticated(req, res, next) {
   }
 }
 
+//SEND USER TO REDUCER
+app.get("/getUser", (req, res) => {
+  if (req.user) {
+    res.status(200).send(req.user);
+  } else {
+    res.status(401).send({ message: "Please login" });
+  }
+});
+
 //TASK ENDPOINTS
 app.get("/api/tasks", tc.getAllTasks);
 app.post("/api/cohortId", tc.createNewCohort);
