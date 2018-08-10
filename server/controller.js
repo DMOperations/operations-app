@@ -1,5 +1,15 @@
 const axios = require("axios");
 
+const completeProfile = (req, res, next) => {
+  const dbInstance = req.app.get("db");
+  const { id, position, campus } = req.body;
+
+  dbInstance
+    .completeProfile([id, position, campus])
+    .then(response => res.status(200).send(response))
+    .catch(console.log);
+};
+
 const getAllTasks = (req, res, next) => {
   const dbInstance = req.app.get("db");
   dbInstance
@@ -19,6 +29,7 @@ const createNewCohort = (req, res, next) => {
 };
 
 module.exports = {
+  completeProfile,
   getAllTasks,
   createNewCohort
 };
