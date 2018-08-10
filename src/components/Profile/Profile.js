@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import "./Profile.css";
 import { connect } from "react-redux";
+import axios from "axios";
 
 class Profile extends Component {
   constructor() {
     super();
     this.state = {
-      position: "",
-      campus: ""
+      position: "Campus Director",
+      campus: "Provo"
     };
   }
 
@@ -15,10 +16,18 @@ class Profile extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  submitProfile = e => {
+    axios.put("/api/profile", {
+      id: this.props.user.user_id,
+      position: this.state.position,
+      campus: this.state.campus
+    });
+    // .then((window.location.href = "http:localhost:3000/dashboard"));
+  };
+
   render() {
-    console.log(this.props.user);
     return (
-      <div classname="profile">
+      <div className="profile">
         <h1>
           {this.props.user.username}
           's Settings:
@@ -41,6 +50,7 @@ class Profile extends Component {
             <option value="Dallas">Dallas</option>
           </select>
         </div>
+        <button onClick={this.submitProfile}>Submit</button>
       </div>
     );
   }
