@@ -1,7 +1,5 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-
-import App from "./App";
 import LandingPage from "./components/LandingPage/LandingPage";
 import AssignNewTasks from "./components/AssignNewTasks/AssignNewTasks";
 import Calendar from "./components/Calendar/Calendar";

@@ -1,6 +1,6 @@
 .nb_navbar {
-  background-color: #333333;
-  color: white;
+  background-color: #f2f2f2;
+  color: #333;
   height: 100%;
   display: flex;
   justify-content: flex-start;
@@ -8,7 +8,12 @@
   width: 10%;
 }
 
+.nb_navbar img {
+  background-color: #333;
+  height: 15vh;
+}
+
 .nb_links {
   text-decoration: none;
-  color: white;
+  color: #333;
 }
