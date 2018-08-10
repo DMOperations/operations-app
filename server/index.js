@@ -46,7 +46,6 @@ passport.use(
 
 passport.serializeUser((user, done) => {
   // console.log(user);
-  // console.log(req.session);
   app
     .get("db")
     .getuser(user.id)
@@ -62,11 +61,13 @@ passport.serializeUser((user, done) => {
           ])
           .then(res => {
             // console.log(res);
+            // res.redirect("http://localhost:3000/#/profile");
             return done(null, res[0]);
           })
           .catch(err => console.log(err));
       } else {
         // console.log(res);
+        // res.redirect("http://localhost:3000/#/");
         return done(null, response[0]);
       }
     })
@@ -74,7 +75,6 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((user, done) => {
-  //This new object will then be passed on to deserializeUser when done is invoked. Since we don't have any additional logic to execute, simply call done with null and obj.
   return done(null, user);
 });
 
@@ -103,6 +103,8 @@ app.get("/getUser", (req, res) => {
     res.status(401).send({ message: "Please login" });
   }
 });
+//COMPLETE PROFILE
+app.put("/api/profile", tc.completeProfile);
 
 //TASK ENDPOINTS
 app.get("/api/tasks", tc.getAllTasks);

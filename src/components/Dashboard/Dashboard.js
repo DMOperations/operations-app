@@ -4,7 +4,7 @@ import AssignNewTasks from "../AssignNewTasks/AssignNewTasks";
 import TasksByCohort from "../TasksByCohort/TasksByCohort";
 
 import routes from "../../routes.js";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class Dashboard extends Component {
   constructor() {
@@ -22,4 +22,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default withRouter(Dashboard);
