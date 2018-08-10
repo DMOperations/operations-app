@@ -4,6 +4,7 @@ import "./App.css";
 import routes from "./routes";
 import { connect } from "react-redux";
 import { getUser } from "./ducks/reducer";
+import { withRouter } from "react-router-dom";
 
 class App extends Component {
   constructor() {
@@ -15,12 +16,10 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="App">
         <div className="wrapitgood">
-          <NavBar />
-
+          {this.props.user ? <NavBar /> : null}
           <div className="body_position_rel">{routes}</div>
         </div>
       </div>
@@ -30,7 +29,9 @@ class App extends Component {
 
 const mapStateToProps = state => state;
 
-export default connect(
-  mapStateToProps,
-  { getUser }
-)(App);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { getUser }
+  )(App)
+);

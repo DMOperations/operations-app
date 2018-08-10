@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import "./Profile.css";
+import { connect } from "react-redux";
+import axios from "axios";
 
-export default class Profile extends Component {
+class Profile extends Component {
   constructor() {
     super();
     this.state = {
-      position: "",
-      campus: ""
+      position: "Campus Director",
+      campus: "Provo"
     };
   }
 
@@ -13,10 +16,23 @@ export default class Profile extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  submitProfile = e => {
+    axios.put("/api/profile", {
+      id: this.props.user.user_id,
+      position: this.state.position,
+      campus: this.state.campus
+    });
+    // .then((window.location.href = "http:localhost:3000/dashboard"));
+  };
+
   render() {
     return (
-      <div>
-        Update Profile:
+      <div className="profile">
+        <h1>
+          {this.props.user.username}
+          's Settings:
+        </h1>
+        <img src={this.props.user.picture} />
         <div>
           Position:
           <select name="position" onChange={this.update}>
@@ -34,7 +50,12 @@ export default class Profile extends Component {
             <option value="Dallas">Dallas</option>
           </select>
         </div>
+        <button onClick={this.submitProfile}>Submit</button>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(Profile);

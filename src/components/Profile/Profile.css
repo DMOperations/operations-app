@@ -1,0 +1,12 @@
+.profile img {
+  border-radius: 5%;
+  height: 20vh;
+}
+
+button {
+  height: 34px;
+  width: 116px;
+  border: 2px solid #4444;
+  border-radius: 5px;
+  font-size: 16px;
+}
