@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import "./Profile.css";
+import { connect } from "react-redux";
 
-export default class Profile extends Component {
+class Profile extends Component {
   constructor() {
     super();
     this.state = {
@@ -14,9 +16,14 @@ export default class Profile extends Component {
   };
 
   render() {
+    console.log(this.props.user);
     return (
-      <div>
-        Update Profile:
+      <div classname="profile">
+        <h1>
+          {this.props.user.username}
+          's Settings:
+        </h1>
+        <img src={this.props.user.picture} />
         <div>
           Position:
           <select name="position" onChange={this.update}>
@@ -38,3 +45,7 @@ export default class Profile extends Component {
     );
   }
 }
+
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(Profile);
