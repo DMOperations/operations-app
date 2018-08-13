@@ -220,400 +220,400 @@ module.exports = {
     ]
   },
 
-dlWeekly: {
+  dlWeekly: {
     0: [
-          {
-            taskHeadline: "Make sure all ring doorbells and cameras charged",
-            taskBody: "",
-            staffPosition: "Office Manager",
-            assignedTo: " ",
-            status: false
-          },
-          {
-            taskHeadline: "Order milk, juice, fruit, oatmeal for campus",
-            taskBody: "",
-            staffPosition: "Office Manager",
-            assignedTo: " ",
-            status: false
-          },
-          {
-            taskHeadline: "Keep agenda during the operations meeting and add all actions items into slack",
-            taskBody: "",
-            staffPosition: "Office Manager",
-            assignedTo: " ",
-            status: false
-          },
-          {
-            taskHeadline: "Check for upcoming events this week and make sure space, etc is prepared",
-            taskBody: "",
-            staffPosition: "Office Manager",
-            assignedTo: " ",
-            status: false
-          }
-        ],
+      {
+        taskHeadline: "Make sure all ring doorbells and cameras charged",
+        taskBody: "",
+        staffPosition: "Office Manager",
+        assignedTo: " ",
+        status: false
+      },
+      {
+        taskHeadline: "Order milk, juice, fruit, oatmeal for campus",
+        taskBody: "",
+        staffPosition: "Office Manager",
+        assignedTo: " ",
+        status: false
+      },
+      {
+        taskHeadline:
+          "Keep agenda during the operations meeting and add all actions items into slack",
+        taskBody: "",
+        staffPosition: "Office Manager",
+        assignedTo: " ",
+        status: false
+      },
+      {
+        taskHeadline:
+          "Check for upcoming events this week and make sure space, etc is prepared",
+        taskBody: "",
+        staffPosition: "Office Manager",
+        assignedTo: " ",
+        status: false
+      }
+    ],
     1: [
-              {
-                taskHeadline: "Order Coke",
-                taskBody: "",
-                staffPosition: "Office Manager",
-                assignedTo: " ",
-                status: false
-              },
-              {
-                taskHeadline: "Order coffee supplies",
-                taskBody: "",
-                staffPosition: "Office Manager",
-                assignedTo: " ",
-                status: false
-              },
-              {
-                taskHeadline: "Order paper plates, etc if needed",
-                taskBody: "",
-                staffPosition: "Office Manager",
-                assignedTo: " ",
-                status: false
-              }
-            ],
+      {
+        taskHeadline: "Order Coke",
+        taskBody: "",
+        staffPosition: "Office Manager",
+        assignedTo: " ",
+        status: false
+      },
+      {
+        taskHeadline: "Order coffee supplies",
+        taskBody: "",
+        staffPosition: "Office Manager",
+        assignedTo: " ",
+        status: false
+      },
+      {
+        taskHeadline: "Order paper plates, etc if needed",
+        taskBody: "",
+        staffPosition: "Office Manager",
+        assignedTo: " ",
+        status: false
+      }
+    ],
     2: [
-            {
-                  taskHeadline: "Order office supplies if needed",
-                  taskBody: "",
-                  staffPosition: "Office Manager",
-                  assignedTo: " ",
-                  status: false
-            },
-            {
-                  taskHeadline: "Order cleaning supplies if needed",
-                  taskBody: "",
-                  staffPosition: "Office Manager",
-                  assignedTo: " ",
-                  status: false
-            },
-            {
-                  taskHeadline: "Check swag inventory and order if needed",
-                  taskBody: "",
-                  staffPosition: "Office Manager",
-                  assignedTo: " ",
-                  status: false
-            },
-            {
-                  taskHeadline: "Check electronics inventory and order if needed",
-                  taskBody: "adapters, dongles, etc",
-                  staffPosition: "Office Manager",
-                  assignedTo: " ",
-                  status: false
-            },
-            {
-                  taskHeadline: "Order Friday breakfast",
-                  taskBody: "",
-                  staffPosition: "Office Manager",
-                  assignedTo: " ",
-                  status: false
-            }
-            ],
-        4: [
-                {
-                  taskHeadline: "Set up breakfast by 8:45am",
-                  taskBody: "",
-                  staffPosition: "Office Manager",
-                  assignedTo: " ",
-                  status: false
-                },
-                {
-                  taskHeadline: "Clean up breakfast by 10:00am",
-                  taskBody: "",
-                  staffPosition: "Office Manager",
-                  assignedTo: " ",
-                  status: false
-                }
-            ]
-    }
+      {
+        taskHeadline: "Order office supplies if needed",
+        taskBody: "",
+        staffPosition: "Office Manager",
+        assignedTo: " ",
+        status: false
+      },
+      {
+        taskHeadline: "Order cleaning supplies if needed",
+        taskBody: "",
+        staffPosition: "Office Manager",
+        assignedTo: " ",
+        status: false
+      },
+      {
+        taskHeadline: "Check swag inventory and order if needed",
+        taskBody: "",
+        staffPosition: "Office Manager",
+        assignedTo: " ",
+        status: false
+      },
+      {
+        taskHeadline: "Check electronics inventory and order if needed",
+        taskBody: "adapters, dongles, etc",
+        staffPosition: "Office Manager",
+        assignedTo: " ",
+        status: false
+      },
+      {
+        taskHeadline: "Order Friday breakfast",
+        taskBody: "",
+        staffPosition: "Office Manager",
+        assignedTo: " ",
+        status: false
+      }
+    ],
+    4: [
+      {
+        taskHeadline: "Set up breakfast by 8:45am",
+        taskBody: "",
+        staffPosition: "Office Manager",
+        assignedTo: " ",
+        status: false
+      },
+      {
+        taskHeadline: "Clean up breakfast by 10:00am",
+        taskBody: "",
+        staffPosition: "Office Manager",
+        assignedTo: " ",
+        status: false
+      }
+    ]
+  }
 };
 
-
-
- //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   },
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   },
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   }
-      // ],
-      // 4: [
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   },
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   },
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   },
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   },
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   }
-      // ],
-      // 5: [
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   },
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   },
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   },
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   },
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   }
-      // ],
-      // 8: [
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   },
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   },
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   },
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   },
-      //   {
-      //     taskHeadline: "",
-      //     taskBody: "",
-      //     staffPosition: "",
-      //     assignedTo: " ",
-      //     status: false
-      //   }
-    ],
-    // 9: [
-    //   {
-    //     taskHeadline: "",
-    //     taskBody: "",
-    //     staffPosition: "Office Manager",
-    //     assignedTo: " ",
-    //     status: false
-    //   },
-    //   {
-    //     taskHeadline:
-    //       "",
-    //     taskBody: "",
-    //     staffPosition: "Office Manager",
-    //     assignedTo: " ",
-    //     status: false
-    //   },
-    //   {
-    //     taskHeadline: "",
-    //     taskBody: "",
-    //     staffPosition: "",
-    //     assignedTo: " ",
-    //     status: false
-    //   },
-    //   {
-    //     taskHeadline: "",
-    //     taskBody: "",
-    //     staffPosition: "",
-    //     assignedTo: " ",
-    //     status: false
-    //   },
-    //   {
-    //     taskHeadline: "",
-    //     taskBody: "",
-    //     staffPosition: "",
-    //     assignedTo: " ",
-    //     status: false
-    //   }
-    // ],
-    // 10: [
-    //   {
-    //     taskHeadline: "",
-    //     taskBody: "",
-    //     staffPosition: "Office Manager",
-    //     assignedTo: " ",
-    //     status: false
-    //   },
-    //   {
-    //     taskHeadline:
-    //       "",
-    //     taskBody: "",
-    //     staffPosition: "Office Manager",
-    //     assignedTo: " ",
-    //     status: false
-    //   },
-    //   {
-    //     taskHeadline: "",
-    //     taskBody: "",
-    //     staffPosition: "",
-    //     assignedTo: " ",
-    //     status: false
-    //   },
-    //   {
-    //     taskHeadline: "",
-    //     taskBody: "",
-    //     staffPosition: "",
-    //     assignedTo: " ",
-    //     status: false
-    //   },
-    //   {
-    //     taskHeadline: "",
-    //     taskBody: "",
-    //     staffPosition: "",
-    //     assignedTo: " ",
-    //     status: false
-    //   }
-    // ],
-    // 11: [
-    //   {
-    //     taskHeadline: "",
-    //     taskBody: "",
-    //     staffPosition: "Office Manager",
-    //     assignedTo: " ",
-    //     status: false
-    //   },
-    //   {
-    //     taskHeadline:
-    //       "",
-    //     taskBody: "",
-    //     staffPosition: "Office Manager",
-    //     assignedTo: " ",
-    //     status: false
-    //   },
-    //   {
-    //     taskHeadline: "",
-    //     taskBody: "",
-    //     staffPosition: "",
-    //     assignedTo: " ",
-    //     status: false
-    //   },
-    //   {
-    //     taskHeadline: "",
-    //     taskBody: "",
-    //     staffPosition: "",
-    //     assignedTo: " ",
-    //     status: false
-    //   },
-    //   {
-    //     taskHeadline: "",
-    //     taskBody: "",
-    //     staffPosition: "",
-    //     assignedTo: " ",
-    //     status: false
-    //   }
-    // ],
-    // 12: [
-    //   {
-    //     taskHeadline: "",
-    //     taskBody: "",
-    //     staffPosition: "Office Manager",
-    //     assignedTo: " ",
-    //     status: false
-    //   },
-    //   {
-    //     taskHeadline:
-    //       "",
-    //     taskBody: "",
-    //     staffPosition: "Office Manager",
-    //     assignedTo: " ",
-    //     status: false
-    //   },
-    //   {
-    //     taskHeadline: "",
-    //     taskBody: "",
-    //     staffPosition: "",
-    //     assignedTo: " ",
-    //     status: false
-    //   },
-    //   {
-    //     taskHeadline: "",
-    //     taskBody: "",
-    //     staffPosition: "",
-    //     assignedTo: " ",
-    //     status: false
-    //   },
-    //   {
-    //     taskHeadline: "",
-    //     taskBody: "",
-    //     staffPosition: "",
-    //     assignedTo: " ",
-    //     status: false
-    //   }
-    // ]
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   }
+// ],
+// 4: [
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   }
+// ],
+// 5: [
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   }
+// ],
+// 8: [
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   }
+// ],
+// 9: [
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "Office Manager",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline:
+//       "",
+//     taskBody: "",
+//     staffPosition: "Office Manager",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   }
+// ],
+// 10: [
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "Office Manager",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline:
+//       "",
+//     taskBody: "",
+//     staffPosition: "Office Manager",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   }
+// ],
+// 11: [
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "Office Manager",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline:
+//       "",
+//     taskBody: "",
+//     staffPosition: "Office Manager",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   }
+// ],
+// 12: [
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "Office Manager",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline:
+//       "",
+//     taskBody: "",
+//     staffPosition: "Office Manager",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   },
+//   {
+//     taskHeadline: "",
+//     taskBody: "",
+//     staffPosition: "",
+//     assignedTo: " ",
+//     status: false
+//   }
+// ]
