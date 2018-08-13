@@ -3,6 +3,7 @@ import axios from "axios";
 import Moment from "react-moment";
 import moment from "moment";
 
+import NewCohortSchedule from "./NewCohortSchedule/NewCohortSchedule";
 import "./NewCohort.css";
 
 export default class NewCohort extends Component {
@@ -74,6 +75,7 @@ export default class NewCohort extends Component {
             </Moment>
             <button onClick={this.createCohort}>Next</button>
           </div>
+          <NewCohortSchedule />
         </div>
       </div>
     );
