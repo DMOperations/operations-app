@@ -46,7 +46,7 @@ class Profile extends Component {
           <select name="campus" onChange={this.update}>
             <option value="Provo">Provo</option>
             <option value="Salt Lake City">Salt Late City</option>
-            <option value="Pheonix">Pheonix</option>
+            <option value="Pheonix">Phoenix</option>
             <option value="Dallas">Dallas</option>
           </select>
         </div>
