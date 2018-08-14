@@ -8,32 +8,28 @@ export default class NewCohort extends Component {
     super(props);
 
     this.state = {
-      listOfTasks: []
+      preStart: [],
+      postStart: []
     };
-
-    this.loadSchedule = this.loadSchedule.bind(this);
   }
 
-  loadSchedule() {
+  componentWillMount() {
     this.setState({
-      listOfTasks: JSON.parse(JSON.stringify(defaultMapFile.dlPre))
+      preStart: defaultMapFile.dlPre,
+      postStart: defaultMapFile.dlPost
     });
-    console.log(this.state.listOfTasks);
   }
 
   render() {
-    let list = this.state.listOfTasks.map(function(element, index) {
-      return (
-        <Todo key={index} task={element.taskHeadline}>
-          {element}
-        </Todo>
-      );
-    });
+    // console.log("PRE", this.state.preStart);
+    console.log("POST", this.state.postStart[1]);
+    // const list = this.state.postStart.map((e, i) => {
+    //   return <Todo key={i} taskHeadline={e.taskHeadline} status={e.status} />;
+    // });
     return (
       <div>
         <button onClick={this.loadSchedule}> Create Schedule</button>
         {/* {list} */}
-        {list}
       </div>
     );
   }
