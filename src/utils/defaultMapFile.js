@@ -117,12 +117,12 @@ module.exports = {
   },
 
   dlPost: {
-    1: [
+    0: [
       {
         taskHeadline: "Arrive by 8:00am to prepare for orientation",
         taskBody: "",
         staffPosition: "Office Manager",
-        assignedTo: " ",
+        assignedTo: "",
         status: false
       },
       {
