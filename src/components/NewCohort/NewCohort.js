@@ -75,7 +75,7 @@ export default class NewCohort extends Component {
             </Moment>
             <button onClick={this.createCohort}>Next</button>
           </div>
-          <NewCohortSchedule />
+          <NewCohortSchedule startDate={this.state.startDate} />
         </div>
       </div>
     );
