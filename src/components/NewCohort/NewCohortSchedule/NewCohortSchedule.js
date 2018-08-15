@@ -35,8 +35,6 @@ export default class NewCohort extends Component {
     return (
       <div>
         <button onClick={this.loadSchedule}> Create Schedule</button>
-        {/* {list} */}
-        {/* {this.datedToDo(defaultMapFile.dlPost)} */}
       </div>
     );
   }
