@@ -62,7 +62,7 @@ export default class NewCohort extends Component {
               value={cohortId}
               onChange={e => this.updateCohortName(e.target.value)}
             />
-            <h2>Start Date</h2>{" "}
+            <h2>Start Date</h2>
             <input
               type="date"
               placeholder="MM DD YYYY"
@@ -71,11 +71,11 @@ export default class NewCohort extends Component {
             />
             <h2>Interim Week:</h2>
             <Moment parse="YYYY-MM-DD" format="MMMM DD YYYY" add={{ weeks: 6 }}>
-              {this.state.startDate}{" "}
+              {this.state.startDate}
             </Moment>
             <button onClick={this.createCohort}>Next</button>
           </div>
-          <NewCohortSchedule />
+          <NewCohortSchedule startDate={this.state.startDate} />
         </div>
       </div>
     );
