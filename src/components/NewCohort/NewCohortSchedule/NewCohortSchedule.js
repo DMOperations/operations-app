@@ -30,11 +30,11 @@ export default class NewCohort extends Component {
     // const list = this.state.postStart.map((e, i) => {
     //   return <Todo key={i} taskHeadline={e.taskHeadline} status={e.status} />;
     // });
-    console.log(this.state.dateAsKey);
-    console.log(this.props);
+    // console.log(this.state.dateAsKey);
+    // console.log(this.props);
     return (
       <div>
-        <button onClick={this.loadSchedule}> Create Schedule</button>
+        {/* <button onClick={this.loadSchedule}> Create Schedule</button> */}
       </div>
     );
   }
