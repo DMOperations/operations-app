@@ -34,12 +34,11 @@ export default class NewCohort extends Component {
       startDate: value,
       breakDate: moment(this.state.startDate, "YYYY-MM-DD").add(7, "weeks")
     });
-    console.log(this.state.startDate);
   }
 
   updateBreak(value) {
     this.setState({
-      breakDate: value
+      breakDate: moment(value, "MM-DD-YYYY")
     });
   }
 
@@ -64,6 +63,8 @@ export default class NewCohort extends Component {
     });
   };
 
+  //WE KNOW THIS ONE WORKS. DON'T DELETE YET!!!
+
   // datedToDo = postStart => {
   //   const newObj = {};
   //   for (const prop in postStart) {
@@ -76,13 +77,24 @@ export default class NewCohort extends Component {
 
   datedToDo = postStart => {
     const newObj = {};
-    const { breakDate } = this.state;
-    let date = moment(new Date());
+    // let date = moment(new Date(), "MM-DD-YYYY");
     for (const prop in postStart) {
-      if (moment(breakDate).diff(date, "days") <= 1) {
-        newObj[moment(new Date()).add(+prop, "days")] = postStart[prop];
-      } else if (moment(breakDate).diff(date, "days") >= 1) {
-        newObj[moment(new Date()).add(+prop + 7, "days")] = postStart[prop];
+      if (
+        moment(this.state.breakDate, "MM-DD-YYYY").diff(
+          moment(new Date(), "MM-DD-YYYY"),
+          "days"
+        ) <= 1
+      ) {
+        newObj[moment(new Date(), "MM-DD-YYYY").add(+prop, "days")] =
+          postStart[prop];
+      } else if (
+        moment(this.state.breakDate, "MM-DD-YYYY").diff(
+          moment(new Date(), "MM-DD-YYYY"),
+          "days"
+        ) >= 1
+      ) {
+        newObj[moment(new Date(), "MM-DD-YYYY").add(+prop + 7, "days")] =
+          postStart[prop];
       }
     }
     this.setState({
@@ -91,7 +103,9 @@ export default class NewCohort extends Component {
   };
 
   render() {
-    console.log(this.state);
+    console.log(this.state.dateAsKey);
+    console.log("BREAK DATE", this.state.breakDate);
+    console.log("MOMENTS DATE", moment(this.state.breakDate, "MM-DD-YYYY"));
     const { cohortId, startDate, breakDate, secondBreak } = this.state;
 
     return (
