@@ -17,6 +17,7 @@ export default class List extends Component {
   }
 
   render() {
+    console.log(this.state.tasks);
     const taskItem = this.state.tasks.map((e, i) => {
       return <Task key={e.to_do_id} week={e.week} day={e.day} task={e.task} />;
     });
