@@ -36,17 +36,17 @@ export default class NewCohort extends Component {
     });
   }
 
-  updateBreak(value) {
-    this.setState({
-      breakDate: moment(value, "MM-DD-YYYY")
-    });
-  }
+  // updateBreak(value) {
+  //   this.setState({
+  //     breakDate: moment(value, "MM-DD-YYYY")
+  //   });
+  // }
 
-  updateSecondBreak(value) {
-    this.setState({
-      secondBreak: value
-    });
-  }
+  // updateSecondBreak(value) {
+  //   this.setState({
+  //     secondBreak: value
+  //   });
+  // }
 
   createCohort() {
     axios
@@ -63,44 +63,46 @@ export default class NewCohort extends Component {
     });
   };
 
-  //WE KNOW THIS ONE WORKS. DON'T DELETE YET!!!
-
-  // datedToDo = postStart => {
-  //   const newObj = {};
-  //   for (const prop in postStart) {
-  //     newObj[moment(new Date()).add(+prop, "days")] = postStart[prop];
-  //   }
-  //   this.setState({
-  //     dateAsKey: newObj
-  //   });
-  // };
+  //WE KNOW THIS ONE WORKS.
 
   datedToDo = postStart => {
     const newObj = {};
-    // let date = moment(new Date(), "MM-DD-YYYY");
     for (const prop in postStart) {
-      if (
-        moment(this.state.breakDate, "MM-DD-YYYY").diff(
-          moment(new Date(), "MM-DD-YYYY"),
-          "days"
-        ) <= 1
-      ) {
-        newObj[moment(new Date(), "MM-DD-YYYY").add(+prop, "days")] =
-          postStart[prop];
-      } else if (
-        moment(this.state.breakDate, "MM-DD-YYYY").diff(
-          moment(new Date(), "MM-DD-YYYY"),
-          "days"
-        ) >= 1
-      ) {
-        newObj[moment(new Date(), "MM-DD-YYYY").add(+prop + 7, "days")] =
-          postStart[prop];
-      }
+      newObj[moment(new Date()).add(+prop, "days")] = postStart[prop];
     }
     this.setState({
       dateAsKey: newObj
     });
   };
+
+  //JUST LEAVE THIS LITTLE NUGGET HERE.
+
+  // datedToDo = postStart => {
+  //   const newObj = {};
+  //   // let date = moment(new Date(), "MM-DD-YYYY");
+  //   for (const prop in postStart) {
+  //     if (
+  //       moment(this.state.breakDate, "MM-DD-YYYY").diff(
+  //         moment(new Date(), "MM-DD-YYYY"),
+  //         "days"
+  //       ) <= 1
+  //     ) {
+  //       newObj[moment(new Date(), "MM-DD-YYYY").add(+prop, "days")] =
+  //         postStart[prop];
+  //     } else if (
+  //       moment(this.state.breakDate, "MM-DD-YYYY").diff(
+  //         moment(new Date(), "MM-DD-YYYY"),
+  //         "days"
+  //       ) >= 1
+  //     ) {
+  //       newObj[moment(new Date(), "MM-DD-YYYY").add(+prop + 7, "days")] =
+  //         postStart[prop];
+  //     }
+  //   }
+  //   this.setState({
+  //     dateAsKey: newObj
+  //   });
+  // };
 
   render() {
     console.log(this.state.dateAsKey);
@@ -132,7 +134,7 @@ export default class NewCohort extends Component {
             <Moment parse="YYYY-MM-DD" format="MMMM DD YYYY" add={{ weeks: 6 }}>
               {this.state.startDate}
             </Moment>
-            Do you have a different interim week?
+            {/* Do you have a different interim week?
             <input
               type="date"
               placeholder="MM DD YYYY"
@@ -151,7 +153,7 @@ export default class NewCohort extends Component {
               placeholder="MM DD YYYY"
               value={secondBreak}
               onChange={e => this.updateSecondBreak(e.target.value)}
-            />
+            /> */}
             <button onClick={this.createCohort}>Next</button>
           </div>
           <NewCohortSchedule />
