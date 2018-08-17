@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Dashboard.css";
 import List from "../List/List";
 import AssignNewTasks from "../AssignNewTasks/AssignNewTasks";
 import TasksByCohort from "../TasksByCohort/TasksByCohort";
@@ -13,10 +14,10 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div className="dash_main">
         <List />
         <TasksByCohort />
-        <AssignNewTasks />
+        {/* <AssignNewTasks /> */}
       </div>
     );
   }
