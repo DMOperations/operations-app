@@ -109,6 +109,7 @@ app.put("/api/profile", tc.completeProfile);
 //TASK ENDPOINTS
 app.get("/api/tasks", tc.getAllTasks);
 app.post("/api/cohortId", tc.createNewCohort);
+app.post("/api/insertactivities", tc.handleInsert);
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
