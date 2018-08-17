@@ -111,6 +111,9 @@ app.get("/api/tasks", tc.getAllTasks);
 app.post("/api/cohortId", tc.createNewCohort);
 app.post("/api/insertactivities", tc.handleInsert);
 
+//COHORT ENDPOINTS
+app.get("/api/getActiveCohorts", tc.getActiveCohorts);
+
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
