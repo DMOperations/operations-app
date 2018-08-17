@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import CohortList from "./CohortList/CohortList";
-import TBC from "./TasksByCohort.css";
+import "./TasksByCohort.css";
 
 export default class TasksByCohort extends Component {
   constructor() {
@@ -26,8 +26,8 @@ export default class TasksByCohort extends Component {
       <div>
         <div className="tbc_headline">
           <h1> Current Cohorts</h1>
-          {cohort}
         </div>
+        {cohort}
       </div>
     );
   }

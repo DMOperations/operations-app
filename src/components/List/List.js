@@ -23,7 +23,9 @@ export default class List extends Component {
     });
     return (
       <div>
-        <h1>All Tasks</h1>
+        <div className="tbc_headline">
+          <h1>All Tasks</h1>
+        </div>
         {taskItem}
       </div>
     );

@@ -1,15 +1,11 @@
 import React, { Component } from "react";
+import WideLogo from "./WideBlueBlack.png";
 
 export default class LandingPage extends Component {
-  // loginHandle = () => {
-  //   (window.location.href = "http://localhost:4000/login").then(res => {
-  //     console.log(res);
-  //   });
-  // };
-
   render() {
     return (
-      <div>
+      <div className="landing_page">
+        <img src={WideLogo} />
         <a href="http://localhost:4000/login">LOGIN</a>
       </div>
     );
