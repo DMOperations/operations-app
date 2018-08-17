@@ -1,15 +1,15 @@
-/* .tbc_headline {
-  text-align: center;
-  font-size: 25px;
-  padding-top: 0px;
-  border: 2px solid black;
-} */
+.tbc_headline {
+  text-align: left;
+  font-weight: 100;
+  border-bottom: 1px solid rgb(83, 83, 83);
+}
 
 .tbc_card {
 }
 
 h1 {
   padding-top: 0px;
+  font-weight: 100;
 }
 
 /* .border_box {

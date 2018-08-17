@@ -1,0 +1,7 @@
+.dash_main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100vw;
+  padding-top: 5vh;
+}
