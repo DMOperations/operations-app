@@ -37,17 +37,17 @@ export default class NewCohort extends Component {
     });
   }
 
-  updateBreak(value) {
-    this.setState({
-      breakDate: moment(value, "MM-DD-YYYY")
-    });
-  }
+  // updateBreak(value) {
+  //   this.setState({
+  //     breakDate: moment(value, "MM-DD-YYYY")
+  //   });
+  // }
 
-  updateSecondBreak(value) {
-    this.setState({
-      secondBreak: value
-    });
-  }
+  // updateSecondBreak(value) {
+  //   this.setState({
+  //     secondBreak: value
+  //   });
+  // }
 
   postNewCohort() {
     return axios
@@ -82,7 +82,7 @@ export default class NewCohort extends Component {
     });
   };
 
-  //WE KNOW THIS ONE WORKS. DON'T DELETE YET!!!
+  //WE KNOW THIS ONE WORKS.
 
   datedToDo = postStart => {
     const newObj = {};
@@ -93,6 +93,8 @@ export default class NewCohort extends Component {
       dateAsKey: newObj
     });
   };
+
+  //JUST LEAVE THIS LITTLE NUGGET HERE.
 
   // datedToDo = postStart => {
   //   const newObj = {};
@@ -151,7 +153,7 @@ export default class NewCohort extends Component {
             <Moment parse="YYYY-MM-DD" format="MMMM DD YYYY" add={{ weeks: 6 }}>
               {this.state.startDate}
             </Moment>
-            Do you have a different interim week?
+            {/* Do you have a different interim week?
             <input
               type="date"
               placeholder="MM DD YYYY"
@@ -170,7 +172,7 @@ export default class NewCohort extends Component {
               placeholder="MM DD YYYY"
               value={secondBreak}
               onChange={e => this.updateSecondBreak(e.target.value)}
-            />
+            /> */}
             <button onClick={this.createCohort}>Next</button>
           </div>
           <NewCohortSchedule />

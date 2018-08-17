@@ -64,6 +64,14 @@ const handleInsert = (req, res) => {
   });
 };
 
+const getActiveCohorts = (req, res, next) => {
+  const dbInstance = req.app.get("db");
+  dbInstance
+    .getActiveCohorts()
+    .then(response => res.status(200).send(response))
+    .catch(console.log);
+};
+
 module.exports = {
   completeProfile,
   getAllTasks,
