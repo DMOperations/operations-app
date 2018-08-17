@@ -12,6 +12,7 @@ export default class NewCohort extends Component {
 
     this.state = {
       cohortId: "",
+      cohortObj: "",
       startDate: "",
       breakDate: "",
       secondBreak: "",
@@ -48,13 +49,31 @@ export default class NewCohort extends Component {
   //   });
   // }
 
-  createCohort() {
-    axios
+  postNewCohort() {
+    return axios
       .post(`/api/cohortId`, {
         cohortId: this.state.cohortId,
         startDate: this.state.startDate
       })
       .then(console.log("Eureka!!"));
+  }
+
+  postNewCohortObj() {
+    return axios
+      .post(`/api/insertactivities`, {
+        cohortId: this.state.cohortId,
+        cohortObj: this.state.dateAsKey
+      })
+      .then(console.log("Cohort Object", this.state.cohortObj));
+  }
+
+  createCohort() {
+    axios.all([this.postNewCohort(), this.postNewCohortObj()]).then(
+      axios.spread(function(newCohort, newCohortObj) {
+        // Both requests are now complete
+        console.log("NewCohortObj", newCohortObj.data);
+      })
+    );
   }
 
   twoWeekBreak = () => {
@@ -105,7 +124,7 @@ export default class NewCohort extends Component {
   // };
 
   render() {
-    console.log(this.state.dateAsKey);
+    // console.log("DateAsKey", this.state.dateAsKey);
     console.log("BREAK DATE", this.state.breakDate);
     console.log("MOMENTS DATE", moment(this.state.breakDate, "MM-DD-YYYY"));
     const { cohortId, startDate, breakDate, secondBreak } = this.state;
