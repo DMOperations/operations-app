@@ -77,5 +77,6 @@ module.exports = {
   getAllTasks,
   createNewCohort,
   createNewCohortObj,
-  handleInsert
+  handleInsert,
+  getActiveCohorts
 };

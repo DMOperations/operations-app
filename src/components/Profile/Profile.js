@@ -28,29 +28,46 @@ class Profile extends Component {
   render() {
     return (
       <div className="profile">
-        <h1>
-          {this.props.user.username}
-          's Settings:
-        </h1>
-        <img src={this.props.user.picture} />
-        <div>
-          Position:
-          <select name="position" onChange={this.update}>
-            <option value="Campus Director">Campus Director</option>
-            <option value="Student Success">Student Success</option>
-            <option value="Office Manager">Office Manager</option>
-          </select>
+        <div className="profile_top">
+          <img src={this.props.user.picture} className="profileCircle" />
+          <div className="profile_right">
+            <div className="username">{this.props.user.username}</div>
+            <div className="data_container">
+              <div>
+                {this.props.user.position}
+                <select name="position" onChange={this.update}>
+                  <option selected disabled>
+                    Position
+                  </option>
+                  <option value="Campus Director">Campus Director</option>
+                  <option value="Student Success">Student Success</option>
+                  <option value="Office Manager">Office Manager</option>
+                </select>
+              </div>
+
+              <div>
+                {this.props.user.campus}
+                <select name="campus" onChange={this.update}>
+                  <option selected disabled>
+                    Campus
+                  </option>
+                  <option value="Provo">Provo</option>
+                  <option value="Salt Lake City">Salt Lake City</option>
+                  <option value="Pheonix">Phoenix</option>
+                  <option value="Dallas">Dallas</option>
+                </select>
+              </div>
+
+              <button onClick={this.submitProfile}>Submit</button>
+            </div>
+          </div>
         </div>
         <div>
-          Campus:
-          <select name="campus" onChange={this.update}>
-            <option value="Provo">Provo</option>
-            <option value="Salt Lake City">Salt Lake City</option>
-            <option value="Pheonix">Phoenix</option>
-            <option value="Dallas">Dallas</option>
-          </select>
+          <div className="stats_container">
+            <h1>Number of Tasks Completed</h1>
+            <h1>Active Cohorts</h1>
+          </div>
         </div>
-        <button onClick={this.submitProfile}>Submit</button>
       </div>
     );
   }
