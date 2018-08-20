@@ -18,7 +18,7 @@ export default class TasksByCohort extends Component {
   }
 
   render() {
-    console.log(this.state.activeCohorts);
+    // console.log(this.state.activeCohorts);
     const cohort = this.state.activeCohorts.map((e, i) => {
       return <CohortList key={e.cohort_id} id={e.cohort_id} />;
     });
