@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Moment from "react-moment";
+import moment from "moment";
 import axios from "axios";
 import Task from "./Task.js";
 
@@ -11,6 +13,11 @@ export default class List extends Component {
   }
 
   componentWillMount() {
+    var date = moment()
+      .startOf("day")
+      .toDate();
+    var date = JSON.stringify(date);
+    console.log(date);
     axios
       .get("/api/tasks")
       .then(results => this.setState({ tasks: results.data }));
@@ -19,7 +26,7 @@ export default class List extends Component {
   render() {
     console.log(this.state.tasks);
     const taskItem = this.state.tasks.map((e, i) => {
-      return <Task key={e.to_do_id} task={e.task} />;
+      return <Task key={e.id} task={e.task_headline} taskbody={e.task_body} />;
     });
     return (
       <div>
