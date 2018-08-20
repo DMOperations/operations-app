@@ -26,6 +26,8 @@ class Profile extends Component {
   };
 
   render() {
+    console.log(this.props);
+
     return (
       <div className="profile">
         <div className="profile_top">
@@ -44,7 +46,7 @@ class Profile extends Component {
                   <option value="Office Manager">Office Manager</option>
                 </select>
               </div>
-
+              {/* <input type="radio"> </input> */}
               <div>
                 {this.props.user.campus}
                 <select name="campus" onChange={this.update}>
