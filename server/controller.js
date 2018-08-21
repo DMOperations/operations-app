@@ -19,6 +19,17 @@ const getAllTasks = (req, res, next) => {
     .catch(console.log);
 };
 
+const getAllTasksByCohort = (req, res, next) => {
+  const dbInstance = req.app.get("db");
+  const { paramsId } = req.body;
+  console.log(req.body);
+
+  dbInstance
+    .getAllTasksByCohort([paramsId])
+    .then(response => res.status(200).send(response))
+    .catch(console.log);
+};
+
 const createNewCohort = (req, res, next) => {
   const dbInstance = req.app.get("db");
   const { cohortId, startDate, breakDate } = req.body;
@@ -76,6 +87,7 @@ const getActiveCohorts = (req, res, next) => {
 module.exports = {
   completeProfile,
   getAllTasks,
+  getAllTasksByCohort,
   createNewCohort,
   createNewCohortObj,
   handleInsert,
