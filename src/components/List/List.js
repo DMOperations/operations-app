@@ -16,17 +16,24 @@ export default class List extends Component {
     var date = moment()
       .startOf("day")
       .toDate();
-    var date = JSON.stringify(date);
-    console.log(date);
+    // var date = JSON.stringify(date);
+
     axios
-      .get("/api/tasks")
+      .get("/api/tasks", { date: date })
       .then(results => this.setState({ tasks: results.data }));
   }
 
   render() {
     console.log(this.state.tasks);
     const taskItem = this.state.tasks.map((e, i) => {
-      return <Task key={e.id} task={e.task_headline} taskbody={e.task_body} />;
+      return (
+        <Task
+          key={e.id}
+          task={e.task_headline}
+          taskbody={e.task_body}
+          status={e.status}
+        />
+      );
     });
     return (
       <div>

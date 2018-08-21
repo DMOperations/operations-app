@@ -12,6 +12,7 @@ const completeProfile = (req, res, next) => {
 
 const getAllTasks = (req, res, next) => {
   const dbInstance = req.app.get("db");
+  console.log(req.body);
   dbInstance
     .getAllTasks()
     .then(response => res.status(200).send(response))
