@@ -5,7 +5,7 @@ export default function Todo(props) {
   return (
     <div>
       <p> {props.taskHeadline} </p>
-      <p> {props.status} </p>
+      <p> {props.taskDate} </p>
     </div>
   );
 }
