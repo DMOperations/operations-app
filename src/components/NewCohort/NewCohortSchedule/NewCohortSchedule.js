@@ -19,6 +19,7 @@ export default class NewCohort extends Component {
     axios.post(`/api/getAllTasksByCohort/`, { paramsId }).then(response => {
       console.log(response);
       this.setState({ cohortId: response.data });
+
     });
 
     console.log("this is working");

@@ -103,10 +103,17 @@ export default class NewCohort extends Component {
     console.log("Start on state", this.state.startDate);
     console.log("Moment Cohort Start", cohortStart);
     const newObj = {};
+    // .replace(/"/g, "");
     for (const prop in postStart) {
+      // let jsonDate = JSON.stringify(
+      //   moment(new Date())
+      //     .startOf("day")
+      //     .toDate()
+      // ).split("T");
       newObj[moment(new Date(cohortStart)).add(+prop, "days")] =
         postStart[prop];
     }
+    // console.log(jsonDate[0].replace(/"/g, ""));
     this.setState({
       dateAsKey: newObj
     });
@@ -142,6 +149,8 @@ export default class NewCohort extends Component {
   // };
 
   render() {
+    const { cohortId, startDate, breakDate, secondBreak } = this.state;
+
     console.log("DateAsKey", this.state.dateAsKey);
     // console.log("BREAK DATE", this.state.breakDate);
     // console.log("MOMENTS DATE", moment(this.state.breakDate, "MM-DD-YYYY"));
@@ -155,6 +164,7 @@ export default class NewCohort extends Component {
     // if (this.state.toNewSchedule === true) {
     //   return <Redirect to={`/cohortschedule/${cohortId}`} />;
     // }
+
 
     return (
       <div>
