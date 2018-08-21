@@ -17,20 +17,21 @@ class Task extends Component {
   }
 
   render() {
-    console.log(this.state.expand);
+    // console.log(this.props);
     return (
       <div>
         {this.state.expand ? (
           <div className="task_expand">
-            <h4>{this.props.task}</h4>
+            <p>{this.props.task}</p>
             <p>{this.props.taskbody}</p>
+            <p>{this.props.status}</p>
             <button className="task_expand_btn" onClick={this.isOpen}>
-              +
+              -
             </button>
           </div>
         ) : (
           <div className="task">
-            <h4>{this.props.task}</h4>
+            <p>{this.props.task}</p>
             <button className="task_expand_btn" onClick={this.isOpen}>
               +
             </button>
