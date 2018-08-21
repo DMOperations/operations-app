@@ -17,14 +17,15 @@ export default class NewCohort extends Component {
       breakDate: "",
       secondBreak: "",
       twoWeeks: false,
-      dateAsKey: ""
+      dateAsKey: "",
+      toNewSchedule: false
     };
     this.createCohort = this.createCohort.bind(this);
   }
 
-  componentDidMount() {
-    this.datedToDo(defaultMapFile.dlPost);
-  }
+  // componentDidMount() {
+  //   this.datedToDo(defaultMapFile.dlPost);
+  // }
 
   updateCohortName(value) {
     this.setState({ cohortId: value });
@@ -68,10 +69,15 @@ export default class NewCohort extends Component {
   }
 
   createCohort() {
+    this.datedToDo(defaultMapFile.dlPost);
+
     axios.all([this.postNewCohort(), this.postNewCohortObj()]).then(
       axios.spread(function(newCohort, newCohortObj) {
         // Both requests are now complete
         console.log("NewCohortObj", newCohortObj.data);
+        this.setState(() => ({
+          toNewSchedule: true
+        }));
       })
     );
   }
@@ -85,9 +91,21 @@ export default class NewCohort extends Component {
   //WE KNOW THIS ONE WORKS.
 
   datedToDo = postStart => {
+    // const newObj = {};
+    // for (const prop in postStart) {
+    //   newObj[moment(new Date()).add(+prop, "days")] = postStart[prop];
+    // }
+    // this.setState({
+    //   dateAsKey: newObj
+    // });
+
+    let cohortStart = moment(this.state.startDate);
+    console.log("Start on state", this.state.startDate);
+    console.log("Moment Cohort Start", cohortStart);
     const newObj = {};
     for (const prop in postStart) {
-      newObj[moment(new Date()).add(+prop, "days")] = postStart[prop];
+      newObj[moment(new Date(cohortStart)).add(+prop, "days")] =
+        postStart[prop];
     }
     this.setState({
       dateAsKey: newObj
@@ -124,10 +142,19 @@ export default class NewCohort extends Component {
   // };
 
   render() {
-    // console.log("DateAsKey", this.state.dateAsKey);
-    console.log("BREAK DATE", this.state.breakDate);
-    console.log("MOMENTS DATE", moment(this.state.breakDate, "MM-DD-YYYY"));
-    const { cohortId, startDate, breakDate, secondBreak } = this.state;
+    console.log("DateAsKey", this.state.dateAsKey);
+    // console.log("BREAK DATE", this.state.breakDate);
+    // console.log("MOMENTS DATE", moment(this.state.breakDate, "MM-DD-YYYY"));
+    const {
+      cohortId,
+      startDate,
+      breakDate,
+      secondBreak,
+      toNewSchedule
+    } = this.state;
+    // if (this.state.toNewSchedule === true) {
+    //   return <Redirect to={`/cohortschedule/${cohortId}`} />;
+    // }
 
     return (
       <div>
@@ -175,7 +202,7 @@ export default class NewCohort extends Component {
             /> */}
             <button onClick={this.createCohort}>Next</button>
           </div>
-          <NewCohortSchedule />
+          {/* <NewCohortSchedule /> */}
         </div>
       </div>
     );

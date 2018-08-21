@@ -1,40 +1,45 @@
 import React, { Component } from "react";
+import ToDo from "./ToDo";
 import axios from "axios";
-import defaultMapFile from "../../../utils/defaultMapFile";
-import Todo from "./ToDo";
-import moment from "moment";
 
 export default class NewCohort extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      dateAsKey: ""
+      cohortId: []
     };
   }
+
   componentDidMount() {
-    this.datedToDo(defaultMapFile.dlPost);
+    // const { id } = ;
+    console.log(this.props);
+    let paramsId = this.props.match.params.id;
+
+    axios.post(`/api/getAllTasksByCohort/`, { paramsId }).then(response => {
+      console.log(response);
+      this.setState({ cohortId: response.data });
+    });
+
+    console.log("this is working");
   }
 
-  datedToDo = postStart => {
-    const newObj = {};
-    for (const prop in postStart) {
-      newObj[moment(new Date()).add(+prop, "days")] = postStart[prop];
-    }
-    this.setState({
-      dateAsKey: newObj
-    });
-  };
-
   render() {
-    // const list = this.state.postStart.map((e, i) => {
-    //   return <Todo key={i} taskHeadline={e.taskHeadline} status={e.status} />;
-    // });
-    // console.log(this.state.dateAsKey);
     // console.log(this.props);
+    const cohortTasks = this.state.cohortId.map((e, i) => {
+      return (
+        <ToDo
+          key={e.id}
+          taskHeadline={e.task_headline}
+          taskDate={e.task_date}
+        />
+      );
+    });
     return (
       <div>
-        {/* <button onClick={this.loadSchedule}> Create Schedule</button> */}
+        {" "}
+        NewCohortSchedule
+        {cohortTasks}
       </div>
     );
   }
