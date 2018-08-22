@@ -52,8 +52,9 @@ const createNewCohortObj = (req, res, next) => {
 
 const handleInsert = (req, res) => {
   // const { cohortId, cohortObj } = req.body;
-  // console.log(req.body);
+
   const { cohortObj, activites, cohortId } = req.body;
+  console.log("insert body", req.body);
 
   Object.keys(cohortObj).forEach(key => {
     console.log(key);
@@ -71,7 +72,8 @@ const handleInsert = (req, res) => {
           val.status,
           val.assignedTo,
           cohortId
-        ]);
+        ])
+        .catch(err => console.log(err));
     });
   });
 };
