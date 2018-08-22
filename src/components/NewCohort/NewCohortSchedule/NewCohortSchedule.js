@@ -16,12 +16,12 @@ export default class NewCohort extends Component {
     console.log(this.props);
     let paramsId = this.props.match.params.id;
 
-    axios.post(`/api/getAllTasksByCohort/`, { paramsId }).then(response => {
-      console.log(response);
-      this.setState({ cohortId: response.data });
-
-    });
-
+    axios
+      .post(`/api/getAllTasksByCohort/`, { paramsId })
+      .then(
+        response =>
+          console.log(response) || this.setState({ cohortId: response.data })
+      );
     console.log("this is working");
   }
 
