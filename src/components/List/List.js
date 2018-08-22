@@ -11,9 +11,16 @@ export default class List extends Component {
   constructor() {
     super();
     this.state = {
-      tasks: []
+      tasks: [],
+      dateForQuery: ""
     };
   }
+
+  // setDate() {
+  //   JSON.stringify(
+  //     moment(new Date(this.state.dateForQuery)).format("MMM Do YYYY")
+  //   );
+  // }
 
   componentWillMount() {
     axios
