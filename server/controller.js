@@ -10,11 +10,11 @@ const completeProfile = (req, res, next) => {
     .catch(console.log);
 };
 
-const getAllTasks = (req, res, next) => {
+const getAllTasksByDate = (req, res, next) => {
   const dbInstance = req.app.get("db");
-  console.log(req.body);
+  const { todaysdate } = req.body;
   dbInstance
-    .getAllTasks()
+    .getAllTasksByDate([todaysdate])
     .then(response => res.status(200).send(response))
     .catch(console.log);
 };
@@ -86,7 +86,7 @@ const getActiveCohorts = (req, res, next) => {
 
 module.exports = {
   completeProfile,
-  getAllTasks,
+  getAllTasksByDate,
   getAllTasksByCohort,
   createNewCohort,
   createNewCohortObj,

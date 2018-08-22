@@ -107,7 +107,7 @@ app.get("/getUser", (req, res) => {
 app.put("/api/profile", tc.completeProfile);
 
 //TASK ENDPOINTS
-app.get("/api/tasks", tc.getAllTasks);
+app.post("/api/tasks", tc.getAllTasksByDate);
 app.post("/api/getAllTasksByCohort", tc.getAllTasksByCohort);
 app.post("/api/cohortId", tc.createNewCohort);
 app.post("/api/insertactivities", tc.handleInsert);
