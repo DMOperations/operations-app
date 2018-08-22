@@ -4,6 +4,9 @@ import moment from "moment";
 import axios from "axios";
 import Task from "./Task.js";
 
+var date = JSON.stringify(moment(new Date()).format("MMM Do YYYY"));
+// var date = new Date("MMM DD YYYY");
+
 export default class List extends Component {
   constructor() {
     super();
@@ -13,14 +16,15 @@ export default class List extends Component {
   }
 
   componentWillMount() {
-    var date = moment()
-      .startOf("day")
-      .toDate();
-    // var date = JSON.stringify(date);
-
     axios
-      .get("/api/tasks", { date: date })
-      .then(results => this.setState({ tasks: results.data }));
+      .post("/api/tasks", {
+        todaysdate: date
+      })
+      .then(
+        results => this.setState({ tasks: results.data })
+        // console.log(results)
+      );
+    console.log(date);
   }
 
   render() {
