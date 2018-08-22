@@ -39,7 +39,7 @@ export default class NewCohort extends Component {
     return (
       <div>
         {" "}
-        NewCohortSchedule
+        <h1>Cohort Schedule for {this.props.match.params.id}</h1>
         {cohortTasks}
       </div>
     );
