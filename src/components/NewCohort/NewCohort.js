@@ -111,9 +111,11 @@ export default class NewCohort extends Component {
       //     .toDate()
       // ).split("T");
       newObj[
-        moment(new Date(cohortStart))
-          .add(+prop, "days")
-          .format("MMM Do YYYY")
+        JSON.stringify(
+          moment(new Date(cohortStart))
+            .add(+prop, "days")
+            .format("MMM Do YYYY")
+        )
       ] = postStart[prop];
     }
     // console.log(jsonDate[0].replace(/"/g, ""));
