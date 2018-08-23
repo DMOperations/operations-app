@@ -4,6 +4,8 @@ import Moment from "react-moment";
 import moment from "moment";
 import defaultMapFile from "../../utils/defaultMapFile";
 import NewCohortSchedule from "./NewCohortSchedule/NewCohortSchedule";
+import routes from "../../routes.js";
+import { withRouter } from "react-router-dom";
 import "./NewCohort.css";
 
 export default class NewCohort extends Component {
@@ -20,15 +22,12 @@ export default class NewCohort extends Component {
       dateAsKey: "",
       toNewSchedule: false
     };
-    this.createCohort = this.createCohort.bind(this);
     this.postNewCohort = this.postNewCohort.bind(this);
     this.postNewCohortObj = this.postNewCohortObj.bind(this);
   }
 
   datedToDo = postStart => {
     let cohortStart = moment(this.state.startDate);
-    // console.log("Start on state", this.state.startDate);
-    // console.log("Moment Cohort Start", cohortStart);
     const newObj = {};
 
     for (const prop in postStart) {
@@ -60,7 +59,7 @@ export default class NewCohort extends Component {
   // this.datedToDo(defaultMapFile.dlPost);
 
   postNewCohort() {
-    return axios
+    axios
       .post(`/api/cohortId`, {
         cohortId: this.state.cohortId,
         startDate: this.state.startDate
@@ -69,26 +68,12 @@ export default class NewCohort extends Component {
   }
 
   postNewCohortObj() {
-    return axios
+    axios
       .post(`/api/insertactivities`, {
         cohortId: this.state.cohortId,
         cohortObj: this.state.dateAsKey
       })
-      .then(console.log("Cohort Object", this.state.cohortObj))
-      .then(console.log("second"));
-  }
-
-  createCohort() {
-    axios.all([this.postNewCohort(), this.postNewCohortObj()]).then(
-      axios.spread(function(newCohort, newCohortObj) {
-        // Both requests are now complete
-        console.log("NewCohortObj", newCohortObj.data);
-        this.setState(() => ({
-          toNewSchedule: true
-        }));
-        console.log(this.state.toNewSchedule);
-      })
-    );
+      .then(() => this.props.history.push("/dashboard"));
   }
 
   twoWeekBreak = () => {
@@ -98,9 +83,6 @@ export default class NewCohort extends Component {
   };
 
   render() {
-    // console.log("cohortId", this.state.cohortId);
-    // console.log("StartDate", this.state.startDate);
-    // console.log("DateAsKey", this.state.dateAsKey);
     const {
       cohortId,
       startDate,
@@ -109,6 +91,7 @@ export default class NewCohort extends Component {
       toNewSchedule
     } = this.state;
 
+    console.log(toNewSchedule);
     return (
       <div>
         <div className="NC_card">

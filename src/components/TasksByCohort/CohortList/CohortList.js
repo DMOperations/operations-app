@@ -14,17 +14,18 @@ export default class CohortList extends Component {
   render() {
     return (
       <div className="task">
-        <p />
         <div>
-          <Link to={`/cohortschedule/${this.props.id}`}>{this.props.id}</Link>
-        </div>
-        <br />
-        {/* <div> - Start Date: {this.props.cohortStart}</div> */}
-        <div>
-          <p>Current week: </p>
-          <Moment parse="YYYY-MM-DD" diff={this.props.cohortStart} unit="weeks">
-            {moment()}
-          </Moment>
+          <p>
+            <Link to={`/cohortschedule/${this.props.id}`}>{this.props.id}</Link>{" "}
+            - Week{" "}
+            <Moment
+              parse="YYYY-MM-DD"
+              diff={this.props.cohortStart}
+              unit="weeks"
+            >
+              {moment()}
+            </Moment>{" "}
+          </p>
         </div>
       </div>
     );
