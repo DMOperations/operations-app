@@ -22,7 +22,6 @@ export default class NewCohort extends Component {
         response =>
           console.log(response) || this.setState({ cohortId: response.data })
       );
-    console.log("this is working");
   }
 
   render() {
@@ -39,7 +38,7 @@ export default class NewCohort extends Component {
     return (
       <div>
         {" "}
-        NewCohortSchedule
+        <h1>Cohort Schedule for {this.props.match.params.id}</h1>
         {cohortTasks}
       </div>
     );
