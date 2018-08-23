@@ -7,7 +7,7 @@ export default class NavBar extends Component {
   render() {
     return (
       <div className="nb_navbar nb_navbar_box  nb_links">
-        <img src={DevMtnLogo} />
+        <div><img src={DevMtnLogo} /></div>
         <Link className="nb_links" to="/profile">
           <p>Profile</p>
         </Link>
@@ -16,9 +16,9 @@ export default class NavBar extends Component {
           <p> Dashboard </p>
         </Link>
 
-        <Link className="nb_links" to="/calendar">
+        {/* <Link className="nb_links" to="/calendar">
           <p> Calendar </p>
-        </Link>
+        </Link> */}
 
         <Link className="nb_links" to="/newcohort">
           <p> New Cohort </p>
