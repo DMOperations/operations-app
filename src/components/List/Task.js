@@ -23,7 +23,7 @@ class Task extends Component {
         {this.state.expand ? (
           <div className="task_expand">
             <p>
-              {this.props.cohortId} - {this.props.task}
+              {this.props.cohortId} - {this.props.task} - {this.props.position}
             </p>
             <p>
               <input type="checkbox" id="myCheck" onclick={this.checkFunc} />
@@ -39,7 +39,7 @@ class Task extends Component {
         ) : (
           <div className="task">
             <p>
-              {this.props.cohortId} - {this.props.task}
+              {this.props.cohortId} - {this.props.task} - {this.props.position}
             </p>
             <button className="task_expand_btn" onClick={this.isOpen}>
               +
