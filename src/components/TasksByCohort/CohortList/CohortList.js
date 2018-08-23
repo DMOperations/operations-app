@@ -22,6 +22,7 @@ export default class CohortList extends Component {
               parse="YYYY-MM-DD"
               diff={this.props.cohortStart}
               unit="weeks"
+              add={{ weeks: 1 }}
             >
               {moment()}
             </Moment>{" "}
