@@ -1,19 +1,34 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import moment from "moment";
+import Moment from "react-moment";
 
-const CohortList = props => {
-  // handleClick(e) {
-  //   e.preventDefault();
-  //   this.props.history.push(`/cohortschedule/${activeCohorts[cohort_id]}`);
-  // }
+export default class CohortList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      newDate: ""
+    };
+  }
 
-  return (
-    <div className="task">
-      <p />
-
-      <Link to={`/cohortschedule/${props.id}`}>{props.id}</Link>
-    </div>
-  );
-};
-
-export default CohortList;
+  render() {
+    return (
+      <div className="task">
+        <div>
+          <p>
+            <Link to={`/cohortschedule/${this.props.id}`}>{this.props.id}</Link>{" "}
+            - Week{" "}
+            <Moment
+              parse="YYYY-MM-DD"
+              diff={this.props.cohortStart}
+              unit="weeks"
+              add={{ weeks: 1 }}
+            >
+              {moment()}
+            </Moment>{" "}
+          </p>
+        </div>
+      </div>
+    );
+  }
+}
