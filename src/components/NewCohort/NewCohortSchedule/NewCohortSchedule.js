@@ -22,7 +22,6 @@ export default class NewCohort extends Component {
         response =>
           console.log(response) || this.setState({ cohortId: response.data })
       );
-    console.log("this is working");
   }
 
   render() {
