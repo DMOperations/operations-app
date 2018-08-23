@@ -43,13 +43,14 @@ export default class List extends Component {
           task={e.task_headline}
           taskbody={e.task_body}
           status={e.status}
+          cohortId={e.cohort_id}
         />
       );
     });
     return (
       <div>
         <div className="tbc_headline">
-          <h1>All Tasks</h1>
+          <h1>Today's Tasks</h1>
         </div>
         {taskItem}
       </div>
