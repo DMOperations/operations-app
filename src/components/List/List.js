@@ -44,6 +44,7 @@ export default class List extends Component {
           taskbody={e.task_body}
           status={e.status}
           cohortId={e.cohort_id}
+          position={e.position}
         />
       );
     });
