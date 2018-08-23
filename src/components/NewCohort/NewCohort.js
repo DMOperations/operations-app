@@ -5,7 +5,7 @@ import moment from "moment";
 import defaultMapFile from "../../utils/defaultMapFile";
 import NewCohortSchedule from "./NewCohortSchedule/NewCohortSchedule";
 import routes from "../../routes.js";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import "./NewCohort.css";
 
 export default class NewCohort extends Component {
@@ -56,8 +56,6 @@ export default class NewCohort extends Component {
     });
   }
 
-  // this.datedToDo(defaultMapFile.dlPost);
-
   postNewCohort() {
     axios
       .post(`/api/cohortId`, {
@@ -67,13 +65,19 @@ export default class NewCohort extends Component {
       .then(this.datedToDo(defaultMapFile.dlPost));
   }
 
+  toSchedFunc() {
+    this.setState({
+      toNewSchedule: true
+    });
+  }
+
   postNewCohortObj() {
     axios
       .post(`/api/insertactivities`, {
         cohortId: this.state.cohortId,
         cohortObj: this.state.dateAsKey
       })
-      .then(() => this.props.history.push("/dashboard"));
+      .then(this.toSchedFunc());
   }
 
   twoWeekBreak = () => {
@@ -83,6 +87,11 @@ export default class NewCohort extends Component {
   };
 
   render() {
+    // console.log("props", this.props);
+    console.log("State", this.state);
+    if (this.state.toNewSchedule === true) {
+      return <Redirect to={`/cohortschedule/${this.state.cohortId}`} />;
+    }
     const {
       cohortId,
       startDate,
@@ -91,7 +100,6 @@ export default class NewCohort extends Component {
       toNewSchedule
     } = this.state;
 
-    console.log(toNewSchedule);
     return (
       <div>
         <div className="NC_card">
