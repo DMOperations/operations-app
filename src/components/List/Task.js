@@ -5,9 +5,25 @@ class Task extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      expand: false
+      expand: false,
+      checkValue: false
     };
     this.isOpen = this.isOpen.bind(this);
+  }
+
+  componentDidMount() {
+    let checkVal = JSON.parse(this.props.status);
+    let statusParsed = JSON.parse(this.props.status);
+    this.setState({
+      checkValue: checkVal
+    });
+  }
+
+  checkFunc() {
+    console.log("roger");
+    this.setState({
+      checkValue: true
+    });
   }
 
   isOpen() {
@@ -17,7 +33,9 @@ class Task extends Component {
   }
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
+    console.log(this.state);
+
     return (
       <div>
         {this.state.expand ? (
@@ -26,11 +44,15 @@ class Task extends Component {
               {this.props.cohortId} - {this.props.task} - {this.props.position}
             </p>
             <p>
-              <input type="checkbox" id="myCheck" onclick={this.checkFunc} />
+              <input
+                type="checkbox"
+                checked={this.state.checkValue}
+                onClick={this.state.checkFunc}
+              />
               {this.props.taskbody}
             </p>
 
-            <p>{this.props.status}</p>
+            <p />
 
             <button className="task_expand_btn" onClick={this.isOpen}>
               -
