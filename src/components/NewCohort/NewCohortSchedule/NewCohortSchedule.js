@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './NewCohortSchedule.css';
 import ToDo from "./ToDo";
 import axios from "axios";
 
@@ -36,10 +37,13 @@ export default class NewCohort extends Component {
       );
     });
     return (
-      <div>
-        {" "}
-        <h1>Cohort Schedule for {this.props.match.params.id}</h1>
-        {cohortTasks}
+      <div className="schedule">
+        <div className='cohort_schedule_outline'>
+          <h1>Cohort Schedule for {this.props.match.params.id}</h1>
+        </div>
+        <div className='cohort_task_list'>
+          {cohortTasks}
+        </div>
       </div>
     );
   }
