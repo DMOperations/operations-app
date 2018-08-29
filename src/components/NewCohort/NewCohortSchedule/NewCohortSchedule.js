@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './NewCohortSchedule.css';
 import ToDo from "./ToDo";
 import axios from "axios";
+import "./NewCohortSchedule.css";
 
 export default class NewCohort extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ export default class NewCohort extends Component {
           key={e.id}
           taskHeadline={e.task_headline}
           taskDate={e.task_date}
+          // className="task"
         />
       );
     });
