@@ -1,33 +1,29 @@
-.schedule_task {
-  border: 0.1px solid rgba(141, 141, 141, 0.13);
-  box-shadow: -2px 5px 6px 2px rgba(212, 212, 212, 0.2);
-  background-color: #e2e2e2;
-  margin-bottom: 1%;
-  margin-top: 1%;
-  width: 15vw;
-  height: 20vh;
-  text-align: left;
-  padding-left: 10px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
 
-.schedule_task:hover {
-  background-color: #c4c4c4;
-}
-
-.schedule_task_expand {
-  border: 0.1px solid rgba(141, 141, 141, 0.13);
+.todo_box{
+border: 0.1px solid rgba(141, 141, 141, 0.13);
   box-shadow: -2px 5px 6px 2px rgba(212, 212, 212, 0.2);
   background-color: #e2e2e2;
   margin-bottom: 2%;
   margin-top: 2%;
-  width: 40vw;
-  height: 20vh;
+  width: 60vw;
+  height: 15vh;
   text-align: left;
   padding-left: 10px;
+  display: flex;
+  flex-direction: column;
 }
+
+.todo_box:hover {
+    background-color: #c4c4c4;
+  }
+
+  .date {
+    border-bottom: 1px solid rgb(83, 83, 83);
+    width: 15vw;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-weight: 400;
+  }
 
 .task_expand_btn {
   height: 4vh;

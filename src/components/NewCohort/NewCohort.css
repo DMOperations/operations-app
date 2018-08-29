@@ -1,6 +1,7 @@
 .title_line {
-  display: flex;
-  justify-content: center;
+  text-align: left;
+  font-weight: 200;
+  border-bottom: 1px solid rgb(83, 83, 83);
 }
 
 .NC_Box {
@@ -8,6 +9,20 @@
   justify-content: center;
   flex-direction: column;
   width: 25%;
+  font-weight: 100;
+}
+
+.NC_Box button{
+  margin-right: 10vw;
+}
+
+.NC_Box h2 {
+  font-weight: 100;
+}
+
+.NC_Box input {
+  height: 30px;
+  margin-bottom: 20px;
 }
 
 .NC_card {
