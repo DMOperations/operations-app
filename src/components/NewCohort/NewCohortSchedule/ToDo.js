@@ -1,5 +1,7 @@
 import React from "react";
+
 import './ToDo.css'
+
 
 export default function Todo(props) {
   let date = props.taskDate.replace(/"/g, "");
