@@ -78,6 +78,34 @@ const handleInsert = (req, res) => {
   });
 };
 
+const handleInsertPre = (req, res) => {
+  // const { cohortId, cohortObj } = req.body;
+
+  const { cohortObjPre, activites, cohortId } = req.body;
+  console.log("insert body", req.body);
+
+  Object.keys(cohortObjPre).forEach(key => {
+    console.log(key);
+    const myDate = key;
+    cohortObjPre[key].forEach(val => {
+      // console.log(Object.keys(val));
+      // cohortId on request or params?
+      req.app
+        .get("db")
+        .add_cohort_activities([
+          myDate,
+          val.taskBody,
+          val.taskHeadline,
+          val.staffPosition,
+          val.status,
+          val.assignedTo,
+          cohortId
+        ])
+        .catch(err => console.log(err));
+    });
+  });
+};
+
 const getActiveCohorts = (req, res, next) => {
   const dbInstance = req.app.get("db");
   dbInstance
@@ -93,5 +121,6 @@ module.exports = {
   createNewCohort,
   createNewCohortObj,
   handleInsert,
+  handleInsertPre,
   getActiveCohorts
 };
