@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './CohortList.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import moment from "moment";
 import Moment from "react-moment";
@@ -15,9 +16,11 @@ export default class CohortList extends Component {
     return (
       <div className="task">
         <div>
-          <p>
-            <Link to={`/cohortschedule/${this.props.id}`}>{this.props.id}</Link>{" "}
-            - Week{" "}
+          <div className='cohort_name'>
+            <Link to={`/cohortschedule/${this.props.id}`}>{this.props.id}</Link>
+          </div>
+          <div>
+            Week{' '}
             <Moment
               parse="YYYY-MM-DD"
               diff={this.props.cohortStart}
@@ -25,8 +28,8 @@ export default class CohortList extends Component {
               add={{ weeks: 1 }}
             >
               {moment()}
-            </Moment>{" "}
-          </p>
+            </Moment>
+          </div>
         </div>
       </div>
     );
