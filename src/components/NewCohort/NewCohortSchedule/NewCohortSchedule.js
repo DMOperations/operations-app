@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import './NewCohortSchedule.css';
+import "./NewCohortSchedule.css";
 import ToDo from "./ToDo";
 import axios from "axios";
 import "./NewCohortSchedule.css";
+import Moment from "../../../../node_modules/react-moment";
 
 export default class NewCohort extends Component {
   constructor(props) {
@@ -12,6 +13,8 @@ export default class NewCohort extends Component {
       cohortId: []
     };
   }
+
+  // array.sort(callback return value ) moment.isbefore
 
   componentDidMount() {
     // const { id } = ;
@@ -25,6 +28,8 @@ export default class NewCohort extends Component {
           console.log(response) || this.setState({ cohortId: response.data })
       );
   }
+
+  //.sort((a, b) => moment(a.date).isBefore(moment(b.date))
 
   render() {
     // console.log(this.props);
@@ -40,12 +45,10 @@ export default class NewCohort extends Component {
     });
     return (
       <div className="schedule">
-        <div className='cohort_schedule_outline'>
+        <div className="cohort_schedule_outline">
           <h1>Cohort Schedule for {this.props.match.params.id}</h1>
         </div>
-        <div className='cohort_task_list'>
-          {cohortTasks}
-        </div>
+        <div className="cohort_task_list">{cohortTasks}</div>
       </div>
     );
   }

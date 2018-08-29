@@ -1,4 +1,5 @@
 const axios = require("axios");
+const moment = require("moment");
 
 const completeProfile = (req, res, next) => {
   const dbInstance = req.app.get("db");
@@ -26,7 +27,19 @@ const getAllTasksByCohort = (req, res, next) => {
 
   dbInstance
     .getAllTasksByCohort([paramsId])
-    .then(response => res.status(200).send(response))
+    .then(response => {
+      let sorted = response.sort((a, b) => {
+        const isAfter = moment(a.task_date, "MMM Do YYYY").isAfter(
+          moment(b.task_date, "MMM Do YYYY")
+        );
+        if (isAfter) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+      res.status(200).send(sorted);
+    })
     .catch(console.log);
 };
 
