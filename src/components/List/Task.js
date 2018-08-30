@@ -15,24 +15,25 @@ class Task extends Component {
     this.setState({
       expand: !this.state.expand
     });
-  }
-
+    console.log(this.state.status);
+  };
 
   updateStatus = () => {
-    axios.put("/api/updateStatus", {
-      id: this.props.id,
-      status: !this.state.status
-    }).then(
-      this.setState({
+    axios
+      .put("/api/updateStatus", {
+        id: this.props.id,
         status: !this.state.status
       })
-    )
-  }
+      .then(
+        this.setState({
+          status: !this.state.status
+        })
+      );
+    console.log(this.state.status);
+  };
 
   render() {
-
     // console.log(this.props);
-    // console.log(this.state);
 
     return (
       <div>
@@ -42,11 +43,7 @@ class Task extends Component {
               {this.props.cohortId} - {this.props.task} - {this.props.position}
             </p>
             <p>
-              <input
-                name='done'
-                type="checkbox"
-                onClick={this.updateStatus}
-              />
+              <input name="done" type="checkbox" onClick={this.updateStatus} />
               {this.props.taskbody}
             </p>
 
@@ -59,7 +56,8 @@ class Task extends Component {
         ) : (
           <div className="task">
             <p>
-              {this.props.cohortId} - {this.props.task} - {this.props.position}
+              {this.props.cohortId} - {this.props.task} - {this.props.position}{" "}
+              - {this.props.taskDate}
             </p>
             <button className="task_expand_btn" onClick={this.isOpen}>
               +

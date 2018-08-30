@@ -38,7 +38,7 @@ passport.use(
       callbackURL: "/login",
       scope: "openid email profile"
     },
-    function (accessToken, refreshToken, extraParams, profile, done) {
+    function(accessToken, refreshToken, extraParams, profile, done) {
       return done(null, profile);
     }
   )
@@ -109,6 +109,7 @@ app.put("/api/profile", tc.completeProfile);
 //TASK ENDPOINTS
 app.post("/api/tasks", tc.getAllTasksByDate);
 app.post("/api/upcomingtasks", tc.getAllUpcomingTasks);
+app.post("/api/pastduetasks", tc.getPastDueTasks);
 app.post("/api/getAllTasksByCohort", tc.getAllTasksByCohort);
 app.post("/api/cohortId", tc.createNewCohort);
 app.post("/api/insertactivities", tc.handleInsert);
