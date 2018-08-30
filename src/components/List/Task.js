@@ -9,6 +9,7 @@ class Task extends Component {
       checkValue: false
     };
     this.isOpen = this.isOpen.bind(this);
+    this.checkFunc = this.checkFunc.bind(this);
   }
 
   componentDidMount() {
