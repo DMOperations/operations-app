@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "./Task.css";
 
 class Task extends Component {
@@ -6,36 +7,31 @@ class Task extends Component {
     super(props);
     this.state = {
       expand: false,
-      checkValue: false
+      status: false
     };
-    this.isOpen = this.isOpen.bind(this);
   }
 
-  componentDidMount() {
-    let checkVal = JSON.parse(this.props.status);
-    let statusParsed = JSON.parse(this.props.status);
-    this.setState({
-      checkValue: checkVal
-    });
-  }
-
-  checkFunc() {
-    console.log("roger");
-    this.setState({
-      checkValue: true
-    });
-  }
-
-  isOpen() {
+  isOpen = () => {
     this.setState({
       expand: !this.state.expand
     });
   }
 
-  render() {
-    console.log(this.props);
-    console.log(this.state);
 
+  updateStatus = () => {
+    axios.put("/api/updateStatus", {
+      id: this.props.id,
+      status: !this.state.status
+    }).then(
+      this.setState({
+        status: !this.state.status
+      })
+    )
+  }
+
+  render() {
+    console.log(this.state);
+    console.log(this.props);
     return (
       <div>
         {this.state.expand ? (
@@ -45,9 +41,9 @@ class Task extends Component {
             </p>
             <p>
               <input
+                name='done'
                 type="checkbox"
-                checked={this.state.checkValue}
-                onClick={this.state.checkFunc}
+                onClick={this.updateStatus}
               />
               {this.props.taskbody}
             </p>
