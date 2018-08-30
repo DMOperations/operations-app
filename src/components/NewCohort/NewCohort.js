@@ -34,11 +34,9 @@ export default class NewCohort extends Component {
 
     for (const prop in postStart) {
       newObj[
-        JSON.stringify(
-          moment(new Date(cohortStart))
-            .add(+prop, "days")
-            .format("MMM Do YYYY")
-        )
+        moment(new Date(cohortStart))
+          .add(+prop, "days")
+          .format("YYYY-MM-DD")
       ] = postStart[prop];
     }
     this.setState({
@@ -53,11 +51,9 @@ export default class NewCohort extends Component {
 
     for (const prop in preStart) {
       newObj[
-        JSON.stringify(
-          moment(new Date(cohortStart))
-            .subtract(+prop, "days")
-            .format("MMM Do YYYY")
-        )
+        moment(new Date(cohortStart))
+          .subtract(+prop, "days")
+          .format("YYYY-MM-DD")
       ] = preStart[prop];
     }
     this.setState({

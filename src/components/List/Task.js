@@ -33,8 +33,8 @@ class Task extends Component {
   }
 
   render() {
-    console.log(this.props);
-    console.log(this.state);
+    // console.log(this.props);
+    // console.log(this.state);
 
     return (
       <div>
@@ -59,15 +59,15 @@ class Task extends Component {
             </button>
           </div>
         ) : (
-            <div className="task">
-              <p>
-                {this.props.cohortId} - {this.props.task} - {this.props.position}
-              </p>
-              <button className="task_expand_btn" onClick={this.isOpen}>
-                +
+          <div className="task">
+            <p>
+              {this.props.cohortId} - {this.props.task} - {this.props.position}
+            </p>
+            <button className="task_expand_btn" onClick={this.isOpen}>
+              +
             </button>
-            </div>
-          )}
+          </div>
+        )}
       </div>
     );
   }

@@ -20,6 +20,19 @@ const getAllTasksByDate = (req, res, next) => {
     .catch(console.log);
 };
 
+const getAllUpcomingTasks = (req, res, next) => {
+  const dbInstance = req.app.get("db");
+  const { todaysdate, twoweeks } = req.body;
+  console.log(req.body);
+  dbInstance
+    .get_all_tasks([todaysdate, twoweeks])
+    .then(response =>
+      // console.log(response);
+      res.status(200).send(response)
+    )
+    .catch(console.log);
+};
+
 const getAllTasksByCohort = (req, res, next) => {
   const dbInstance = req.app.get("db");
   const { paramsId } = req.body;
@@ -131,6 +144,7 @@ module.exports = {
   completeProfile,
   getAllTasksByDate,
   getAllTasksByCohort,
+  getAllUpcomingTasks,
   createNewCohort,
   createNewCohortObj,
   handleInsert,
