@@ -140,6 +140,16 @@ const getActiveCohorts = (req, res, next) => {
     .catch(console.log);
 };
 
+const updateStatus = (req, res, next) => {
+  const dbInstance = req.app.get('db');
+  const { status, id } = req.body;
+
+  dbInstance
+    .updateTask([status, id])
+    .then((response) => res.status(200).send(response))
+    .catch(console.log);
+};
+
 module.exports = {
   completeProfile,
   getAllTasksByDate,
@@ -148,6 +158,8 @@ module.exports = {
   createNewCohort,
   createNewCohortObj,
   handleInsert,
+  getActiveCohorts,
+  updateStatus,
   handleInsertPre,
   getActiveCohorts
 };

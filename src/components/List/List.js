@@ -31,7 +31,7 @@ export default class List extends Component {
         results => this.setState({ tasks: results.data })
         // console.log(results)
       );
-    // console.log(date);
+
   }
 
   render() {
@@ -40,6 +40,7 @@ export default class List extends Component {
       return (
         <Task
           key={e.id}
+          id={e.id}
           task={e.task_headline}
           taskbody={e.task_body}
           status={e.status}
