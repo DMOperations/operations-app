@@ -15,6 +15,7 @@ class Task extends Component {
     this.setState({
       expand: !this.state.expand
     });
+    console.log(this.state.status);
   };
 
   updateStatus = () => {
@@ -28,11 +29,11 @@ class Task extends Component {
           status: !this.state.status
         })
       );
+    console.log(this.state.status);
   };
 
   render() {
     // console.log(this.props);
-    // console.log(this.state);
 
     return (
       <div>
@@ -55,7 +56,8 @@ class Task extends Component {
         ) : (
           <div className="task">
             <p>
-              {this.props.cohortId} - {this.props.task} - {this.props.position}
+              {this.props.cohortId} - {this.props.task} - {this.props.position}{" "}
+              - {this.props.taskDate}
             </p>
             <button className="task_expand_btn" onClick={this.isOpen}>
               +

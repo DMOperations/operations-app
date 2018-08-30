@@ -33,6 +33,29 @@ const getAllUpcomingTasks = (req, res, next) => {
     .catch(console.log);
 };
 
+const getPastDueTasks = (req, res, next) => {
+  const dbInstance = req.app.get("db");
+  const { todaysdate } = req.body;
+  console.log(req.body);
+
+  dbInstance
+    .get_all_past_due([todaysdate])
+    .then(response => {
+      let sorted = response.sort((a, b) => {
+        const isAfter = moment(a.task_date, "YYYY-MM-DD").isAfter(
+          moment(b.task_date, "YYYY-MM-DD")
+        );
+        if (isAfter) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+      res.status(200).send(sorted);
+    })
+    .catch(console.log);
+};
+
 const getAllTasksByCohort = (req, res, next) => {
   const dbInstance = req.app.get("db");
   const { paramsId } = req.body;
@@ -42,8 +65,8 @@ const getAllTasksByCohort = (req, res, next) => {
     .getAllTasksByCohort([paramsId])
     .then(response => {
       let sorted = response.sort((a, b) => {
-        const isAfter = moment(a.task_date, "MMM Do YYYY").isAfter(
-          moment(b.task_date, "MMM Do YYYY")
+        const isAfter = moment(a.task_date, "YYYY-MM-DD").isAfter(
+          moment(b.task_date, "YYYY-MM-DD")
         );
         if (isAfter) {
           return 1;
@@ -141,12 +164,12 @@ const getActiveCohorts = (req, res, next) => {
 };
 
 const updateStatus = (req, res, next) => {
-  const dbInstance = req.app.get('db');
+  const dbInstance = req.app.get("db");
   const { status, id } = req.body;
 
   dbInstance
     .updateTask([status, id])
-    .then((response) => res.status(200).send(response))
+    .then(response => res.status(200).send(response))
     .catch(console.log);
 };
 
@@ -155,6 +178,7 @@ module.exports = {
   getAllTasksByDate,
   getAllTasksByCohort,
   getAllUpcomingTasks,
+  getPastDueTasks,
   createNewCohort,
   createNewCohortObj,
   handleInsert,

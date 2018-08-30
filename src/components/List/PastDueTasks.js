@@ -5,12 +5,9 @@ import axios from "axios";
 import Task from "./Task.js";
 
 var date = moment(new Date()).format("YYYY-MM-DD");
-var twoWeeks = moment()
-  .add(2, "weeks")
-  .format("YYYY-MM-DD");
 // var date = new Date("MMM DD YYYY");
 
-export default class UpcomingTasks extends Component {
+export default class PastDueTasks extends Component {
   constructor() {
     super();
     this.state = {
@@ -20,9 +17,8 @@ export default class UpcomingTasks extends Component {
 
   componentWillMount() {
     axios
-      .post("/api/upcomingtasks", {
-        todaysdate: date,
-        twoweeks: twoWeeks
+      .post("/api/pastduetasks", {
+        todaysdate: date
       })
       .then(results => {
         this.setState({ tasks: results.data });
@@ -39,8 +35,8 @@ export default class UpcomingTasks extends Component {
           key={e.id}
           task={e.task_headline}
           taskbody={e.task_body}
-          status={e.status}
           taskDate={e.task_date}
+          status={e.status}
           cohortId={e.cohort_id}
           position={e.position}
         />
@@ -49,7 +45,7 @@ export default class UpcomingTasks extends Component {
     return (
       <div>
         <div className="tbc_headline">
-          <h1>Upcoming Tasks</h1>
+          <h1>Past Due Tasks</h1>
         </div>
         {taskItem}
       </div>
