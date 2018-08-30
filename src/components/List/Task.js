@@ -30,8 +30,14 @@ class Task extends Component {
   }
 
   render() {
+<<<<<<< HEAD
     console.log(this.state);
     console.log(this.props);
+=======
+    // console.log(this.props);
+    // console.log(this.state);
+
+>>>>>>> master
     return (
       <div>
         {this.state.expand ? (
@@ -55,15 +61,15 @@ class Task extends Component {
             </button>
           </div>
         ) : (
-            <div className="task">
-              <p>
-                {this.props.cohortId} - {this.props.task} - {this.props.position}
-              </p>
-              <button className="task_expand_btn" onClick={this.isOpen}>
-                +
+          <div className="task">
+            <p>
+              {this.props.cohortId} - {this.props.task} - {this.props.position}
+            </p>
+            <button className="task_expand_btn" onClick={this.isOpen}>
+              +
             </button>
-            </div>
-          )}
+          </div>
+        )}
       </div>
     );
   }

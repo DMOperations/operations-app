@@ -4,4 +4,5 @@
   justify-content: space-around;
   width: 100vw;
   padding-top: 5vh;
+  flex-wrap: wrap;
 }
