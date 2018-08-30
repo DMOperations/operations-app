@@ -5,32 +5,29 @@ import axios from "axios";
 import Task from "./Task.js";
 
 var date = moment(new Date()).format("YYYY-MM-DD");
+var twoWeeks = moment()
+  .add(2, "weeks")
+  .format("YYYY-MM-DD");
 // var date = new Date("MMM DD YYYY");
 
-export default class List extends Component {
+export default class UpcomingTasks extends Component {
   constructor() {
     super();
     this.state = {
-      tasks: [],
-      dateForQuery: ""
+      tasks: []
     };
   }
 
-  // setDate() {
-  //   JSON.stringify(
-  //     moment(new Date(this.state.dateForQuery)).format("MMM Do YYYY")
-  //   );
-  // }
-
   componentWillMount() {
     axios
-      .post("/api/tasks", {
-        todaysdate: date
+      .post("/api/upcomingtasks", {
+        todaysdate: date,
+        twoweeks: twoWeeks
       })
-      .then(
-        results => this.setState({ tasks: results.data })
-        // console.log(results)
-      );
+      .then(results => {
+        this.setState({ tasks: results.data });
+        console.log("results", results.data);
+      });
     // console.log(date);
   }
 
@@ -51,7 +48,7 @@ export default class List extends Component {
     return (
       <div>
         <div className="tbc_headline">
-          <h1>Today's Tasks</h1>
+          <h1>Upcoming Tasks</h1>
         </div>
         {taskItem}
       </div>
