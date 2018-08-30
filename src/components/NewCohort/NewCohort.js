@@ -15,11 +15,13 @@ export default class NewCohort extends Component {
     this.state = {
       cohortId: "",
       cohortObj: "",
+      cohortObjPre: "",
       startDate: "",
       breakDate: "",
       secondBreak: "",
       twoWeeks: false,
       dateAsKey: "",
+      dateAsKeyPre: "",
       toNewSchedule: false
     };
     this.postNewCohort = this.postNewCohort.bind(this);
@@ -45,6 +47,25 @@ export default class NewCohort extends Component {
     console.log(this.state.dateAsKey);
   };
 
+  datedToDoPre = preStart => {
+    let cohortStart = moment(this.state.startDate);
+    const newObj = {};
+
+    for (const prop in preStart) {
+      newObj[
+        JSON.stringify(
+          moment(new Date(cohortStart))
+            .subtract(+prop, "days")
+            .format("MMM Do YYYY")
+        )
+      ] = preStart[prop];
+    }
+    this.setState({
+      dateAsKeyPre: newObj
+    });
+    console.log(this.state.dateAsKeyPre);
+  };
+
   updateCohortName(value) {
     this.setState({ cohortId: value });
   }
@@ -62,7 +83,10 @@ export default class NewCohort extends Component {
         cohortId: this.state.cohortId,
         startDate: this.state.startDate
       })
-      .then(this.datedToDo(defaultMapFile.dlPost));
+      .then(
+        this.datedToDoPre(defaultMapFile.dlPre),
+        this.datedToDo(defaultMapFile.dlPost)
+      );
   }
 
   toSchedFunc() {
@@ -71,13 +95,24 @@ export default class NewCohort extends Component {
     });
   }
 
+  postNewCohortPre() {
+    return axios.post(`/api/insertactivitiespre`, {
+      cohortId: this.state.cohortId,
+      cohortObjPre: this.state.dateAsKeyPre
+    });
+  }
+
+  postNewCohortPost() {
+    return axios.post(`/api/insertactivities`, {
+      cohortId: this.state.cohortId,
+      cohortObj: this.state.dateAsKey
+    });
+  }
+
   postNewCohortObj() {
     axios
-      .post(`/api/insertactivities`, {
-        cohortId: this.state.cohortId,
-        cohortObj: this.state.dateAsKey
-      })
-      .then(this.toSchedFunc());
+      .all([this.postNewCohortPost(), this.postNewCohortPre()])
+      .then(axios.spread(this.toSchedFunc()));
   }
 
   twoWeekBreak = () => {
