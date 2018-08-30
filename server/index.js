@@ -108,6 +108,7 @@ app.put("/api/profile", tc.completeProfile);
 
 //TASK ENDPOINTS
 app.post("/api/tasks", tc.getAllTasksByDate);
+app.post("/api/upcomingtasks", tc.getAllUpcomingTasks);
 app.post("/api/getAllTasksByCohort", tc.getAllTasksByCohort);
 app.post("/api/cohortId", tc.createNewCohort);
 app.post("/api/insertactivities", tc.handleInsert);
