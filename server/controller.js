@@ -89,7 +89,6 @@ const getActiveCohorts = (req, res, next) => {
 const updateStatus = (req, res, next) => {
   const dbInstance = req.app.get('db');
   const { status, id } = req.body;
-  console.log(req.body);
 
   dbInstance
     .updateTask([status, id])
