@@ -31,7 +31,6 @@ export default class List extends Component {
         results => this.setState({ tasks: results.data })
         // console.log(results)
       );
-
   }
 
   render() {

@@ -56,8 +56,7 @@ class Task extends Component {
         ) : (
           <div className="task">
             <p>
-              {this.props.cohortId} - {this.props.task} - {this.props.position}{" "}
-              - {this.props.taskDate}
+              {this.props.cohortId} - {this.props.task} - {this.props.position}
             </p>
             <button className="task_expand_btn" onClick={this.isOpen}>
               +
