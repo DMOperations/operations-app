@@ -103,8 +103,9 @@ app.get("/getUser", (req, res) => {
     res.status(401).send({ message: "Please login" });
   }
 });
-//COMPLETE PROFILE
+//EMPLOYEE ENDPOINTS
 app.put("/api/profile", tc.completeProfile);
+app.get("/api/getAllEmployees", tc.getAllEmployees);
 
 //TASK ENDPOINTS
 app.post("/api/tasks", tc.getAllTasksByDate);
