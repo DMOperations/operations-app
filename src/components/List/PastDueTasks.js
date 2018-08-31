@@ -7,30 +7,24 @@ import Task from "./Task.js";
 var date = moment(new Date()).format("YYYY-MM-DD");
 // var date = new Date("MMM DD YYYY");
 
-export default class List extends Component {
+export default class PastDueTasks extends Component {
   constructor() {
     super();
     this.state = {
-      tasks: [],
-      dateForQuery: ""
+      tasks: []
     };
   }
 
-  // setDate() {
-  //   JSON.stringify(
-  //     moment(new Date(this.state.dateForQuery)).format("MMM Do YYYY")
-  //   );
-  // }
-
   componentWillMount() {
     axios
-      .post("/api/tasks", {
+      .post("/api/pastduetasks", {
         todaysdate: date
       })
-      .then(
-        results => this.setState({ tasks: results.data })
-        // console.log(results)
-      );
+      .then(results => {
+        this.setState({ tasks: results.data });
+        // console.log("results", results.data);
+      });
+    // console.log(date);
   }
 
   render() {
@@ -39,9 +33,9 @@ export default class List extends Component {
       return (
         <Task
           key={e.id}
-          id={e.id}
           task={e.task_headline}
           taskbody={e.task_body}
+          taskDate={e.task_date}
           status={e.status}
           cohortId={e.cohort_id}
           position={e.position}
@@ -51,7 +45,7 @@ export default class List extends Component {
     return (
       <div>
         <div className="tbc_headline">
-          <h1>Today's Tasks</h1>
+          <h1>Past Due Tasks</h1>
         </div>
         {taskItem}
       </div>
