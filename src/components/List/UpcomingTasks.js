@@ -26,7 +26,7 @@ export default class UpcomingTasks extends Component {
       })
       .then(results => {
         this.setState({ tasks: results.data });
-        console.log("results", results.data);
+        // console.log("results", results.data);
       });
     // console.log(date);
   }
@@ -40,6 +40,7 @@ export default class UpcomingTasks extends Component {
           task={e.task_headline}
           taskbody={e.task_body}
           status={e.status}
+          taskDate={e.task_date}
           cohortId={e.cohort_id}
           position={e.position}
         />
