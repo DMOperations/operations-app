@@ -10,6 +10,7 @@ export default class Todo extends Component {
       employees: "string",
       assignedEmployee: ""
     };
+    this.updateEmployee = this.updateEmployee.bind(this);
   }
 
   reassign = () => {
@@ -19,15 +20,15 @@ export default class Todo extends Component {
   };
 
   //SLIGHT ISSUES WITH THIS
-  updateEmployee = e => {
-    this.setState({
+  async updateEmployee(e) {
+    await this.setState({
       assignedEmployee: e.target.value
     });
     axios.put("/api/reassignTask", {
       id: this.props.id,
       employee: this.state.assignedEmployee
     });
-  };
+  }
 
   render() {
     let date = this.props.taskDate.replace(/"/g, "");
