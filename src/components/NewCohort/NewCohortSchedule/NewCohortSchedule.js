@@ -38,10 +38,12 @@ class NewCohort extends Component {
   //.sort((a, b) => moment(a.date).isBefore(moment(b.date))
 
   render() {
+    console.log(this.state.cohortId);
     const cohortTasks = this.state.cohortId.map((e, i) => {
       return (
         <ToDo
           key={e.id}
+          id={e.id}
           taskHeadline={e.task_headline}
           taskDate={e.task_date}
           position={e.position}

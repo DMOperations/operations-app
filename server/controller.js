@@ -174,6 +174,17 @@ const getAllEmployees = (req, res, next) => {
     .catch(console.log);
 };
 
+const reassignTask = (req, res) => {
+  const dbInstance = req.app.get("db");
+  const { id, employee } = req.body;
+  console.log(req.body);
+
+  dbInstance
+    .reassignTask([id, employee])
+    .then(response => res.status(200).send(response))
+    .catch(console.log);
+};
+
 module.exports = {
   completeProfile,
   getAllTasksByDate,
@@ -187,5 +198,6 @@ module.exports = {
   updateStatus,
   handleInsertPre,
   getActiveCohorts,
-  getAllEmployees
+  getAllEmployees,
+  reassignTask
 };

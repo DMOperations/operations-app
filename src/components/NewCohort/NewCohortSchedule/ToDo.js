@@ -7,7 +7,8 @@ export default class Todo extends Component {
     super(props);
     this.state = {
       edit: false,
-      employees: "string"
+      employees: "string",
+      assignedEmployee: ""
     };
   }
 
@@ -17,10 +18,21 @@ export default class Todo extends Component {
     });
   };
 
+  //SLIGHT ISSUES WITH THIS
+  updateEmployee = e => {
+    this.setState({
+      assignedEmployee: e.target.value
+    });
+    axios.put("/api/reassignTask", {
+      id: this.props.id,
+      employee: this.state.assignedEmployee
+    });
+  };
+
   render() {
     let date = this.props.taskDate.replace(/"/g, "");
     const employeeList = this.props.employees.map((e, i) => {
-      return <option>{e.username}</option>;
+      return <option value={e.username}>{e.username}</option>;
     });
     return (
       <div className="todo_box">
@@ -29,7 +41,9 @@ export default class Todo extends Component {
         <p>{this.props.position}</p>
         {this.state.edit ? (
           <div>
-            <select>{employeeList}</select>
+            <select name="assignedEmployee" onChange={this.updateEmployee}>
+              {employeeList}
+            </select>
           </div>
         ) : (
           <button onClick={this.reassign}>Reassign</button>
