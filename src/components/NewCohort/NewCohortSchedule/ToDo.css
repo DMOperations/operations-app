@@ -1,12 +1,11 @@
-
-.todo_box{
-border: 0.1px solid rgba(141, 141, 141, 0.13);
+.todo_box {
+  border: 0.1px solid rgba(141, 141, 141, 0.13);
   box-shadow: -2px 5px 6px 2px rgba(212, 212, 212, 0.2);
   background-color: #e2e2e2;
   margin-bottom: 2%;
   margin-top: 2%;
   width: 60vw;
-  height: 15vh;
+  height: 25vh;
   text-align: left;
   padding-left: 10px;
   display: flex;
@@ -14,16 +13,16 @@ border: 0.1px solid rgba(141, 141, 141, 0.13);
 }
 
 .todo_box:hover {
-    background-color: #c4c4c4;
-  }
+  background-color: #c4c4c4;
+}
 
-  .date {
-    border-bottom: 1px solid rgb(83, 83, 83);
-    width: 15vw;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    font-weight: 400;
-  }
+.date {
+  border-bottom: 1px solid rgb(83, 83, 83);
+  width: 15vw;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-weight: 400;
+}
 
 .task_expand_btn {
   height: 4vh;
