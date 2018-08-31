@@ -44,7 +44,7 @@ class Profile extends Component {
                     {this.props.user.campus}
                   </div>
                 </div>) :
-                (<div>
+                (<div className='profile_section'>
                   <div>
                     <select name="position" onChange={this.update}>
                       <option selected disabled>
