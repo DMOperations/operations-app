@@ -48,6 +48,10 @@ export default class Todo extends Component {
     });
   }
 
+  deleteTask = () => {
+    axios.delete(`/api/deleteTask/${this.props.id}`);
+  };
+
   render() {
     console.log(this.state.newDate);
     let date = this.props.taskDate.replace(/"/g, "");
@@ -79,6 +83,7 @@ export default class Todo extends Component {
         ) : (
           <button onClick={this.reassign}>Reassign</button>
         )}
+        <button onClick={this.deleteTask}>Delete</button>
       </div>
     );
   }
