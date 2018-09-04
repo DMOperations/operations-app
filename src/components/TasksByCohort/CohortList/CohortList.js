@@ -20,7 +20,7 @@ export default class CohortList extends Component {
             <Link to={`/cohortschedule/${this.props.id}`}>{this.props.id}</Link>
           </div>
           <div>
-            Week{' '}
+            Week
             <Moment
               parse="YYYY-MM-DD"
               diff={this.props.cohortStart}
