@@ -42,6 +42,7 @@ export default class List extends Component {
           id={e.id}
           task={e.task_headline}
           taskbody={e.task_body}
+          taskDate={e.task_date}
           status={e.status}
           cohortId={e.cohort_id}
           position={e.position}
