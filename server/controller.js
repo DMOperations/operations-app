@@ -177,10 +177,30 @@ const getAllEmployees = (req, res, next) => {
 const reassignTask = (req, res) => {
   const dbInstance = req.app.get("db");
   const { id, employee } = req.body;
-  console.log(req.body);
 
   dbInstance
     .reassignTask([id, employee])
+    .then(response => res.status(200).send(response))
+    .catch(console.log);
+};
+
+const reassignDate = (req, res) => {
+  const dbInstance = req.app.get("db");
+  const { id, date } = req.body;
+
+  dbInstance
+    .reassignDate([id, date])
+    .then(response => res.status(200).send(response))
+    .catch(console.log);
+};
+
+const deleteTask = (req, res) => {
+  const dbInstance = req.app.get("db");
+  const { id } = req.params;
+  console.log(req.params);
+
+  dbInstance
+    .deleteTask([id])
     .then(response => res.status(200).send(response))
     .catch(console.log);
 };
@@ -199,5 +219,7 @@ module.exports = {
   handleInsertPre,
   getActiveCohorts,
   getAllEmployees,
-  reassignTask
+  reassignTask,
+  reassignDate,
+  deleteTask
 };

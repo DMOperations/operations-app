@@ -117,6 +117,8 @@ app.post("/api/insertactivities", tc.handleInsert);
 app.post("/api/insertactivitiespre", tc.handleInsertPre);
 app.put("/api/updateStatus", tc.updateStatus);
 app.put("/api/reassignTask", tc.reassignTask);
+app.put("/api/reassignDate", tc.reassignDate);
+app.delete(`/api/deleteTask/:id`, tc.deleteTask);
 
 //COHORT ENDPOINTS
 app.get("/api/getActiveCohorts", tc.getActiveCohorts);
