@@ -9,6 +9,9 @@ const cors = require("cors");
 const port = process.env.port || 4000;
 require("dotenv").config();
 
+//CRON REQUIREMENTS
+var CronJob = require("cron").CronJob;
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -103,6 +106,15 @@ app.get("/getUser", (req, res) => {
     res.status(401).send({ message: "Please login" });
   }
 });
+
+//CRON
+console.log("Before job instantiation");
+const job = new CronJob("* * * * * *", function() {
+  app.get("api/getWeeklyTasks", tc.getWeeklyTasks);
+});
+console.log("After job instantiation");
+job.start();
+
 //EMPLOYEE ENDPOINTS
 app.put("/api/profile", tc.completeProfile);
 app.get("/api/getAllEmployees", tc.getAllEmployees);
