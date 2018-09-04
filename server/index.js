@@ -103,8 +103,9 @@ app.get("/getUser", (req, res) => {
     res.status(401).send({ message: "Please login" });
   }
 });
-//COMPLETE PROFILE
+//EMPLOYEE ENDPOINTS
 app.put("/api/profile", tc.completeProfile);
+app.get("/api/getAllEmployees", tc.getAllEmployees);
 
 //TASK ENDPOINTS
 app.post("/api/tasks", tc.getAllTasksByDate);
@@ -115,6 +116,9 @@ app.post("/api/cohortId", tc.createNewCohort);
 app.post("/api/insertactivities", tc.handleInsert);
 app.post("/api/insertactivitiespre", tc.handleInsertPre);
 app.put("/api/updateStatus", tc.updateStatus);
+app.put("/api/reassignTask", tc.reassignTask);
+app.put("/api/reassignDate", tc.reassignDate);
+app.delete(`/api/deleteTask/:id`, tc.deleteTask);
 
 //COHORT ENDPOINTS
 app.get("/api/getActiveCohorts", tc.getActiveCohorts);

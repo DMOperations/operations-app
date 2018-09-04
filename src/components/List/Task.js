@@ -63,12 +63,7 @@ class Task extends Component {
         ) : (
           <div className="task">
             <p>
-              {this.props.cohortId} - {this.props.task} - {this.props.position}{" "}
-              -{" "}
-              <Moment parse={"YYYY-MM-DD"} format={"MMM Do YYYY"}>
-                {" "}
-                {this.props.taskDate}{" "}
-              </Moment>
+              {this.props.cohortId} - {this.props.task} - {this.props.position}
             </p>
             <button className="task_expand_btn" onClick={this.isOpen}>
               +

@@ -23,7 +23,6 @@ const getAllTasksByDate = (req, res, next) => {
 const getAllUpcomingTasks = (req, res, next) => {
   const dbInstance = req.app.get("db");
   const { todaysdate, twoweeks } = req.body;
-  console.log(req.body);
   dbInstance
     .get_all_tasks([todaysdate, twoweeks])
     .then(response =>
@@ -36,8 +35,6 @@ const getAllUpcomingTasks = (req, res, next) => {
 const getPastDueTasks = (req, res, next) => {
   const dbInstance = req.app.get("db");
   const { todaysdate } = req.body;
-  console.log(req.body);
-
   dbInstance
     .get_all_past_due([todaysdate])
     .then(response => {
@@ -59,7 +56,6 @@ const getPastDueTasks = (req, res, next) => {
 const getAllTasksByCohort = (req, res, next) => {
   const dbInstance = req.app.get("db");
   const { paramsId } = req.body;
-  console.log(req.body);
 
   dbInstance
     .getAllTasksByCohort([paramsId])
@@ -103,7 +99,6 @@ const handleInsert = (req, res) => {
   // const { cohortId, cohortObj } = req.body;
 
   const { cohortObj, activites, cohortId } = req.body;
-  console.log("insert body", req.body);
 
   Object.keys(cohortObj).forEach(key => {
     console.log(key);
@@ -128,10 +123,7 @@ const handleInsert = (req, res) => {
 };
 
 const handleInsertPre = (req, res) => {
-  // const { cohortId, cohortObj } = req.body;
-
   const { cohortObjPre, activites, cohortId } = req.body;
-  console.log("insert body", req.body);
 
   Object.keys(cohortObjPre).forEach(key => {
     console.log(key);
@@ -173,6 +165,46 @@ const updateStatus = (req, res, next) => {
     .catch(console.log);
 };
 
+const getAllEmployees = (req, res, next) => {
+  const dbInstance = req.app.get("db");
+
+  dbInstance
+    .getAllEmployees()
+    .then(response => res.status(200).send(response))
+    .catch(console.log);
+};
+
+const reassignTask = (req, res) => {
+  const dbInstance = req.app.get("db");
+  const { id, employee } = req.body;
+
+  dbInstance
+    .reassignTask([id, employee])
+    .then(response => res.status(200).send(response))
+    .catch(console.log);
+};
+
+const reassignDate = (req, res) => {
+  const dbInstance = req.app.get("db");
+  const { id, date } = req.body;
+
+  dbInstance
+    .reassignDate([id, date])
+    .then(response => res.status(200).send(response))
+    .catch(console.log);
+};
+
+const deleteTask = (req, res) => {
+  const dbInstance = req.app.get("db");
+  const { id } = req.params;
+  console.log(req.params);
+
+  dbInstance
+    .deleteTask([id])
+    .then(response => res.status(200).send(response))
+    .catch(console.log);
+};
+
 module.exports = {
   completeProfile,
   getAllTasksByDate,
@@ -185,5 +217,9 @@ module.exports = {
   getActiveCohorts,
   updateStatus,
   handleInsertPre,
-  getActiveCohorts
+  getActiveCohorts,
+  getAllEmployees,
+  reassignTask,
+  reassignDate,
+  deleteTask
 };
