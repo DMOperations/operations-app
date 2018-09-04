@@ -6,7 +6,7 @@ import Task from "./Task.js";
 
 var date = moment(new Date()).format("YYYY-MM-DD");
 var twoWeeks = moment()
-  .add(2, "weeks")
+  .add(1, "weeks")
   .format("YYYY-MM-DD");
 // var date = new Date("MMM DD YYYY");
 
