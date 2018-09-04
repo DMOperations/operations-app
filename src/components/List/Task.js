@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import moment from "moment";
+import Moment from "react-moment";
 import "./Task.css";
 
 class Task extends Component {
@@ -34,13 +36,18 @@ class Task extends Component {
 
   render() {
     // console.log(this.props);
+    // let taskDateFormatted = moment(this.props.taskDate, "MMM Do YYYY");
 
     return (
       <div>
         {this.state.expand ? (
           <div className="task_expand">
             <p>
-              {this.props.cohortId} - {this.props.task} - {this.props.position}
+              {this.props.cohortId} - {this.props.task} - {this.props.position}{" "}
+              <Moment parse={"YYYY-MM-DD"} format={"MMM Do YYYY"}>
+                {" "}
+                {this.props.taskDate}{" "}
+              </Moment>
             </p>
             <p>
               <input name="done" type="checkbox" onClick={this.updateStatus} />
