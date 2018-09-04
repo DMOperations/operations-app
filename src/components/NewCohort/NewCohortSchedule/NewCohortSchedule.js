@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import "./NewCohortSchedule.css";
+import { connect } from "react-redux";
 import ToDo from "./ToDo";
 import axios from "axios";
 import "./NewCohortSchedule.css";
 import Moment from "../../../../node_modules/react-moment";
 
-export default class NewCohort extends Component {
+class NewCohort extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      cohortId: []
+      cohortId: [],
+      employees: ""
     };
   }
 
@@ -18,7 +20,6 @@ export default class NewCohort extends Component {
 
   componentDidMount() {
     // const { id } = ;
-    console.log(this.props);
     let paramsId = this.props.match.params.id;
 
     axios
@@ -27,19 +28,27 @@ export default class NewCohort extends Component {
         response =>
           console.log(response) || this.setState({ cohortId: response.data })
       );
+    axios.get("/api/getAllEmployees").then(response =>
+      this.setState({
+        employees: response.data
+      })
+    );
   }
 
   //.sort((a, b) => moment(a.date).isBefore(moment(b.date))
 
   render() {
-    // console.log(this.props);
+    console.log(this.state.cohortId);
     const cohortTasks = this.state.cohortId.map((e, i) => {
       return (
         <ToDo
           key={e.id}
+          id={e.id}
           taskHeadline={e.task_headline}
           taskDate={e.task_date}
-          // className="task"
+          position={e.position}
+          employees={this.state.employees}
+          // adminLevel={this.props.user.admin_level}
         />
       );
     });
@@ -53,3 +62,7 @@ export default class NewCohort extends Component {
     );
   }
 }
+
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(NewCohort);
