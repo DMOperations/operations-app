@@ -17,10 +17,12 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dash_main">
-        <List />
-        <TasksByCohort />
-        <PastDueTasks />
-        <UpcomingTasks />
+        <div>
+          <List />
+        </div>
+        {/* <TasksByCohort /> */}
+        {/* <PastDueTasks />
+        <UpcomingTasks /> */}
         {/* <AssignNewTasks /> */}
       </div>
     );
