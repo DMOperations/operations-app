@@ -109,16 +109,16 @@ export default class List extends Component {
     return (
       <div style={{ height: "80vh" }}>
         <div className="tbc_headline">
-          <h1>Today's Tasks:</h1>
+          <h1>Today's Tasks</h1>
           {taskItem}
-        </div>
-        <div className="tbc_headline">
-          <h1>Past Due Tasks</h1>
-          {pastDueTaskItem}
         </div>
         <div className="tbc_headline">
           <h1>Upcoming Tasks</h1>
           {upComingTaskItem}
+        </div>
+        <div className="tbc_headline">
+          <h1>Past Due Tasks</h1>
+          {pastDueTaskItem}
         </div>
       </div>
       // <Fragment>
