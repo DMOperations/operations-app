@@ -214,6 +214,15 @@ const deleteTask = (req, res) => {
     .catch(console.log);
 };
 
+const getWeeklyTasks = (req, res) => {
+  const dbInstance = req.app.get("db");
+
+  dbInstance
+    .getWeeklyTasks()
+    .then(response => console.log(response))
+    .catch(console.log);
+};
+
 module.exports = {
   completeProfile,
   getAllTasksByDate,
@@ -230,5 +239,6 @@ module.exports = {
   getAllEmployees,
   reassignTask,
   reassignDate,
-  deleteTask
+  deleteTask,
+  getWeeklyTasks
 };

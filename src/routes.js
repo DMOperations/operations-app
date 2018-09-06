@@ -9,6 +9,7 @@ import NewCohort from "./components/NewCohort/NewCohort";
 import Profile from "./components/Profile/Profile";
 import TasksByCohort from "./components/TasksByCohort/TasksByCohort";
 import NewCohortSchedule from "./components/NewCohort/NewCohortSchedule/NewCohortSchedule";
+import AddNewTask from "./components/NewCohort/AddNewTask/AddNewTask";
 
 export default (
   <Switch>
@@ -21,5 +22,6 @@ export default (
     <Route path="/profile" component={Profile} />
     <Route path="/tasksbycohort" component={TasksByCohort} />
     <Route path="/cohortschedule/:id" component={NewCohortSchedule} />
+    <Route path="/addnewtask/:id" component={AddNewTask} />
   </Switch>
 );
