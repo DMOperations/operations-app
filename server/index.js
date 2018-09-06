@@ -1,4 +1,4 @@
-const tc = require("./controller");
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const massive = require("massive");
@@ -6,14 +6,24 @@ const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 const session = require("express-session");
 const cors = require("cors");
-const port = process.env.port || 4000;
-require("dotenv").config();
+const CronJob = require("cron").CronJob;
 
-//CRON REQUIREMENTS
-var CronJob = require("cron").CronJob;
+const tc = require("./controller");
+// const job = require("./cron");
+
+const port = process.env.port || 4000;
 
 const app = express();
+// console.log("Before");
+// app.use(job);
+// console.log("AFTER");
 
+const job = new CronJob("* * * * * *", function() {
+  console.log("CXRON");
+  // getWeeklyTasks(req, res, next);
+  // const myData = await req.app.get('db').getTheStuff();
+});
+// job.start();
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -106,14 +116,6 @@ app.get("/getUser", (req, res) => {
     res.status(401).send({ message: "Please login" });
   }
 });
-
-//CRON
-console.log("Before job instantiation");
-const job = new CronJob("* * * * * *", function() {
-  app.get("api/getWeeklyTasks", tc.getWeeklyTasks);
-});
-console.log("After job instantiation");
-job.start();
 
 //EMPLOYEE ENDPOINTS
 app.put("/api/profile", tc.completeProfile);
