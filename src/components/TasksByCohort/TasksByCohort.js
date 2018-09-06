@@ -30,13 +30,6 @@ export default class TasksByCohort extends Component {
         />
       );
     });
-    return (
-      <div>
-        <div className="tbc_headline">
-          <h1> Current Cohorts</h1>
-        </div>
-        {cohort}
-      </div>
-    );
+    return <div className="tbc_cohort_list">{cohort}</div>;
   }
 }
