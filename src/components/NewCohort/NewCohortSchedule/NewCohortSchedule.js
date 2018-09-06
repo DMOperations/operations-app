@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./NewCohortSchedule.css";
 import { connect } from "react-redux";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ToDo from "./ToDo";
 import axios from "axios";
 import "./NewCohortSchedule.css";
@@ -56,6 +57,9 @@ class NewCohort extends Component {
       <div className="schedule">
         <div className="cohort_schedule_outline">
           <h1>Cohort Schedule for {this.props.match.params.id}</h1>
+          <Link to={`/addnewtask/${this.props.match.params.id}`}>
+            Add New Task
+          </Link>
         </div>
         <div className="cohort_task_list">{cohortTasks}</div>
       </div>
