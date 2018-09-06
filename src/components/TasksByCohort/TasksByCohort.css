@@ -1,11 +1,11 @@
 .tbc_headline {
   text-align: left;
   font-weight: 100;
-  border-bottom: 1px solid rgb(83, 83, 83);
+  margin: 2%;
 }
 
-.tbc_card {
-}
+/* .tbc_card {
+} */
 
 h1 {
   padding-top: 0px;
@@ -15,3 +15,16 @@ h1 {
 /* .border_box {
   border: 2px solid black;
 } */
+
+.tbc_cohort_list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.list_headline {
+  position: absolute;
+  top: 0;
+}

@@ -1,8 +1,22 @@
-.task{
-    text-decoration: none;
-    color: #444444;
+.cohort_labels {
+  /* border: 0.1px solid rgba(141, 141, 141, 0.13); */
+  /* box-shadow: -2px 5px 6px 2px rgba(212, 212, 212, 0.2); */
+  background-color: #e2e2e2;
+  /* margin-bottom: 2%;
+  margin-top: 2%; */
+  margin: 2%;
+  width: 4vw;
+  height: 6vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 75%;
+  font-size: 0.65em;
 }
 
-.cohort_name{
-    text-decoration: none;
+.cohort_name {
+  text-decoration: none;
 }

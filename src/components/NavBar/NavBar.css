@@ -4,10 +4,10 @@
   height: 100%;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   flex-direction: column;
   width: 10%;
 }
-
 
 .nb_navbar img {
   background-color: #333;
@@ -16,6 +16,18 @@
 }
 
 .nb_links {
+  display: flex;
   text-decoration: none;
   color: #333;
+  font-weight: bolder;
+  justify-content: flex-start;
+}
+
+.nb_cohorts {
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
 }
