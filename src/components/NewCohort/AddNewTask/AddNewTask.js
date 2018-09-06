@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./AddNewTask.css";
+import axios from "axios";
 
 class AddNewTask extends Component {
   constructor(props) {
@@ -19,6 +20,18 @@ class AddNewTask extends Component {
     });
   };
 
+  postNewTask = e => {
+    axios
+      .post("/api/addNewTask", {
+        date: this.state.date,
+        body: this.state.body,
+        headline: this.state.headline,
+        position: this.state.position,
+        cohortId: this.props.match.params.id
+      })
+      .then(console.log("done"));
+  };
+
   render() {
     console.log(this.state);
     const { headline, body, date, position } = this.state;
@@ -32,7 +45,14 @@ class AddNewTask extends Component {
         <h2>Task Date</h2>
         <input type="date" value={date} name="date" onChange={this.newTask} />
         <h2>Position</h2>
-        <input name="position" value={position} onChange={this.newTask} />
+        <select name="position" onChange={this.newTask}>
+          <option value="Campus Director">Campus Director</option>
+          <option value="Student Success">Student Success</option>
+          <option value="Office Manager">Office Manager</option>
+        </select>
+        <div>
+          <button onClick={this.postNewTask}>Submit</button>
+        </div>
       </div>
     );
   }

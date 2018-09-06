@@ -205,12 +205,14 @@ const deleteTask = (req, res) => {
     .catch(console.log);
 };
 
-const getWeeklyTasks = (req, res) => {
+const addNewTask = (req, res) => {
   const dbInstance = req.app.get("db");
+  console.log(req.body);
+  const { headline, body, date, position, cohortId } = req.body;
 
   dbInstance
-    .getWeeklyTasks()
-    .then(response => console.log(response))
+    .addNewTask([date, body, headline, position, cohortId])
+    .then(response => res.status(200).send(response))
     .catch(console.log);
 };
 
@@ -231,5 +233,5 @@ module.exports = {
   reassignTask,
   reassignDate,
   deleteTask,
-  getWeeklyTasks
+  addNewTask
 };

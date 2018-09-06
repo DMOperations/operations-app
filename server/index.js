@@ -129,6 +129,7 @@ app.post("/api/getAllTasksByCohort", tc.getAllTasksByCohort);
 app.post("/api/cohortId", tc.createNewCohort);
 app.post("/api/insertactivities", tc.handleInsert);
 app.post("/api/insertactivitiespre", tc.handleInsertPre);
+app.post("/api/addNewTask", tc.addNewTask);
 app.put("/api/updateStatus", tc.updateStatus);
 app.put("/api/reassignTask", tc.reassignTask);
 app.put("/api/reassignDate", tc.reassignDate);
