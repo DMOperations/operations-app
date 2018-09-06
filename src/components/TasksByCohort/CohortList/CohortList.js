@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './CohortList.css';
+import "./CohortList.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import moment from "moment";
 import Moment from "react-moment";
@@ -14,9 +14,9 @@ export default class CohortList extends Component {
 
   render() {
     return (
-      <div className="task">
+      <div className="cohort_labels">
         <div>
-          <div className='cohort_name'>
+          <div className="cohort_name">
             <Link to={`/cohortschedule/${this.props.id}`}>{this.props.id}</Link>
           </div>
           <div>
