@@ -16,12 +16,12 @@
   width: 40vw;
 }
 
-/* .profile_right {
+.profile_right {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   width: 40%;
-} */
+}
 
 .data_container {
   display: flex;
