@@ -3,7 +3,7 @@
   height: 100vh;
   width: 100vw;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content: space-between;
 }
 
 .profile_side {
@@ -16,13 +16,12 @@
   width: 40vw;
 }
 
-
-.profile_right {
+/* .profile_right {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   width: 40%;
-}
+} */
 
 .data_container {
   display: flex;
