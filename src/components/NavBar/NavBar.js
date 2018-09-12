@@ -19,9 +19,9 @@ export default class NavBar extends Component {
           <p> Dashboard </p>
         </Link>
 
-        {/* <Link className="nb_links" to="/calendar">
+        <Link className="nb_links" to="/calendar">
           <p> Calendar </p>
-        </Link> */}
+        </Link>
 
         <Link className="nb_links" to="/newcohort">
           <p> New Cohort </p>
