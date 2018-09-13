@@ -122,6 +122,7 @@ app.put("/api/profile", tc.completeProfile);
 app.get("/api/getAllEmployees", tc.getAllEmployees);
 
 //TASK ENDPOINTS
+app.get("/api/allTasks", tc.getAllTasks);
 app.post("/api/tasks", tc.getAllTasksByDate);
 app.post("/api/upcomingtasks", tc.getAllUpcomingTasks);
 app.post("/api/pastduetasks", tc.getPastDueTasks);
