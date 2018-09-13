@@ -1,13 +1,35 @@
 import React, { Component } from "react";
+import axios from "axios";
 import FullCalendar from "fullcalendar-reactwrapper";
 import "fullcalendar-reactwrapper/dist/css/fullcalendar.min.css";
 
 export default class Calendar extends Component {
   constructor() {
     super();
+
+    this.state = {
+      activies: []
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get("/api/allTasks")
+      .then(results => this.setState({ activies: results.data }));
   }
 
   render() {
+    console.log(this.state);
+    const activiesList = this.state.activies.map(e => {
+      return {
+        title: `
+        ${e.task_headline}`,
+
+        start: e.task_date,
+        id: e.id
+      };
+    });
+
     return (
       <div className="calendar">
         <FullCalendar
@@ -18,7 +40,6 @@ export default class Calendar extends Component {
             right: "basicWeek,basicDay"
           }}
           defaultDate={new Date()}
-          // defaultView={"basicWeek"}
           displayEventEnd={true}
           selectable={true}
           dragScroll={true}
@@ -29,9 +50,9 @@ export default class Calendar extends Component {
           eventClick={function(calEvent, jsEvent, view) {
             alert("Event: " + calEvent.title);
           }}
-          navLinks={true} // can click day/week names to navigate views
-          eventLimit={true} // allow "more" link when too many events
-          // events={clsList}
+          navLinks={true}
+          eventLimit={true}
+          events={activiesList}
         />
       </div>
     );
