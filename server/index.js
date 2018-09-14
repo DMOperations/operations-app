@@ -122,6 +122,7 @@ app.put("/api/profile", tc.completeProfile);
 app.get("/api/getAllEmployees", tc.getAllEmployees);
 
 //TASK ENDPOINTS
+app.get("/api/allTasks", tc.getAllTasks);
 app.post("/api/tasks", tc.getAllTasksByDate);
 app.post("/api/upcomingtasks", tc.getAllUpcomingTasks);
 app.post("/api/pastduetasks", tc.getPastDueTasks);
@@ -129,6 +130,7 @@ app.post("/api/getAllTasksByCohort", tc.getAllTasksByCohort);
 app.post("/api/cohortId", tc.createNewCohort);
 app.post("/api/insertactivities", tc.handleInsert);
 app.post("/api/insertactivitiespre", tc.handleInsertPre);
+app.post("/api/addNewTask", tc.addNewTask);
 app.put("/api/updateStatus", tc.updateStatus);
 app.put("/api/reassignTask", tc.reassignTask);
 app.put("/api/reassignDate", tc.reassignDate);

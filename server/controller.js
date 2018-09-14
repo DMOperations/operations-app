@@ -11,6 +11,15 @@ const completeProfile = (req, res, next) => {
     .catch(console.log);
 };
 
+const getAllTasks = (req, res) => {
+  const dbInstance = req.app.get("db");
+
+  dbInstance
+    .getAllTasks()
+    .then(response => res.status(200).send(response))
+    .catch(console.log);
+};
+
 const getAllTasksByDate = (req, res, next) => {
   const dbInstance = req.app.get("db");
   const { todaysdate } = req.body;
@@ -214,17 +223,20 @@ const deleteTask = (req, res) => {
     .catch(console.log);
 };
 
-const getWeeklyTasks = (req, res) => {
+const addNewTask = (req, res) => {
   const dbInstance = req.app.get("db");
+  console.log(req.body);
+  const { headline, body, date, position, cohortId } = req.body;
 
   dbInstance
-    .getWeeklyTasks()
-    .then(response => console.log(response))
+    .addNewTask([date, body, headline, position, cohortId])
+    .then(response => res.status(200).send(response))
     .catch(console.log);
 };
 
 module.exports = {
   completeProfile,
+  getAllTasks,
   getAllTasksByDate,
   getAllTasksByCohort,
   getAllUpcomingTasks,
@@ -240,5 +252,5 @@ module.exports = {
   reassignTask,
   reassignDate,
   deleteTask,
-  getWeeklyTasks
+  addNewTask
 };
