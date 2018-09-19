@@ -24,9 +24,9 @@ export default class Calendar extends Component {
       return {
         title: `
         ${e.task_headline}`,
-
         start: e.task_date,
-        id: e.id
+        id: e.id,
+        color: "#" + e.cohort_color
       };
     });
 
@@ -37,14 +37,14 @@ export default class Calendar extends Component {
           header={{
             left: "prev,next today myCustomButton",
             center: "title",
-            right: "basicWeek,basicDay"
+            right: "basicWeek,basicDay,basicMonth"
           }}
           defaultDate={new Date()}
           displayEventEnd={true}
           selectable={true}
           dragScroll={true}
           editable={true}
-          eventColor="transparent"
+          // eventColor="red"
           eventTextColor="#000000"
           eventBorderColor="#e6e6e6"
           eventClick={function(calEvent, jsEvent, view) {
