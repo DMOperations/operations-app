@@ -95,10 +95,10 @@ const getAllTasksByCohort = (req, res, next) => {
 
 const createNewCohort = (req, res, next) => {
   const dbInstance = req.app.get("db");
-  const { cohortId, startDate, breakDate } = req.body;
+  const { cohortId, startDate, breakDate, cohortColor } = req.body;
 
   dbInstance
-    .addcohort([cohortId, startDate, breakDate])
+    .addcohort([cohortId, startDate, breakDate, cohortColor])
     .then(response => res.status(200).send(response))
     .catch(err => console.log(err));
 };
