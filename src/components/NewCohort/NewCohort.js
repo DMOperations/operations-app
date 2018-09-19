@@ -22,10 +22,18 @@ export default class NewCohort extends Component {
       twoWeeks: false,
       dateAsKey: "",
       dateAsKeyPre: "",
-      toNewSchedule: false
+      toNewSchedule: false,
+      cohortColor: ""
     };
     this.postNewCohort = this.postNewCohort.bind(this);
     this.postNewCohortObj = this.postNewCohortObj.bind(this);
+  }
+
+  componentWillMount() {
+    var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    this.setState({
+      cohortColor: randomColor
+    });
   }
 
   datedToDo = postStart => {
@@ -63,7 +71,9 @@ export default class NewCohort extends Component {
   };
 
   updateCohortName(value) {
-    this.setState({ cohortId: value });
+    this.setState({
+      cohortId: value
+    });
   }
 
   updateCohortStart(value) {
@@ -111,11 +121,11 @@ export default class NewCohort extends Component {
       .then(axios.spread(this.toSchedFunc()));
   }
 
-  twoWeekBreak = () => {
-    this.setState({
-      twoWeeks: !this.state.twoWeeks
-    });
-  };
+  // twoWeekBreak = () => {
+  //   this.setState({
+  //     twoWeeks: !this.state.twoWeeks
+  //   });
+  // };
 
   render() {
     // console.log("props", this.props);
@@ -130,6 +140,12 @@ export default class NewCohort extends Component {
       secondBreak,
       toNewSchedule
     } = this.state;
+
+    let styles = {
+      backgroundColor: "#" + this.state.cohortColor
+    };
+
+    console.log(styles);
 
     return (
       <div>
@@ -151,6 +167,7 @@ export default class NewCohort extends Component {
               value={startDate}
               onChange={e => this.updateCohortStart(e.target.value)}
             />
+            <div style={styles}>Cohort Color</div>
             <button onClick={this.postNewCohort}>Confirm</button>
             <h2>Interim Week:</h2>
             <Moment parse="YYYY-MM-DD" format="MMMM DD YYYY" add={{ weeks: 6 }}>
