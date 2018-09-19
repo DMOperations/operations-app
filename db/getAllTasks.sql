@@ -1,1 +1,3 @@
-select * from activities;
+select * 
+from activities a
+join cohort c on c.cohort_id = a.cohort_id;
