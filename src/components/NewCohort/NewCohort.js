@@ -87,7 +87,8 @@ export default class NewCohort extends Component {
     axios
       .post(`/api/cohortId`, {
         cohortId: this.state.cohortId,
-        startDate: this.state.startDate
+        startDate: this.state.startDate,
+        cohortColor: this.state.cohortColor
       })
       .then(
         this.datedToDoPre(defaultMapFile.dlPre),
