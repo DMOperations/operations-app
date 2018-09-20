@@ -25,17 +25,36 @@ class List extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   console.log(this.props.user.position);
-  //   axios
-  //     .get(`/api/pastduetasks/`, {
-  //       todaysdate: date
-  //     })
-  //     .then(results => {
-  //       this.setState({ pastDueTasks: results.data });
-  //       console.log("results", results.data);
-  //     });
-  // }
+  componentDidMount() {
+    console.log(this.props.user.position);
+    axios
+      .get(`/api/tasks?todaysdate=${date}&position=${this.props.user.position}`)
+      .then(
+        results => this.setState({ tasks: results.data })
+        // console.log(results)
+      );
+    axios
+      .get(
+        `/api/pastduetasks?todaysdate=${date}&position=${
+          this.props.user.position
+        }`
+      )
+      .then(results => {
+        this.setState({ pastDueTasks: results.data });
+        console.log("results", results.data);
+      });
+
+    axios
+      .get(
+        `/api/upcomingtasks?todaysdate=${tomorrow}&twoweeks=${twoWeeks}&position=${
+          this.props.user.position
+        }`
+      )
+      .then(results => {
+        this.setState({ upcomingTasks: results.data });
+        // console.log("results", results.data);
+      });
+  }
 
   componentDidUpdate(prevProps, prevState) {
     if (
