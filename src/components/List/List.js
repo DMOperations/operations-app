@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 import Task from "./Task.js";
 
 var date = moment(new Date()).format("YYYY-MM-DD");
+var tomorrow = moment(new Date())
+  .add(1, "days")
+  .format("YYYY-MM-DD");
 var twoWeeks = moment()
   .add(1, "weeks")
   .format("YYYY-MM-DD");
@@ -42,7 +45,7 @@ class List extends Component {
     ) {
       axios
         .get(
-          `/api/tasks?todaydate=${date}&position=${this.props.user.position}`
+          `/api/tasks?todaysdate=${date}&position=${this.props.user.position}`
         )
         .then(
           results => this.setState({ tasks: results.data })
@@ -61,7 +64,7 @@ class List extends Component {
 
       axios
         .get(
-          `/api/upcomingtasks?todaysdate=${date}&twoweeks=${twoWeeks}&position=${
+          `/api/upcomingtasks?todaysdate=${tomorrow}&twoweeks=${twoWeeks}&position=${
             this.props.user.position
           }`
         )
