@@ -38,6 +38,7 @@ class Task extends Component {
             checked={this.state.status}
             onClick={this.updateStatus}
             value={this.state.status}
+            color="primary"
           />
           <div className="task_cohort">{this.props.cohortId} -</div>
           <div className="task_headline">{this.props.task}</div>
