@@ -61,7 +61,7 @@
 }
 
 .task_headline {
-  /* display: flex; */
+  display: flex;
   vertical-align: text-bottom;
   white-space: nowrap;
   max-width: 90ch;
