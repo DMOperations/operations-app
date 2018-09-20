@@ -22,53 +22,102 @@ const getAllTasks = (req, res) => {
 
 const getAllTasksByDate = (req, res, next) => {
   const dbInstance = req.app.get("db");
-  const { todaysdate } = req.body;
-  dbInstance
-    .getAllTasksByDate([todaysdate])
-    .then(response => res.status(200).send(response))
-    .catch(console.log);
+  const { todaysdate, position } = req.query;
+
+  if (position == "Campus Director") {
+    dbInstance
+      .getAllTasksByDate([todaysdate])
+      .then(response => res.status(200).send(response))
+      .catch(console.log);
+  } else {
+    dbInstance
+      .get_all_tasks_date_pos([todaysdate, position])
+      .then(response => res.status(200).send(response))
+      .catch(console.log);
+  }
 };
 
 const getAllUpcomingTasks = (req, res, next) => {
   const dbInstance = req.app.get("db");
-  const { todaysdate, twoweeks } = req.body;
-  dbInstance
-    .get_all_tasks([todaysdate, twoweeks])
-    .then(response => {
-      let sorted = response.sort((a, b) => {
-        const isAfter = moment(a.task_date, "YYYY-MM-DD").isAfter(
-          moment(b.task_date, "YYYY-MM-DD")
-        );
-        if (isAfter) {
-          return 1;
-        } else {
-          return -1;
-        }
-      });
-      res.status(200).send(sorted);
-    })
-    .catch(console.log);
+  const { todaysdate, twoweeks, position } = req.query;
+
+  if (position == "Campus Director") {
+    dbInstance
+      .get_all_tasks_upcoming([todaysdate, twoweeks])
+      .then(response => {
+        let sorted = response.sort((a, b) => {
+          const isAfter = moment(a.task_date, "YYYY-MM-DD").isAfter(
+            moment(b.task_date, "YYYY-MM-DD")
+          );
+          if (isAfter) {
+            return 1;
+          } else {
+            return -1;
+          }
+        });
+        res.status(200).send(sorted);
+      })
+      .catch(console.log);
+  } else {
+    dbInstance
+      .get_all_tasks_upcoming_pos([todaysdate, twoweeks, position])
+      .then(response => {
+        let sorted = response.sort((a, b) => {
+          const isAfter = moment(a.task_date, "YYYY-MM-DD").isAfter(
+            moment(b.task_date, "YYYY-MM-DD")
+          );
+          if (isAfter) {
+            return 1;
+          } else {
+            return -1;
+          }
+        });
+        res.status(200).send(sorted);
+      })
+      .catch(console.log);
+  }
 };
 
 const getPastDueTasks = (req, res, next) => {
   const dbInstance = req.app.get("db");
-  const { todaysdate } = req.body;
-  dbInstance
-    .get_all_past_due([todaysdate])
-    .then(response => {
-      let sorted = response.sort((a, b) => {
-        const isAfter = moment(a.task_date, "YYYY-MM-DD").isAfter(
-          moment(b.task_date, "YYYY-MM-DD")
-        );
-        if (isAfter) {
-          return 1;
-        } else {
-          return -1;
-        }
-      });
-      res.status(200).send(sorted);
-    })
-    .catch(console.log);
+  const { todaysdate, position } = req.query;
+
+  if (position == "Campus Director") {
+    dbInstance
+      .get_all_past_due([todaysdate])
+      .then(response => {
+        let sorted = response.sort((a, b) => {
+          const isAfter = moment(a.task_date, "YYYY-MM-DD").isAfter(
+            moment(b.task_date, "YYYY-MM-DD")
+          );
+          if (isAfter) {
+            return 1;
+          } else {
+            return -1;
+          }
+        });
+        res.status(200).send(sorted);
+        console.log(response);
+      })
+      .catch(console.log);
+  } else {
+    dbInstance
+      .get_past_due_position([todaysdate, position])
+      .then(response => {
+        let sorted = response.sort((a, b) => {
+          const isAfter = moment(a.task_date, "YYYY-MM-DD").isAfter(
+            moment(b.task_date, "YYYY-MM-DD")
+          );
+          if (isAfter) {
+            return 1;
+          } else {
+            return -1;
+          }
+        });
+        res.status(200).send(sorted);
+      })
+      .catch(console.log);
+  }
 };
 
 const getAllTasksByCohort = (req, res, next) => {

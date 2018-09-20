@@ -23,7 +23,7 @@ export default class Calendar extends Component {
     const activiesList = this.state.activies.map(e => {
       return {
         title: `
-        ${e.task_headline}`,
+        ${e.task_headline} - ${e.cohort_id}`,
         start: e.task_date,
         id: e.id,
         color: "#" + e.cohort_color
@@ -35,16 +35,15 @@ export default class Calendar extends Component {
         <FullCalendar
           id="your-custom-ID"
           header={{
-            left: "prev,next today myCustomButton",
+            left: "month,basicWeek,basicDay",
             center: "title",
-            right: "basicWeek,basicDay,basicMonth"
+            right: "today myCustomButton prev,next"
           }}
           defaultDate={new Date()}
           displayEventEnd={true}
           selectable={true}
           dragScroll={true}
           editable={true}
-          // eventColor="red"
           eventTextColor="#000000"
           eventBorderColor="#e6e6e6"
           eventClick={function(calEvent, jsEvent, view) {
@@ -53,6 +52,8 @@ export default class Calendar extends Component {
           navLinks={true}
           eventLimit={true}
           events={activiesList}
+          height={900}
+          // theme="bootstrap3"
         />
       </div>
     );

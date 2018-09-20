@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from "react";
-import Moment from "react-moment";
+import React, { Component } from "react";
 import moment from "moment";
 import axios from "axios";
+import { connect } from "react-redux";
 import Task from "./Task.js";
 
 var date = moment(new Date()).format("YYYY-MM-DD");
@@ -10,7 +10,7 @@ var twoWeeks = moment()
   .format("YYYY-MM-DD");
 // var date = new Date("MMM DD YYYY");
 
-export default class List extends Component {
+class List extends Component {
   constructor() {
     super();
     this.state = {
@@ -22,34 +22,54 @@ export default class List extends Component {
     };
   }
 
-  componentWillMount() {
-    axios
-      .post("/api/tasks", {
-        todaysdate: date
-      })
-      .then(
-        results => this.setState({ tasks: results.data })
-        // console.log(results)
-      );
+  // componentDidMount() {
+  //   console.log(this.props.user.position);
+  //   axios
+  //     .get(`/api/pastduetasks/`, {
+  //       todaysdate: date
+  //     })
+  //     .then(results => {
+  //       this.setState({ pastDueTasks: results.data });
+  //       console.log("results", results.data);
+  //     });
+  // }
 
-    axios
-      .post("/api/pastduetasks", {
-        todaysdate: date
-      })
-      .then(results => {
-        this.setState({ pastDueTasks: results.data });
-        // console.log("results", results.data);
-      });
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      this.props.user &&
+      this.props.user.position &&
+      this.props.user.user_id !== prevProps.user.user_id
+    ) {
+      axios
+        .get(
+          `/api/tasks?todaydate=${date}&position=${this.props.user.position}`
+        )
+        .then(
+          results => this.setState({ tasks: results.data })
+          // console.log(results)
+        );
+      axios
+        .get(
+          `/api/pastduetasks?todaysdate=${date}&position=${
+            this.props.user.position
+          }`
+        )
+        .then(results => {
+          this.setState({ pastDueTasks: results.data });
+          console.log("results", results.data);
+        });
 
-    axios
-      .post("/api/upcomingtasks", {
-        todaysdate: date,
-        twoweeks: twoWeeks
-      })
-      .then(results => {
-        this.setState({ upcomingTasks: results.data });
-        // console.log("results", results.data);
-      });
+      axios
+        .get(
+          `/api/upcomingtasks?todaysdate=${date}&twoweeks=${twoWeeks}&position=${
+            this.props.user.position
+          }`
+        )
+        .then(results => {
+          this.setState({ upcomingTasks: results.data });
+          // console.log("results", results.data);
+        });
+    }
   }
 
   isOpen = () => {
@@ -60,7 +80,7 @@ export default class List extends Component {
   };
 
   render() {
-    // console.log(this.state.tasks);
+    console.log("TASKS", this.state);
     const taskItem = this.state.tasks.map((e, i) => {
       return (
         <Task
@@ -141,3 +161,7 @@ export default class List extends Component {
     );
   }
 }
+
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(List);
