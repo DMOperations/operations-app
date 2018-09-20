@@ -4,7 +4,9 @@ import moment from "moment";
 import axios from "axios";
 import Task from "./Task.js";
 
-var date = moment(new Date()).format("YYYY-MM-DD");
+var date = moment(new Date())
+  .add(1, "days")
+  .format("YYYY-MM-DD");
 var twoWeeks = moment()
   .add(1, "weeks")
   .format("YYYY-MM-DD");
