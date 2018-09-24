@@ -126,6 +126,7 @@ app.get("/api/allTasks", tc.getAllTasks);
 app.get("/api/tasks", tc.getAllTasksByDate);
 app.get("/api/upcomingtasks", tc.getAllUpcomingTasks);
 app.get("/api/pastduetasks", tc.getPastDueTasks);
+app.get("/api/allTasksByUser", tc.allTasksByUser);
 app.post("/api/getAllTasksByCohort", tc.getAllTasksByCohort);
 app.post("/api/cohortId", tc.createNewCohort);
 app.post("/api/insertactivities", tc.handleInsert);

@@ -20,6 +20,17 @@ const getAllTasks = (req, res) => {
     .catch(console.log);
 };
 
+const allTasksByUser = (req, res) => {
+  console.log(req.query);
+  const dbInstance = req.app.get("db");
+  const { user } = req.query;
+
+  dbInstance
+    .get_tasks_by_user([user])
+    .then(response => res.status(200).send(response))
+    .catch(console.log);
+};
+
 const getAllTasksByDate = (req, res, next) => {
   const dbInstance = req.app.get("db");
   const { todaysdate, position } = req.query;
@@ -286,6 +297,7 @@ const addNewTask = (req, res) => {
 module.exports = {
   completeProfile,
   getAllTasks,
+  allTasksByUser,
   getAllTasksByDate,
   getAllTasksByCohort,
   getAllUpcomingTasks,
