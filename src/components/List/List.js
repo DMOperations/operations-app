@@ -21,7 +21,9 @@ class List extends Component {
       upcomingTasks: [],
       pastDueTasks: [],
       dateForQuery: "",
-      expand: true
+      expandToday: true,
+      expandUpcoming: true,
+      expandPast: true
     };
   }
 
@@ -94,11 +96,22 @@ class List extends Component {
     }
   }
 
-  isOpen = () => {
+  todayIsOpen = () => {
     this.setState({
-      expand: !this.state.expand
+      expandToday: !this.state.expandToday
     });
-    console.log(this.state.status);
+  };
+
+  upcomingIsOpen = () => {
+    this.setState({
+      expandUpcoming: !this.state.expandUpcoming
+    });
+  };
+
+  pastIsOpen = () => {
+    this.setState({
+      expandPast: !this.state.expandPast
+    });
   };
 
   render() {
@@ -150,18 +163,42 @@ class List extends Component {
 
     return (
       <div style={{ height: "80vh" }}>
-        <div className="tbc_headline">
-          <h1>Today's Tasks</h1>
-          {taskItem}
-        </div>
-        <div className="tbc_headline">
-          <h1>Upcoming Tasks</h1>
-          {upComingTaskItem}
-        </div>
-        <div className="tbc_headline">
-          <h1>Past Due Tasks</h1>
-          {pastDueTaskItem}
-        </div>
+        {this.state.expandToday ? (
+          <div className="tbc_headline">
+            <h1 onClick={this.todayIsOpen}>Today's Tasks</h1>
+          </div>
+        ) : (
+          <div>
+            <div className="tbc_headline">
+              <h1 onClick={this.todayIsOpen}>Today's Tasks</h1>
+            </div>
+            {taskItem}
+          </div>
+        )}
+        {this.state.expandUpcoming ? (
+          <div className="tbc_headline">
+            <h1 onClick={this.upcomingIsOpen}>Upcoming Tasks</h1>
+          </div>
+        ) : (
+          <div>
+            <div className="tbc_headline">
+              <h1 onClick={this.upcomingIsOpen}>Upcoming Tasks</h1>
+            </div>
+            {upComingTaskItem}
+          </div>
+        )}
+        {this.state.expandPast ? (
+          <div className="tbc_headline">
+            <h1 onClick={this.pastIsOpen}>Past Due Tasks</h1>
+          </div>
+        ) : (
+          <div>
+            <div className="tbc_headline">
+              <h1 onClick={this.pastIsOpen}>Past Due Tasks</h1>
+            </div>
+            {pastDueTaskItem}
+          </div>
+        )}
       </div>
       // <Fragment>
       //   <div className="tbc_headline">
