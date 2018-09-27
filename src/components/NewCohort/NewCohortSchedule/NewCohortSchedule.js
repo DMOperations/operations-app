@@ -19,10 +19,28 @@ class NewCohort extends Component {
 
   // array.sort(callback return value ) moment.isbefore
 
+  componentDidUpdate(prevProps, prevState) {
+    // const { id } = ;
+    if (this.props.match.params.id !== prevProps.match.params.id) {
+      let paramsId = this.props.match.params.id;
+      axios
+        .post(`/api/getAllTasksByCohort/`, { paramsId })
+        .then(
+          response =>
+            console.log(response) || this.setState({ cohortId: response.data })
+        );
+      axios.get("/api/getAllEmployees").then(response =>
+        this.setState({
+          employees: response.data
+        })
+      );
+    }
+  }
+
   componentDidMount() {
     // const { id } = ;
-    let paramsId = this.props.match.params.id;
 
+    let paramsId = this.props.match.params.id;
     axios
       .post(`/api/getAllTasksByCohort/`, { paramsId })
       .then(

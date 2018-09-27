@@ -9,14 +9,12 @@ export default class NavBar extends Component {
     return (
       <div className="nb_navbar nb_navbar_box  nb_links">
         <div>
-          <img src={DevMtnLogo} />
+          <Link className="nb_links" to="/dashboard">
+            <img src={DevMtnLogo} />
+          </Link>
         </div>
         <Link className="nb_links" to="/profile">
           <p>Profile</p>
-        </Link>
-
-        <Link className="nb_links" to="/dashboard">
-          <p> Dashboard </p>
         </Link>
 
         <Link className="nb_links" to="/calendar">
