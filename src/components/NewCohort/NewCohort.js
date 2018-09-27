@@ -170,18 +170,11 @@ export default class NewCohort extends Component {
               onChange={e => this.updateCohortName(e.target.value)}
             />
             <h2>Cohort Campus</h2>
-            <select
-              name="cohortCampus"
+            <input
+              placeholder="Cohort Campus"
+              value={cohortCampus}
               onChange={e => this.updateCohortCampus(e.target.value)}
-            >
-              <option selected disabled>
-                Select
-              </option>
-              <option value="Provo">Provo</option>
-              <option value="Salt Lake City">Salt Lake City</option>
-              <option value="Pheonix">Phoenix</option>
-              <option value="Dallas">Dallas</option>
-            </select>
+            />
             <h2>Start Date</h2>
             <input
               type="date"

@@ -21,9 +21,9 @@ class List extends Component {
       upcomingTasks: [],
       pastDueTasks: [],
       dateForQuery: "",
-      expandToday: true,
-      expandUpcoming: true,
-      expandPast: true
+      expandToday: false,
+      expandUpcoming: false,
+      expandPast: false
     };
   }
 
@@ -115,6 +115,7 @@ class List extends Component {
   };
 
   render() {
+    console.log("TASKS", this.state);
     const taskItem = this.state.tasks.map((e, i) => {
       return (
         <Task
