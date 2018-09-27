@@ -9,7 +9,8 @@ class Calendar extends Component {
     super();
 
     this.state = {
-      activies: [],
+      activities: [],
+      cohorts: [],
       select: "All"
     };
     this.handleCalendar = this.handleCalendar.bind(this);
@@ -18,7 +19,10 @@ class Calendar extends Component {
   componentDidMount() {
     axios
       .get("/api/allTasks")
-      .then(results => this.setState({ activies: results.data }));
+      .then(results => this.setState({ activities: results.data }));
+    axios
+      .get("/api/getActiveCohorts")
+      .then(results => this.setState({ cohorts: results.data }));
   }
 
   async handleCalendar(event) {
@@ -26,16 +30,25 @@ class Calendar extends Component {
     if (this.state.select == "All") {
       axios
         .get("/api/allTasks")
-        .then(results => this.setState({ activies: results.data }));
+        .then(results => this.setState({ activities: results.data }));
     } else if (this.state.select == "One") {
       axios
         .get(`/api/allTasksByUser?user=${this.props.user.position}`)
-        .then(results => this.setState({ activies: results.data }));
+        .then(results => this.setState({ activities: results.data }));
+    } else {
+      axios
+        .post(`/api/getAllTasksByCohort`, { paramsId: this.state.select })
+        .then(results => this.setState({ activities: results.data }));
     }
   }
 
   render() {
-    const activiesList = this.state.activies.map(e => {
+    console.log(this.state);
+    const cohortList = this.state.cohorts.map(e => {
+      return <option>{e.cohort_id}</option>;
+    });
+
+    const activitiesList = this.state.activities.map(e => {
       return {
         title: `
         ${e.task_headline} - ${e.cohort_id}`,
@@ -48,12 +61,11 @@ class Calendar extends Component {
     return (
       <div>
         <h1>Narrow it down:</h1>
-        <div>
-          <select value={this.state.select} onChange={this.handleCalendar}>
-            <option value="All">All</option>
-            <option value="One">Only Mine</option>
-          </select>
-        </div>
+        <select value={this.state.select} onChange={this.handleCalendar}>
+          <option value="All">All</option>
+          <option value="One">Only Mine</option>
+          {cohortList}
+        </select>
         <div className="calendar">
           <FullCalendar
             id="your-custom-ID"
@@ -74,7 +86,7 @@ class Calendar extends Component {
             }}
             navLinks={true}
             eventLimit={true}
-            events={activiesList}
+            events={activitiesList}
             height={900}
             // theme="bootstrap3"
           />
