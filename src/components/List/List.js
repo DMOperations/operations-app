@@ -93,7 +93,6 @@ class List extends Component {
   };
 
   render() {
-    console.log("TASKS", this.state);
     const taskItem = this.state.tasks.map((e, i) => {
       return (
         <Task
