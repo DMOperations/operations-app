@@ -35,6 +35,7 @@ class Calendar extends Component {
   }
 
   render() {
+    console.log(this.props);
     const activiesList = this.state.activies.map(e => {
       return {
         title: `
