@@ -21,7 +21,6 @@ const getAllTasks = (req, res) => {
 };
 
 const allTasksByUser = (req, res) => {
-  console.log(req.query);
   const dbInstance = req.app.get("db");
   const { user } = req.query;
 
