@@ -23,7 +23,8 @@ export default class NewCohort extends Component {
       dateAsKey: "",
       dateAsKeyPre: "",
       toNewSchedule: false,
-      cohortColor: ""
+      cohortColor: "",
+      cohortCampus: ""
     };
     this.postNewCohort = this.postNewCohort.bind(this);
     this.postNewCohortObj = this.postNewCohortObj.bind(this);
@@ -75,6 +76,11 @@ export default class NewCohort extends Component {
       cohortId: value
     });
   }
+  updateCohortCampus(value) {
+    this.setState({
+      cohortCampus: value
+    });
+  }
 
   updateCohortStart(value) {
     this.setState({
@@ -88,7 +94,8 @@ export default class NewCohort extends Component {
       .post(`/api/cohortId`, {
         cohortId: this.state.cohortId,
         startDate: this.state.startDate,
-        cohortColor: this.state.cohortColor
+        cohortColor: this.state.cohortColor,
+        cohortCampus: this.state.cohortCampus
       })
       .then(
         this.datedToDoPre(defaultMapFile.dlPre),
@@ -139,7 +146,8 @@ export default class NewCohort extends Component {
       startDate,
       breakDate,
       secondBreak,
-      toNewSchedule
+      toNewSchedule,
+      cohortCampus
     } = this.state;
 
     let styles = {
@@ -160,6 +168,12 @@ export default class NewCohort extends Component {
               placeholder="Cohort Name"
               value={cohortId}
               onChange={e => this.updateCohortName(e.target.value)}
+            />
+            <h2>Cohort Campus</h2>
+            <input
+              placeholder="Cohort Campus"
+              value={cohortCampus}
+              onChange={e => this.updateCohortCampus(e.target.value)}
             />
             <h2>Start Date</h2>
             <input
