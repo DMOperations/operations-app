@@ -21,9 +21,9 @@ class List extends Component {
       upcomingTasks: [],
       pastDueTasks: [],
       dateForQuery: "",
-      expandToday: true,
-      expandUpcoming: true,
-      expandPast: true
+      expandToday: false,
+      expandUpcoming: false,
+      expandPast: false
     };
   }
 
