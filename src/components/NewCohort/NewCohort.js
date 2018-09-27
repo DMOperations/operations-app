@@ -178,6 +178,7 @@ export default class NewCohort extends Component {
                 Select
               </option>
               <option value="Provo">Provo</option>
+              <option value="Provo">Provo</option>
               <option value="Salt Lake City">Salt Lake City</option>
               <option value="Pheonix">Phoenix</option>
               <option value="Dallas">Dallas</option>
