@@ -1,10 +1,10 @@
 .schedule {
-    width: 60vw;
-    margin-left: 20vw;
+  width: 80vw;
+  margin-left: 10vw;
 }
 
-.cohort_schedule_outline{
-    text-align: left;
+.cohort_schedule_outline {
+  text-align: left;
   font-weight: 100;
   border-bottom: 1px solid rgb(83, 83, 83);
   position: fixed;
@@ -12,8 +12,8 @@
   width: 61vw;
 }
 
-.cohort_task_list{
-    margin-top: 10vh;
-    height: 85vh;
-    overflow: scroll;
+.cohort_task_list {
+  margin-top: 10vh;
+  height: 85vh;
+  overflow: scroll;
 }
