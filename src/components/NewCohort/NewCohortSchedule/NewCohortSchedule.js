@@ -17,10 +17,7 @@ class NewCohort extends Component {
     };
   }
 
-  // array.sort(callback return value ) moment.isbefore
-
   componentDidUpdate(prevProps, prevState) {
-    // const { id } = ;
     if (this.props.match.params.id !== prevProps.match.params.id) {
       let paramsId = this.props.match.params.id;
       axios
@@ -38,8 +35,6 @@ class NewCohort extends Component {
   }
 
   componentDidMount() {
-    // const { id } = ;
-
     let paramsId = this.props.match.params.id;
     axios
       .post(`/api/getAllTasksByCohort/`, { paramsId })
@@ -53,8 +48,6 @@ class NewCohort extends Component {
       })
     );
   }
-
-  //.sort((a, b) => moment(a.date).isBefore(moment(b.date))
 
   render() {
     console.log(this.state.cohortId);
