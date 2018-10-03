@@ -129,14 +129,7 @@ export default class NewCohort extends Component {
       .then(axios.spread(this.toSchedFunc()));
   }
 
-  // twoWeekBreak = () => {
-  //   this.setState({
-  //     twoWeeks: !this.state.twoWeeks
-  //   });
-  // };
-
   render() {
-    // console.log("props", this.props);
     console.log("State", this.state);
     if (this.state.toNewSchedule === true) {
       return <Redirect to={`/cohortschedule/${this.state.cohortId}`} />;
@@ -179,7 +172,7 @@ export default class NewCohort extends Component {
               </option>
               <option value="Provo">Provo</option>
               <option value="Salt Lake City">Salt Lake City</option>
-              <option value="Pheonix">Phoenix</option>
+              <option value="Phoenix">Phoenix</option>
               <option value="Dallas">Dallas</option>
             </select>
             <h2>Start Date</h2>
@@ -195,26 +188,6 @@ export default class NewCohort extends Component {
             <Moment parse="YYYY-MM-DD" format="MMMM DD YYYY" add={{ weeks: 6 }}>
               {this.state.startDate}
             </Moment>
-            {/* Do you have a different interim week?
-            <input
-              type="date"
-              placeholder="MM DD YYYY"
-              value={breakDate}
-              onChange={e => this.updateBreak(e.target.value)}
-            />
-            Is this break two weeks long?
-            <input
-              type="checkbox"
-              checked={this.state.twoWeeks}
-              onChange={this.twoWeekBreak}
-            />
-            Do you have more than one Interim Week?
-            <input
-              type="date"
-              placeholder="MM DD YYYY"
-              value={secondBreak}
-              onChange={e => this.updateSecondBreak(e.target.value)}
-            /> */}
             <button onClick={this.postNewCohortObj}>Create </button>
           </div>
         </div>
