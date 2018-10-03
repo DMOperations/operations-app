@@ -6,24 +6,18 @@ const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 const session = require("express-session");
 const cors = require("cors");
-const CronJob = require("cron").CronJob;
+// const CronJob = require("cron").CronJob;
 
 const tc = require("./controller");
-// const job = require("./cron");
+const cj = require("./cron");
 
 const port = process.env.port || 4000;
 
 const app = express();
-// console.log("Before");
-// app.use(job);
-// console.log("AFTER");
 
-const job = new CronJob("* * * * * *", function() {
-  console.log("CXRON");
-  // getWeeklyTasks(req, res, next);
-  // const myData = await req.app.get('db').getTheStuff();
-});
-// job.start();
+// ++BELOW WORKS++
+// cj.job();
+
 app.use(bodyParser.json());
 app.use(cors());
 
