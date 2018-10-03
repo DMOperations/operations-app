@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./Dashboard.css";
 import List from "../List/List";
-import AssignNewTasks from "../AssignNewTasks/AssignNewTasks";
-import TasksByCohort from "../TasksByCohort/TasksByCohort";
-import UpcomingTasks from "../List/UpcomingTasks";
-import PastDueTasks from "../List/PastDueTasks";
+// import AssignNewTasks from "../AssignNewTasks/AssignNewTasks";
+// import TasksByCohort from "../TasksByCohort/TasksByCohort";
+// import UpcomingTasks from "../List/UpcomingTasks";
+// import PastDueTasks from "../List/PastDueTasks";
 
 import routes from "../../routes.js";
 import { withRouter } from "react-router-dom";
