@@ -1,7 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage/LandingPage";
-import AssignNewTasks from "./components/AssignNewTasks/AssignNewTasks";
 import Calendar from "./components/Calendar/Calendar";
 import Dashboard from "./components/Dashboard/Dashboard";
 import List from "./components/List/List";
@@ -14,7 +13,6 @@ import AddNewTask from "./components/NewCohort/AddNewTask/AddNewTask";
 export default (
   <Switch>
     <Route exact path="/" component={LandingPage} />
-    <Route path="/assign" component={AssignNewTasks} />
     <Route path="/calendar" component={Calendar} />
     <Route path="/dashboard" component={Dashboard} />
     <Route path="/list" component={List} />

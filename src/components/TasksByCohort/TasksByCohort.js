@@ -20,7 +20,6 @@ export default class TasksByCohort extends Component {
   //function that calculates current week relative to cohortStartDate
 
   render() {
-    // console.log(this.state.activeCohorts);
     const cohort = this.state.activeCohorts.map((e, i) => {
       return (
         <CohortList

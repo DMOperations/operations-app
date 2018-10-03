@@ -21,9 +21,9 @@ class List extends Component {
       upcomingTasks: [],
       pastDueTasks: [],
       dateForQuery: "",
-      expandToday: true,
-      expandUpcoming: true,
-      expandPast: true
+      expandToday: false,
+      expandUpcoming: false,
+      expandPast: false
     };
   }
 
@@ -115,6 +115,7 @@ class List extends Component {
   };
 
   render() {
+    console.log("TASKS", this.state);
     const taskItem = this.state.tasks.map((e, i) => {
       return (
         <Task
@@ -199,23 +200,6 @@ class List extends Component {
           </div>
         )}
       </div>
-      // <Fragment>
-      //   <div className="tbc_headline">
-      //     <div>
-      //       <h1>Today's Tasks</h1>
-      //     </div>
-      //   </div>
-      //   <div style={{ height: "40vh", overflow: "scroll" }}>
-      //     {this.state.expand ? (
-      //       <div>
-      //         <button onClick={this.isOpen}>-</button>
-      //         {taskItem}
-      //       </div>
-      //     ) : (
-      //       <button onClick={this.isOpen}>+</button>
-      //     )}
-      //   </div>
-      // </Fragment>
     );
   }
 }
