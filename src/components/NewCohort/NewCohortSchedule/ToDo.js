@@ -8,7 +8,7 @@ export default class Todo extends Component {
     this.state = {
       edit: false,
       editDate: false,
-      employees: "string",
+      employees: [],
       assignedEmployee: "",
       newDate: ""
     };
@@ -73,7 +73,7 @@ export default class Todo extends Component {
           </div>
         )}
         <p> {this.props.taskHeadline} </p>
-        <p>{this.props.position}</p>
+
         {this.state.edit ? (
           <div>
             <select name="assignedEmployee" onChange={this.updateEmployee}>
@@ -81,9 +81,9 @@ export default class Todo extends Component {
             </select>
           </div>
         ) : (
-          <button onClick={this.reassign}>Reassign</button>
+          <p onClick={this.reassign}>{this.props.position}</p>
         )}
-        <button onClick={this.deleteTask}>Delete</button>
+        <button onClick={this.deleteTask}>&#128465;</button>
       </div>
     );
   }

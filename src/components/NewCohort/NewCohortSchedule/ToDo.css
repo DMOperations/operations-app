@@ -4,25 +4,28 @@
   background-color: #e2e2e2;
   margin-bottom: 2%;
   margin-top: 2%;
-  width: 60vw;
-  height: 25vh;
+  width: 75vw;
+  height: auto;
   text-align: left;
   padding-left: 10px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto 30vw auto auto auto;
+  grid-gap: 10px;
+  align-items: center;
+  /* justify-content: center; */
 }
 
 .todo_box:hover {
   background-color: #c4c4c4;
 }
 
-.date {
+/* .date {
   border-bottom: 1px solid rgb(83, 83, 83);
   width: 15vw;
   padding-bottom: 10px;
   padding-top: 10px;
   font-weight: 400;
-}
+} */
 
 .task_expand_btn {
   height: 4vh;
