@@ -1,18 +1,22 @@
-//CRON REQUIREMENTS
-const { getWeeklyTasks } = require("./controller");
+// CRON REQUIREMENTS
+// const { getWeeklyTasks } = require("./controller");
 const { CronJob } = require("cron");
 
-const job = async (req, res, next) =>
-  new CronJob(
+const job = db => {
+  return new CronJob(
     "* * * * * *",
-    function() {
-      console.log("CXRON");
-      // getWeeklyTasks(req, res, next);
-      // const myData = await req.app.get('db').getTheStuff();
+    async function() {
+      try {
+        const myData = await db.get_weekly_tasks();
+        console.log("DATA: ", myData);
+      } catch (e) {
+        console.log(e);
+      }
     },
     null,
     true,
     "America/Chicago"
   );
+};
 
-module.exports = { job };
+module.exports = job;
