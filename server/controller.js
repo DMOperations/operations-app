@@ -11,6 +11,15 @@ const completeProfile = (req, res, next) => {
     .catch(console.log);
 };
 
+// const getWeeklyTasks = (req, res, next) => {
+//   const dbInstance = req.app.get("db");
+
+//   dbInstance
+//     .get("db")
+//     .get_weekly_tasks()
+//     .then(response => res.status(200).send(response));
+// };
+
 const getAllTasks = (req, res) => {
   const dbInstance = req.app.get("db");
 
@@ -320,4 +329,5 @@ module.exports = {
   reassignDate,
   deleteTask,
   addNewTask
+  // getWeeklyTasks
 };
