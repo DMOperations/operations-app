@@ -6,25 +6,34 @@ export default class Todo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      edit: false,
+      editEmployee: false,
       editDate: false,
+      editHeadline: false,
       employees: [],
       assignedEmployee: "",
-      newDate: ""
+      newDate: "",
+      newHeadline: ""
     };
     this.updateEmployee = this.updateEmployee.bind(this);
     this.updateDate = this.updateDate.bind(this);
+    this.updateHeadline = this.updateHeadline.bind(this);
   }
 
-  reassign = () => {
+  reassignEmployee = () => {
     this.setState({
-      edit: true
+      editEmployee: !this.state.editEmployee
     });
   };
 
   reassignDate = () => {
     this.setState({
-      editDate: true
+      editDate: !this.state.editDate
+    });
+  };
+
+  reassignHeadline = () => {
+    this.setState({
+      editHeadline: !this.state.editHeadline
     });
   };
 
@@ -45,6 +54,16 @@ export default class Todo extends Component {
     axios.put("/api/reassignDate", {
       id: this.props.id,
       date: this.state.newDate
+    });
+  }
+
+  async updateHeadline(e) {
+    await this.setState({
+      newHeadline: e
+    });
+    axios.put("/api/reassignTaskHeadline", {
+      id: this.props.id,
+      newHeadline: this.state.newHeadline
     });
   }
 
@@ -72,16 +91,24 @@ export default class Todo extends Component {
             {date}
           </div>
         )}
-        <p> {this.props.taskHeadline} </p>
+        {this.state.editHeadline ? (
+          <input
+            placeholder={this.props.taskHeadline}
+            value={this.state.newHeadline}
+            onChange={e => this.updateHeadline(e.target.value)}
+          />
+        ) : (
+          <p onClick={this.reassignHeadline}> {this.props.taskHeadline} </p>
+        )}
 
-        {this.state.edit ? (
+        {this.state.editEmployee ? (
           <div>
             <select name="assignedEmployee" onChange={this.updateEmployee}>
               {employeeList}
             </select>
           </div>
         ) : (
-          <p onClick={this.reassign}>{this.props.position}</p>
+          <p onClick={this.reassignEmployee}>{this.props.position}</p>
         )}
         <button onClick={this.deleteTask}>&#128465;</button>
       </div>
