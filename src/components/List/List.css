@@ -1,0 +1,45 @@
+.tbc_headline {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tbc_headline div {
+  font-size: 55px;
+  animation-name: minus;
+  animation-duration: 0.05s;
+}
+
+@keyframes minus {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}
+
+.tasks_list {
+  animation: rollout 10s;
+}
+
+@keyframes animation {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(8%);
+  }
+  65% {
+    transform: translateY(-4%);
+  }
+  80% {
+    transform: translateY(4%);
+  }
+  95% {
+    transform: translateY(-2%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}

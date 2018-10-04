@@ -287,6 +287,16 @@ const reassignDate = (req, res) => {
     .catch(console.log);
 };
 
+const reassignTaskHeadline = (req, res) => {
+  const dbInstance = req.app.get("db");
+  const { id, newHeadline } = req.body;
+
+  dbInstance
+    .reassign_task_headline([id, newHeadline])
+    .then(response => res.status(200).send(response))
+    .catch(console.log);
+};
+
 const deleteTask = (req, res) => {
   const dbInstance = req.app.get("db");
   const { id } = req.params;
@@ -327,6 +337,7 @@ module.exports = {
   getAllEmployees,
   reassignTask,
   reassignDate,
+  reassignTaskHeadline,
   deleteTask,
   addNewTask
   // getWeeklyTasks
