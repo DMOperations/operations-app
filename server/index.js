@@ -7,16 +7,15 @@ const Auth0Strategy = require("passport-auth0");
 const session = require("express-session");
 const cors = require("cors");
 // const CronJob = require("cron").CronJob;
+const moment = require("moment");
+const { getWeeklyTasks } = require("./controller");
+const cj = require("./cron");
 
 const tc = require("./controller");
-const cj = require("./cron");
 
 const port = process.env.port || 4000;
 
 const app = express();
-
-// ++BELOW WORKS++
-// cj.job();
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -29,9 +28,11 @@ app.use(
   })
 );
 
-massive(process.env.CONNECTION_STRING).then(dbInstance =>
-  app.set("db", dbInstance)
-);
+massive(process.env.CONNECTION_STRING).then(dbInstance => {
+  app.set("db", dbInstance);
+  const cronWrapper = cj(dbInstance);
+  cronWrapper.start();
+});
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -102,6 +103,23 @@ function authenticated(req, res, next) {
   }
 }
 
+// const job = (req, res, next) => {
+//   new CronJob(
+//     "* * * * * *",
+//     function() {
+//       // console.log("working");
+//       getWeeklyTasks(req, res, next);
+//     },
+//     // getWeeklyTasks(req, res, next);
+//     // const myData = req.app;,
+//     null,
+//     true,
+//     "America/Chicago"
+//   );
+// };
+
+// job(app);
+
 //SEND USER TO REDUCER
 app.get("/getUser", (req, res) => {
   if (req.user) {
@@ -121,6 +139,7 @@ app.get("/api/tasks", tc.getAllTasksByDate);
 app.get("/api/upcomingtasks", tc.getAllUpcomingTasks);
 app.get("/api/pastduetasks", tc.getPastDueTasks);
 app.get("/api/allTasksByUser", tc.allTasksByUser);
+// app.get("/api/getweeklytasks", tc.getWeeklyTasks);
 app.post("/api/getAllTasksByCohort", tc.getAllTasksByCohort);
 app.post("/api/cohortId", tc.createNewCohort);
 app.post("/api/insertactivities", tc.handleInsert);
@@ -131,8 +150,16 @@ app.put("/api/reassignTask", tc.reassignTask);
 app.put("/api/reassignDate", tc.reassignDate);
 app.delete(`/api/deleteTask/:id`, tc.deleteTask);
 
+// app.get(cj.job(app));
+
 //COHORT ENDPOINTS
 app.get("/api/getActiveCohorts", tc.getActiveCohorts);
+
+app.get("/cron", function(req, res) {
+  job(req, res, function(err) {
+    res.send("cron tasks executed");
+  });
+});
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
