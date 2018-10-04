@@ -1,5 +1,5 @@
 .schedule {
-  width: 80vw;
+  width: 75vw;
   margin-left: 10vw;
 }
 
@@ -9,11 +9,11 @@
   border-bottom: 1px solid rgb(83, 83, 83);
   position: fixed;
   background-color: #ffffff;
-  width: 61vw;
+  width: 72vw;
 }
 
 .cohort_task_list {
   margin-top: 10vh;
   height: 85vh;
-  overflow: scroll;
+  overflow-y: scroll;
 }

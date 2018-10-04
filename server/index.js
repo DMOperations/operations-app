@@ -129,6 +129,7 @@ app.post("/api/addNewTask", tc.addNewTask);
 app.put("/api/updateStatus", tc.updateStatus);
 app.put("/api/reassignTask", tc.reassignTask);
 app.put("/api/reassignDate", tc.reassignDate);
+app.put("/api/reassignTaskHeadline", tc.reassignTaskHeadline);
 app.delete(`/api/deleteTask/:id`, tc.deleteTask);
 
 //COHORT ENDPOINTS
