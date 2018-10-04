@@ -3,6 +3,7 @@ import moment from "moment";
 import axios from "axios";
 import { connect } from "react-redux";
 import Task from "./Task.js";
+import "./List.css";
 
 var date = moment(new Date()).format("YYYY-MM-DD");
 var tomorrow = moment(new Date())
@@ -164,37 +165,44 @@ class List extends Component {
     return (
       <div style={{ height: "80vh" }}>
         {this.state.expandToday ? (
-          <div className="tbc_headline">
-            <h1 onClick={this.todayIsOpen}>Today's Tasks</h1>
+          <div className="tbc_headline" onClick={this.todayIsOpen}>
+            <h1>Today's Tasks</h1>
+            <div>+</div>
           </div>
         ) : (
           <div>
-            <div className="tbc_headline">
-              <h1 onClick={this.todayIsOpen}>Today's Tasks</h1>
+            <div className="tbc_headline" onClick={this.todayIsOpen}>
+              <h1>Today's Tasks</h1>
+              <div>-</div>
             </div>
-            {taskItem}
+            <div className="tasks_list">{taskItem}</div>
           </div>
         )}
         {this.state.expandUpcoming ? (
-          <div className="tbc_headline">
-            <h1 onClick={this.upcomingIsOpen}>Upcoming Tasks</h1>
+          <div className="tbc_headline" onClick={this.upcomingIsOpen}>
+            <h1>Upcoming Tasks</h1>
+            <div>+</div>
+            {/* <div className="tasks_list" /> */}
           </div>
         ) : (
           <div>
-            <div className="tbc_headline">
-              <h1 onClick={this.upcomingIsOpen}>Upcoming Tasks</h1>
+            <div className="tbc_headline" onClick={this.upcomingIsOpen}>
+              <h1>Upcoming Tasks</h1>
+              <div>-</div>
             </div>
-            {upComingTaskItem}
+            <div className="tasks_list">{upComingTaskItem}</div>
           </div>
         )}
         {this.state.expandPast ? (
-          <div className="tbc_headline">
-            <h1 onClick={this.pastIsOpen}>Past Due Tasks</h1>
+          <div className="tbc_headline" onClick={this.pastIsOpen}>
+            <h1>Past Due Tasks</h1>
+            <div>+</div>
           </div>
         ) : (
           <div>
-            <div className="tbc_headline">
-              <h1 onClick={this.pastIsOpen}>Past Due Tasks</h1>
+            <div className="tbc_headline" onClick={this.pastIsOpen}>
+              <h1>Past Due Tasks</h1>
+              <div>-</div>
             </div>
             {pastDueTaskItem}
           </div>
