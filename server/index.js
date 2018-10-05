@@ -6,7 +6,7 @@ const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 const session = require("express-session");
 const cors = require("cors");
-// const CronJob = require("cron").CronJob;
+
 const moment = require("moment");
 const { getWeeklyTasks } = require("./controller");
 const cj = require("./cron");
