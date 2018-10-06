@@ -8,9 +8,9 @@ const job = db => {
     async function() {
       try {
         const myData = await db.get_weekly_tasks();
-        console.log("DATA: ", myData);
+        // console.log("DATA: ", myData);
       } catch (e) {
-        console.log(e);
+        // console.log(e);
       }
     },
     null,

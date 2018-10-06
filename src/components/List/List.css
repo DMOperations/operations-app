@@ -19,7 +19,7 @@
   }
 }
 
-.tasks_list {
+/* .tasks_list {
   animation: rollout 10s;
 }
 
@@ -42,4 +42,4 @@
   100% {
     transform: translateY(0%);
   }
-}
+} */
