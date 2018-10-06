@@ -5,8 +5,8 @@ const moment = require("moment");
 
 const job = db => {
   return new CronJob(
-    // "0 0 1 * * 0",
-    "1 * * * * *",
+    "0 0 1 * * 0",
+    // "1 * * * * *",
     async function() {
       try {
         const myData = await db.get_weekly_tasks();
