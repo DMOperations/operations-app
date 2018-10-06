@@ -1,11 +1,11 @@
+.dash_with_task {
+  display: flex;
+}
 .dash_main {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
   align-content: center;
   width: 80vw;
-  /* padding-top: 5vh; */
   flex-wrap: nowrap;
   margin: 2vw;
-  /* overflow: scroll; */
 }
