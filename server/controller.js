@@ -30,7 +30,7 @@ const getAllTasks = (req, res) => {
 };
 
 const allTasksByUser = (req, res) => {
-  console.log(req.query);
+  // console.log(req.query);
   const dbInstance = req.app.get("db");
   const { user } = req.query;
 
@@ -194,7 +194,7 @@ const handleInsert = (req, res) => {
   const { cohortObj, activites, cohortId } = req.body;
 
   Object.keys(cohortObj).forEach(key => {
-    console.log(key);
+    // console.log(key);
     const myDate = key;
     cohortObj[key].forEach(val => {
       // console.log(Object.keys(val));
@@ -219,7 +219,7 @@ const handleInsertPre = (req, res) => {
   const { cohortObjPre, activites, cohortId } = req.body;
 
   Object.keys(cohortObjPre).forEach(key => {
-    console.log(key);
+    // console.log(key);
     const myDate = key;
     cohortObjPre[key].forEach(val => {
       // console.log(Object.keys(val));
@@ -300,7 +300,7 @@ const reassignTaskHeadline = (req, res) => {
 const deleteTask = (req, res) => {
   const dbInstance = req.app.get("db");
   const { id } = req.params;
-  console.log(req.params);
+  // console.log(req.params);
 
   dbInstance
     .deleteTask([id])
@@ -310,7 +310,7 @@ const deleteTask = (req, res) => {
 
 const addNewTask = (req, res) => {
   const dbInstance = req.app.get("db");
-  console.log(req.body);
+  // console.log(req.body);
   const { headline, body, date, position, cohortId } = req.body;
 
   dbInstance
