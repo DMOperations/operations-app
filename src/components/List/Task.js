@@ -9,7 +9,7 @@ class Task extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: false
+      status: ""
     };
   }
 
