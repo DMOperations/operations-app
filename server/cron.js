@@ -5,8 +5,7 @@ const moment = require("moment");
 
 const job = db => {
   return new CronJob(
-    "0 0 1 * * 0",
-    // "1 * * * * *",
+    "00 00 00 * * 0",
     async function() {
       try {
         const myData = await db.get_weekly_tasks();
@@ -32,10 +31,10 @@ const job = db => {
             val.assigned_to,
             val.cohort_id
           ]);
-          // console.log("worked");
+          console.log("worked");
         });
       } catch (e) {
-        console.log(e);
+        console.log("error", e);
       }
     },
     null,
