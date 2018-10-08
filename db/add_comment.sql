@@ -1,0 +1,1 @@
+INSERT INTO task_comments (task_id, comment_text, comment_user) VALUES ($1,$2, $3)

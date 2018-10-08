@@ -135,13 +135,13 @@ app.get("/api/getAllEmployees", tc.getAllEmployees);
 
 //TASK ENDPOINTS
 app.get("/api/allTasks", tc.getAllTasks);
+app.get("/api/getSingleTask/:id", tc.getSingleTask);
 app.get("/api/tasks", tc.getAllTasksByDate);
 app.get("/api/upcomingtasks", tc.getAllUpcomingTasks);
 app.get("/api/pastduetasks", tc.getPastDueTasks);
 app.get("/api/allTasksByUser", tc.allTasksByUser);
 // app.get("/api/getweeklytasks", tc.getWeeklyTasks);
 app.post("/api/getAllTasksByCohort", tc.getAllTasksByCohort);
-app.post("/api/cohortId", tc.createNewCohort);
 app.post("/api/insertactivities", tc.handleInsert);
 app.post("/api/insertactivitiespre", tc.handleInsertPre);
 app.post("/api/addNewTask", tc.addNewTask);
@@ -151,9 +151,13 @@ app.put("/api/reassignDate", tc.reassignDate);
 app.put("/api/reassignTaskHeadline", tc.reassignTaskHeadline);
 app.delete(`/api/deleteTask/:id`, tc.deleteTask);
 
+//COMMENT ENDPOINTS
+app.post("/api/addComment", tc.addComment);
+
 // app.get(cj.job(app));
 
 //COHORT ENDPOINTS
+app.post("/api/cohortId", tc.createNewCohort);
 app.get("/api/getActiveCohorts", tc.getActiveCohorts);
 
 app.get("/cron", function(req, res) {
