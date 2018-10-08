@@ -34,11 +34,19 @@ class SideTaskMenu extends Component {
   };
 
   postComment = e => {
-    axios.post("/api/addComment", {
-      task: this.state.sideTask[0].id,
-      comment: this.state.addComment,
-      user: this.props.user.user_id
-    });
+    axios
+      .post("/api/addComment", {
+        task: this.state.sideTask[0].id,
+        comment: this.state.addComment,
+        user: this.props.user.user_id,
+        date: new Date()
+      })
+      .then(response => {
+        this.setState({
+          addComment: "",
+          comments: response.data
+        });
+      });
   };
 
   render() {
@@ -69,7 +77,10 @@ class SideTaskMenu extends Component {
 
     const comments = this.state.comments.map((e, i) => {
       return (
-        <div key={i}>
+        <div className="individual_comments" key={i}>
+          <div className="image_cropper">
+            <img src={e.picture} />
+          </div>
           <p>{e.comment_text}</p>
         </div>
       );
@@ -84,6 +95,7 @@ class SideTaskMenu extends Component {
         <div className="comment">
           <textarea
             name="addComment"
+            value={this.state.addComment}
             onChange={this.addComment}
             placeholder="Write a comment.."
           />
