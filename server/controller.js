@@ -339,11 +339,10 @@ const getComments = (req, res) => {
 
 const addComment = (req, res) => {
   const dbInstance = req.app.get("db");
-  console.log(req.body);
-  const { task, comment, user } = req.body;
+  const { task, comment, user, date } = req.body;
 
   dbInstance
-    .add_comment([task, comment, user])
+    .add_comment([task, comment, user, date])
     .then(response => res.status(200).send(response))
     .catch(console.log);
 };
