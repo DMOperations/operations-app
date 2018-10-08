@@ -327,6 +327,16 @@ const addNewTask = (req, res) => {
     .catch(console.log);
 };
 
+const getComments = (req, res) => {
+  const dbInstance = req.app.get("db");
+  const { task } = req.params;
+
+  dbInstance
+    .get_comments([task])
+    .then(response => res.status(200).send(response))
+    .catch(console.log);
+};
+
 const addComment = (req, res) => {
   const dbInstance = req.app.get("db");
   console.log(req.body);
@@ -360,6 +370,7 @@ module.exports = {
   reassignTaskHeadline,
   deleteTask,
   addNewTask,
+  getComments,
   addComment
   // getWeeklyTasks
 };

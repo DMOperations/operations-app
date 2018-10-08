@@ -1,0 +1,1 @@
+SELECT * FROM task_comments WHERE task_id = $1;

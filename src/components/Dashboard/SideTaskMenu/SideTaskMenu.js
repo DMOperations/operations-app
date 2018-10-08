@@ -9,7 +9,8 @@ class SideTaskMenu extends Component {
     super();
     this.state = {
       sideTask: [],
-      addComment: ""
+      addComment: "",
+      comments: []
     };
   }
 
@@ -19,6 +20,11 @@ class SideTaskMenu extends Component {
         sideTask: response.data
       })
     );
+    axios.get(`/api/getComments/${8167}`).then(response => {
+      this.setState({
+        comments: response.data
+      });
+    });
   }
 
   addComment = e => {
@@ -36,7 +42,7 @@ class SideTaskMenu extends Component {
   };
 
   render() {
-    console.log(this.props);
+    console.log(this.state);
     const sideTask = this.state.sideTask.map((e, i) => {
       return (
         <div key={i} className="task_information">
@@ -60,9 +66,21 @@ class SideTaskMenu extends Component {
         </div>
       );
     });
+
+    const comments = this.state.comments.map((e, i) => {
+      return (
+        <div key={i}>
+          <p>{e.comment_text}</p>
+        </div>
+      );
+    });
     return (
       <div className="side_task_menu">
         {sideTask}
+        <div>
+          <h3>Comments</h3>
+          {comments}
+        </div>
         <div className="comment">
           <textarea
             name="addComment"

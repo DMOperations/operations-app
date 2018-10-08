@@ -152,6 +152,7 @@ app.put("/api/reassignTaskHeadline", tc.reassignTaskHeadline);
 app.delete(`/api/deleteTask/:id`, tc.deleteTask);
 
 //COMMENT ENDPOINTS
+app.get("/api/getComments/:task", tc.getComments);
 app.post("/api/addComment", tc.addComment);
 
 // app.get(cj.job(app));
