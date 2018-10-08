@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+import { sideTask, getTask } from "../../ducks/reducer";
 import moment from "moment";
 import Moment from "react-moment";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -27,12 +29,20 @@ class Task extends Component {
     console.log(this.state.status);
   };
 
+  // openSide = () => {
+  //   this.props.sideTaskToggle: !this.props.sideTaskToggle;
+  // };
+
+  getTask() {
+    this.props.getTask(this.props.id);
+  }
+
   render() {
     // console.log(this.props);
     // let taskDateFormatted = moment(this.props.taskDate, "MMM Do YYYY");
 
     return (
-      <div className="task">
+      <div className="task" onClick={() => this.getTask()}>
         <div className="task_left">
           <Checkbox
             checked={this.state.status}
@@ -57,4 +67,9 @@ class Task extends Component {
   }
 }
 
-export default Task;
+const mapStateToProps = state => state;
+
+export default connect(
+  mapStateToProps,
+  { sideTask, getTask }
+)(Task);

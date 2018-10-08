@@ -29,6 +29,16 @@ const getAllTasks = (req, res) => {
     .catch(console.log);
 };
 
+const getSingleTask = (req, res) => {
+  const dbInstance = req.app.get("db");
+  const { id } = req.params;
+
+  dbInstance
+    .get_single_task([id])
+    .then(response => res.status(200).send(response))
+    .catch(console.log);
+};
+
 const allTasksByUser = (req, res) => {
   console.log(req.query);
   const dbInstance = req.app.get("db");
@@ -300,7 +310,6 @@ const reassignTaskHeadline = (req, res) => {
 const deleteTask = (req, res) => {
   const dbInstance = req.app.get("db");
   const { id } = req.params;
-  console.log(req.params);
 
   dbInstance
     .deleteTask([id])
@@ -310,7 +319,6 @@ const deleteTask = (req, res) => {
 
 const addNewTask = (req, res) => {
   const dbInstance = req.app.get("db");
-  console.log(req.body);
   const { headline, body, date, position, cohortId } = req.body;
 
   dbInstance
@@ -319,9 +327,21 @@ const addNewTask = (req, res) => {
     .catch(console.log);
 };
 
+const addComment = (req, res) => {
+  const dbInstance = req.app.get("db");
+  console.log(req.body);
+  const { task, comment, user } = req.body;
+
+  dbInstance
+    .add_comment([task, comment, user])
+    .then(response => res.status(200).send(response))
+    .catch(console.log);
+};
+
 module.exports = {
   completeProfile,
   getAllTasks,
+  getSingleTask,
   allTasksByUser,
   getAllTasksByDate,
   getAllTasksByCohort,
@@ -339,6 +359,7 @@ module.exports = {
   reassignDate,
   reassignTaskHeadline,
   deleteTask,
-  addNewTask
+  addNewTask,
+  addComment
   // getWeeklyTasks
 };

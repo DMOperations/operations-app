@@ -1,4 +1,67 @@
 .side_task_menu {
-  background-color: red;
+  background-color: #fafafa;
+  filter: drop-shadow(0 0 20px rgba(192, 192, 192, 0.575));
   width: 35vw;
+}
+
+.task_information {
+  margin-top: 30%;
+  margin-right: 4%;
+  margin-left: 4%;
+}
+
+.task_information p {
+  text-align: left;
+}
+
+.task_information h3 {
+  text-align: left;
+}
+
+.cohort_information {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.side_date {
+  text-align: center;
+}
+
+.cohort_id {
+  color: #888888;
+}
+
+.cohort_id div {
+  color: #555;
+}
+
+.comment {
+  background-color: #f2f2f2;
+  filter: drop-shadow(0 0 20px rgba(192, 192, 192, 0.452));
+  height: 20vh;
+  width: 35vw;
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+}
+
+textarea {
+  width: 75%;
+  height: 100px;
+  padding: 12px 20px;
+  margin-top: 3%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f879;
+  /* resize: none; */
+}
+
+textarea:focus {
+  border: 1px solid #555;
+  box-shadow: 0 0 5px rgb(112, 112, 112);
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  outline: none;
 }

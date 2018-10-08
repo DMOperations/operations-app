@@ -32,7 +32,7 @@ const job = db => {
             val.assigned_to,
             val.cohort_id
           ]);
-          console.log("worked");
+          // console.log("worked");
         });
       } catch (e) {
         // console.log(e);
