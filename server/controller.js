@@ -333,7 +333,19 @@ const getComments = (req, res) => {
 
   dbInstance
     .get_comments([task])
-    .then(response => res.status(200).send(response))
+    .then(response => {
+      let sorted = response.sort((a, b) => {
+        const isAfter = moment(a.comment_date, "YYYY-MM-DD").isAfter(
+          moment(b.comment_date, "YYYY-MM-DD")
+        );
+        if (isAfter) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+      res.status(200).send(sorted);
+    })
     .catch(console.log);
 };
 
@@ -343,7 +355,19 @@ const addComment = (req, res) => {
 
   dbInstance
     .add_comment([task, comment, user, date])
-    .then(response => res.status(200).send(response))
+    .then(response => {
+      let sorted = response.sort((a, b) => {
+        const isAfter = moment(a.comment_date, "YYYY-MM-DD").isAfter(
+          moment(b.comment_date, "YYYY-MM-DD")
+        );
+        if (isAfter) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+      res.status(200).send(sorted);
+    })
     .catch(console.log);
 };
 

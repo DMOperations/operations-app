@@ -3,6 +3,7 @@ import "./SideTaskMenu.css";
 import { connect } from "react-redux";
 import axios from "axios";
 import Moment from "react-moment";
+const moment = require("moment");
 
 class SideTaskMenu extends Component {
   constructor() {
@@ -54,7 +55,7 @@ class SideTaskMenu extends Component {
     const sideTask = this.state.sideTask.map((e, i) => {
       return (
         <div key={i} className="task_information">
-          <div classname="side_date">
+          <div className="side_date">
             <Moment parse={"YYYY-MM-DD"} format={"MMMM Do YYYY"}>
               {e.task_date}
             </Moment>
@@ -76,22 +77,25 @@ class SideTaskMenu extends Component {
     });
 
     const comments = this.state.comments.map((e, i) => {
+      var relativeDate = moment(e.comment_date).fromNow();
+
       return (
         <div className="individual_comments" key={i}>
           <div className="image_cropper">
             <img src={e.picture} />
           </div>
-          <p>{e.comment_text}</p>
+          <div className="comment_text">
+            <p>{e.comment_text}</p>
+            <p className="relative_time">{relativeDate}</p>
+          </div>
         </div>
       );
     });
     return (
       <div className="side_task_menu">
         {sideTask}
-        <div>
-          <h3>Comments</h3>
-          {comments}
-        </div>
+        <h3>Comments</h3>
+        <div className="comment_list">{comments}</div>
         <div className="comment">
           <textarea
             name="addComment"
