@@ -81,7 +81,6 @@ class List extends Component {
         )
         .then(results => {
           this.setState({ pastDueTasks: results.data });
-          console.log("results", results.data);
         });
 
       axios
@@ -116,7 +115,6 @@ class List extends Component {
   };
 
   render() {
-    console.log("TASKS", this.state);
     const taskItem = this.state.tasks.map((e, i) => {
       return (
         <Task
