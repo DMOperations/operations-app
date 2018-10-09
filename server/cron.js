@@ -5,7 +5,6 @@ const moment = require("moment");
 
 const job = db => {
   return new CronJob(
-    // "0 0 1 * * 0",
     "00 00 00 * * 0",
     async function() {
       try {
@@ -35,7 +34,7 @@ const job = db => {
           // console.log("worked");
         });
       } catch (e) {
-        // console.log(e);
+        console.log("error", e);
       }
     },
     null,
