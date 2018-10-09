@@ -38,6 +38,13 @@
   color: #555;
 }
 
+.comment_list {
+  height: 30vh;
+  overflow: scroll;
+  overflow-x: hidden;
+  border-top: 1px solid rgb(223, 223, 223);
+}
+
 .individual_comments {
   display: flex;
   flex-direction: row;
@@ -61,6 +68,10 @@
   margin-left: -25%;
 }
 
+.individual_comments p {
+  align-items: left;
+}
+
 .comment {
   display: flex;
   flex-direction: column;
@@ -72,6 +83,16 @@
   position: absolute;
   bottom: 0;
   z-index: -1;
+}
+
+.comment_text {
+  margin-left: 2%;
+  width: 40vw;
+  justify-content: flex-start;
+}
+
+.relative_time {
+  font-size: 10px;
 }
 
 textarea {
