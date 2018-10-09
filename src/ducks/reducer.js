@@ -11,18 +11,19 @@ const SIDE_TASK_TOGGLE = "SIDE_TASK_TOGGLE";
 const GET_TASK = "GET_TASK";
 
 function reducer(state = initialState, action) {
+  console.log(state, action);
   switch (action.type) {
     case `${GET_USER}_FULFILLED`:
       return Object.assign({}, state, { user: action.payload.data });
     case `${GET_USER}_REJECTED`:
       console.log("REJECTED: ", action.payload);
       return Object.assign({}, state, { user: action.payload.data });
-    case `${SIDE_TASK_TOGGLE}_FULFILLED`:
+    case SIDE_TASK_TOGGLE:
       return Object.assign({}, state, {
-        sideTask: !initialState.sideTask
+        sideTask: !state.sideTask
       });
     case `${GET_TASK}_FULFILLED`:
-      return Object.assign({}, state, { task: action.payload.data });
+      return Object.assign({}, state, { singleTask: action.payload.data });
     default:
       return state;
   }
@@ -37,11 +38,9 @@ export function getUser() {
   };
 }
 
-export function sideTask(sideTask) {
-  console.log(initialState);
+export function sideTask() {
   return {
-    type: SIDE_TASK_TOGGLE,
-    payload: !initialState.sideTask
+    type: SIDE_TASK_TOGGLE
   };
 }
 
