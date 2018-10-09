@@ -16,16 +16,16 @@ class SideTaskMenu extends Component {
   }
 
   componentDidMount() {
-    axios.get(`/api/getSingleTask/${8167}`).then(response =>
-      this.setState({
-        sideTask: response.data
-      })
-    );
-    axios.get(`/api/getComments/${8167}`).then(response => {
-      this.setState({
-        comments: response.data
-      });
-    });
+    // axios.get(`/api/getSingleTask/${this.props.singleTask.id}`).then(response =>
+    //   this.setState({
+    //     sideTask: response.data
+    //   })
+    // );
+    // axios.get(`/api/getComments/${this.props.singleTask.id}`).then(response => {
+    //   this.setState({
+    //     comments: response.data
+    //   });
+    // });
   }
 
   addComment = e => {
@@ -37,7 +37,7 @@ class SideTaskMenu extends Component {
   postComment = e => {
     axios
       .post("/api/addComment", {
-        task: this.state.sideTask[0].id,
+        task: this.props.singleTask[0].id,
         comment: this.state.addComment,
         user: this.props.user.user_id,
         date: new Date()
@@ -51,8 +51,8 @@ class SideTaskMenu extends Component {
   };
 
   render() {
-    console.log(this.state);
-    const sideTask = this.state.sideTask.map((e, i) => {
+    console.log(this.props);
+    const sideTask = this.props.singleTask.map((e, i) => {
       return (
         <div key={i} className="task_information">
           <div className="side_date">

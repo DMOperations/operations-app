@@ -1,11 +1,12 @@
 .dash_with_task {
   display: flex;
+  width: 100vw;
 }
 .dash_main {
   display: flex;
   flex-direction: column;
   align-content: center;
-  width: 80vw;
+  width: 50vw;
   flex-wrap: nowrap;
   margin: 2vw;
 }
