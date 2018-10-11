@@ -57,11 +57,6 @@ class SideTaskMenu extends Component {
     const sideTask = this.props.singleTask.map((e, i) => {
       return (
         <div key={i} className="task_information">
-          <div className="side_date">
-            <Moment parse={"YYYY-MM-DD"} format={"MMMM Do YYYY"}>
-              {e.task_date}
-            </Moment>
-          </div>
           <div className="cohort_information">
             <div className="cohort_id">
               Cohort
@@ -72,6 +67,11 @@ class SideTaskMenu extends Component {
               <div>{e.position}</div>
             </div>
           </div>
+          <h2 className="side_date">
+            <Moment parse={"YYYY-MM-DD"} format={"MMMM Do YYYY"}>
+              {e.task_date}
+            </Moment>
+          </h2>
           <h3>{e.task_headline}</h3>
           <p>{e.task_body}</p>
         </div>
@@ -96,7 +96,7 @@ class SideTaskMenu extends Component {
     return (
       <div className="side_task_menu">
         {sideTask}
-        <h3>Comments</h3>
+        <h3 className="comment_title">Comments</h3>
         <div className="comment_list">{comments}</div>
         <div className="comment">
           <textarea

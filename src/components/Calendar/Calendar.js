@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Calendar.css";
 import axios from "axios";
 import { connect } from "react-redux";
 import FullCalendar from "fullcalendar-reactwrapper";
@@ -59,7 +60,7 @@ class Calendar extends Component {
     });
 
     return (
-      <div>
+      <div className="calendar_wrap">
         <h1>Narrow it down:</h1>
         <select value={this.state.select} onChange={this.handleCalendar}>
           <option value="All">All</option>
