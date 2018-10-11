@@ -20,7 +20,7 @@ function reducer(state = initialState, action) {
       return Object.assign({}, state, { user: action.payload.data });
     case SIDE_TASK_TOGGLE:
       return Object.assign({}, state, {
-        sideTask: !state.sideTask
+        sideTask: true
       });
     case `${GET_TASK}_FULFILLED`:
       return Object.assign({}, state, { singleTask: action.payload.data });
