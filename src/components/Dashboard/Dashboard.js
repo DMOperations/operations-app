@@ -13,25 +13,31 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         {this.props.sideTask ? (
           <div className="dash_with_task">
             <div className="dash_main_task">
-              <Link to={`/addnewtask/${this.props.match.params.id}`}>
-                Add New Task
-              </Link>
-              <div>
+              <div className="dash_main_link">
+                <Link to={`/addnewtask/${this.props.match.params.id}`}>
+                  Add New Task
+                </Link>
+              </div>
+              <div className="list_of_tasks">
                 <List />
               </div>
             </div>
-            <SideTaskMenu />
+            <div className="side_task_grid">
+              <SideTaskMenu />
+            </div>
           </div>
         ) : (
           <div className="dash_main">
-            <Link to={`/addnewtask/${this.props.match.params.id}`}>
-              Add New Task
-            </Link>
-            <div>
+            <div className="dash_main_link">
+              <Link to={`/addnewtask/${this.props.match.params.id}`}>
+                Add New Task
+              </Link>
+            </div>
+            <div className="list_of_tasks">
               <List />
             </div>
           </div>
