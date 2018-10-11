@@ -161,46 +161,46 @@ class List extends Component {
     });
 
     return (
-      <div style={{ height: "80vh" }}>
+      <div className="task_views">
         {this.state.expandToday ? (
           <div className="tbc_headline" onClick={this.todayIsOpen}>
             <h1>Today's Tasks</h1>
-            <div>+</div>
+            <div className="plusMinus">+</div>
           </div>
         ) : (
           <div>
             <div className="tbc_headline" onClick={this.todayIsOpen}>
-              <h1>Today's Tasks</h1>
-              <div>-</div>
+              <h1 className=".tbc_headline_h1">Today's Tasks</h1>
+              <div className="plusMinus">-</div>
             </div>
             <div className="tasks_list">{taskItem}</div>
           </div>
         )}
         {this.state.expandUpcoming ? (
           <div className="tbc_headline" onClick={this.upcomingIsOpen}>
-            <h1>Upcoming Tasks</h1>
-            <div>+</div>
+            <h1 className=".tbc_headline_h1">Upcoming Tasks</h1>
+            <div className="plusMinus">+</div>
             {/* <div className="tasks_list" /> */}
           </div>
         ) : (
           <div>
             <div className="tbc_headline" onClick={this.upcomingIsOpen}>
-              <h1>Upcoming Tasks</h1>
-              <div>-</div>
+              <h1 className=".tbc_headline_h1">Upcoming Tasks</h1>
+              <div className="plusMinus">-</div>
             </div>
             <div className="tasks_list">{upComingTaskItem}</div>
           </div>
         )}
         {this.state.expandPast ? (
           <div className="tbc_headline" onClick={this.pastIsOpen}>
-            <h1>Past Due Tasks</h1>
-            <div>+</div>
+            <h1 className=".tbc_headline_h1">Past Due Tasks</h1>
+            <div className="plusMinus">+</div>
           </div>
         ) : (
           <div>
             <div className="tbc_headline" onClick={this.pastIsOpen}>
-              <h1>Past Due Tasks</h1>
-              <div>-</div>
+              <h1 className=".tbc_headline_h1">Past Due Tasks</h1>
+              <div className="plusMinus">-</div>
             </div>
             {pastDueTaskItem}
           </div>
