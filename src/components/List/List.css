@@ -19,11 +19,6 @@
   }
 }
 
-.list_with_side {
-  display: flex;
-  justify-content: space-between;
-}
-
 /* .tasks_list {
   animation: rollout 10s;
 }

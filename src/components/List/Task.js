@@ -50,7 +50,7 @@ class Task extends Component {
         </div>
         <div className="task_headline">{this.props.task}</div>
         <div className="task_date">
-          <Moment parse={"YYYY-MM-DD"} format={"MMM Do YYYY"}>
+          <Moment parse={"YYYY-MM-DD"} format={"MMMM Do YYYY"}>
             {this.props.taskDate}
           </Moment>
         </div>
