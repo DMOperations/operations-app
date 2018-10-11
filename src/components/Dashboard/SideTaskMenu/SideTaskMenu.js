@@ -21,11 +21,13 @@ class SideTaskMenu extends Component {
     //     sideTask: response.data
     //   })
     // );
-    // axios.get(`/api/getComments/${this.props.singleTask.id}`).then(response => {
-    //   this.setState({
-    //     comments: response.data
+    // axios
+    //   .get(`/api/getComments/${this.props.singleTask[0].id}`)
+    //   .then(response => {
+    //     this.setState({
+    //       comments: response.data
+    //     });
     //   });
-    // });
   }
 
   addComment = e => {

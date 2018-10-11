@@ -7,6 +7,7 @@
   align-items: center;
   flex-direction: column;
   width: 10%;
+  position: fixed;
 }
 
 .nb_navbar img {
