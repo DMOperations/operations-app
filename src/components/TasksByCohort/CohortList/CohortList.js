@@ -13,6 +13,7 @@ export default class CohortList extends Component {
   }
 
   render() {
+    console.log(`"${this.props.cohortStart}"`);
     return (
       <div className="cohort_labels">
         <div>

@@ -40,7 +40,7 @@ const getSingleTask = (req, res) => {
 };
 
 const allTasksByUser = (req, res) => {
-  console.log(req.query);
+  // console.log(req.query);
   const dbInstance = req.app.get("db");
   const { user } = req.query;
 
@@ -127,7 +127,7 @@ const getPastDueTasks = (req, res, next) => {
           }
         });
         res.status(200).send(sorted);
-        console.log(response);
+        // console.log("past due", response);
       })
       .catch(console.log);
   } else {
@@ -204,7 +204,7 @@ const handleInsert = (req, res) => {
   const { cohortObj, activites, cohortId } = req.body;
 
   Object.keys(cohortObj).forEach(key => {
-    console.log(key);
+    // console.log(key);
     const myDate = key;
     cohortObj[key].forEach(val => {
       // console.log(Object.keys(val));
@@ -229,7 +229,7 @@ const handleInsertPre = (req, res) => {
   const { cohortObjPre, activites, cohortId } = req.body;
 
   Object.keys(cohortObjPre).forEach(key => {
-    console.log(key);
+    // console.log(key);
     const myDate = key;
     cohortObjPre[key].forEach(val => {
       // console.log(Object.keys(val));

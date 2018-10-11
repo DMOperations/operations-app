@@ -131,7 +131,7 @@ export default class NewCohort extends Component {
 
   render() {
     console.log("State", this.state);
-    if (this.state.toNewSchedule === true) {
+    if (this.state.toNewSchedule) {
       return <Redirect to={`/cohortschedule/${this.state.cohortId}`} />;
     }
     const {
