@@ -16,7 +16,7 @@ class Dashboard extends Component {
       <div>
         {this.props.sideTask ? (
           <div className="dash_with_task">
-            <div className="dash_main">
+            <div className="dash_main_task">
               <Link to={`/addnewtask/${this.props.match.params.id}`}>
                 Add New Task
               </Link>
