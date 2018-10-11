@@ -3,11 +3,11 @@
   grid-template-rows: repeat(16, 1fr);
   background-color: #fafafa;
   filter: drop-shadow(0 0 20px rgba(192, 192, 192, 0.575));
-  width: 30vw;
+  /* width: 30vw; */
   height: 100vh;
   overflow: scroll;
   overflow-x: hidden;
-  position: fixed;
+  /* position: fixed; */
   right: 0;
 }
 
