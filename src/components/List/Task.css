@@ -8,7 +8,7 @@
   /* justify-content: center; */
   padding-left: 10px;
   display: grid;
-  grid-template-columns: auto 70% auto;
+  grid-template-columns: auto 70% 20%;
   grid-gap: 10px;
   border-bottom: 1px solid rgb(223, 223, 223);
 }
@@ -59,13 +59,7 @@
   font-weight: bold;
 } */
 
-/* .task_headline {
-  display: flex;
-  vertical-align: text-bottom;
-  white-space: nowrap;
-  max-width: 90ch;
-  overflow: hidden;
-  align-items: flex-end;
-  text-overflow: ellipsis;
-  align-items: flex-end;
-} */
+.task_headline {
+  /* justify-content: center; */
+  align-self: center;
+}
