@@ -8,7 +8,7 @@
   /* justify-content: center; */
   padding-left: 10px;
   display: grid;
-  grid-template-columns: 50px 0.02fr 1fr 0.18fr 0.02fr;
+  grid-template-columns: 30px 60px 1fr 0.18fr 0.02fr;
   grid-gap: 10px;
   border-bottom: 1px solid rgb(223, 223, 223);
 }
@@ -19,6 +19,7 @@
 
 .task_cohort {
   align-self: center;
+  font-weight: 700;
 }
 
 .task_date {
