@@ -1,4 +1,6 @@
 .side_task_menu {
+  display: grid;
+  grid-template-rows: repeat(16, 1fr);
   background-color: #fafafa;
   filter: drop-shadow(0 0 20px rgba(192, 192, 192, 0.575));
   width: 30vw;
@@ -10,47 +12,24 @@
 }
 
 .task_information {
-  margin-top: 30%;
-  margin-right: 4%;
-  margin-left: 4%;
+  grid-row: 2 / 7;
   display: grid;
-  grid-gap: 15px;
+  grid-template-rows: 1fr 0.75fr 1fr 2fr;
 }
 
-.task_information p {
-  text-align: left;
-}
-
-.task_information h3 {
-  text-align: left;
-}
-
-.cohort_information {
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-
-.side_date {
-  /* text-align: center; */
-}
-
-.cohort_id {
-  color: #888888;
-}
-
-.cohort_id div {
-  color: #555;
+.task_headline {
+  margin: 0;
 }
 
 .comment_title {
-  margin-left: 15px;
+  grid-row: 7 / 8;
+  margin: 0;
 }
-
 .comment_list {
-  height: 30vh;
-  overflow: scroll;
-  overflow-x: hidden;
-  border-top: 1px solid rgb(223, 223, 223);
+  grid-row: 8 / 13;
+  display: grid;
+  overflow: auto;
+  width: 30vw;
 }
 
 .individual_comments {
@@ -58,6 +37,43 @@
   flex-direction: row;
   align-items: center;
   border-bottom: 1px solid rgb(223, 223, 223);
+  grid-template-rows: auto;
+  width: 25vw;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f2f2f2;
+  filter: drop-shadow(0 0 20px rgba(192, 192, 192, 0.452));
+  /* height: 20vh; */
+  /* width: 30vw; */
+  grid-row: span 4 / -1;
+}
+
+.task_information p {
+  text-align: left;
+  overflow: auto;
+  margin-bottom: 0;
+}
+.task_information h3 {
+  text-align: left;
+  margin: 0;
+}
+.cohort_information {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.side_date {
+  margin: 0;
+  grid-row: 2 / 3;
+}
+.cohort_id {
+  color: #888888;
+}
+.cohort_id div {
+  color: #555;
 }
 
 .image_cropper {
@@ -67,30 +83,14 @@
   height: 5vh;
   width: 5vw;
 }
-
 .individual_comments img {
   height: 100%;
   width: auto;
-  display: inline;
   margin: 0 auto;
   margin-left: -25%;
 }
-
 .individual_comments p {
   align-items: left;
-}
-
-.comment {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f2f2f2;
-  filter: drop-shadow(0 0 20px rgba(192, 192, 192, 0.452));
-  height: 20vh;
-  width: 30vw;
-  position: absolute;
-  bottom: 0;
-  z-index: -1;
 }
 
 .comment_text {
@@ -98,11 +98,9 @@
   width: 40vw;
   justify-content: flex-start;
 }
-
 .relative_time {
   font-size: 10px;
 }
-
 textarea {
   width: 75%;
   height: 100px;
@@ -114,7 +112,6 @@ textarea {
   background-color: #f8f8f879;
   /* resize: none; */
 }
-
 textarea:focus {
   border: 1px solid #555;
   box-shadow: 0 0 5px rgb(112, 112, 112);

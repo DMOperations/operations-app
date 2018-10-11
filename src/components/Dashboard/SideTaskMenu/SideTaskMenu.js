@@ -67,12 +67,12 @@ class SideTaskMenu extends Component {
               <div>{e.position}</div>
             </div>
           </div>
-          <h2 className="side_date">
+          <h3 className="side_date">
             <Moment parse={"YYYY-MM-DD"} format={"MMMM Do YYYY"}>
               {e.task_date}
             </Moment>
-          </h2>
-          <h3>{e.task_headline}</h3>
+          </h3>
+          <h2 className="task_headline">{e.task_headline}</h2>
           <p>{e.task_body}</p>
         </div>
       );
