@@ -1,24 +1,44 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+}
 .dash_with_task {
-  display: flex;
-  width: 60vw;
-  margin-left: 10vw;
+  display: grid;
+  /* align-content: center; */
+  grid-template-columns: 1fr 0.4fr;
 }
 
 .dash_main_task {
   display: flex;
   flex-direction: column;
   align-content: center;
-  width: 55vw;
+  /* width: 55vw; */
   flex-wrap: nowrap;
   margin: 2vw;
 }
 
+.side_task_grid {
+  grid-column: 2 / -1;
+  background-color: mistyrose;
+}
+
 .dash_main {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  /* flex-direction: column; */
   align-content: center;
-  width: 80vw;
-  flex-wrap: nowrap;
-  margin: 2vw;
-  margin-left: 15vw;
+  /* width: 80vw; */
+  /* flex-wrap: nowrap; */
+  /* margin: 2vw;
+  margin-left: 15vw; */
+  grid-template-rows: 50px min-content 1fr;
+}
+
+.dash_main_link {
+  grid-row: 2 / 3;
+}
+
+.list_of_tasks {
+  grid-row: 3 / -1;
+  display: grid;
+  grid-template-columns: 2% 1fr;
 }

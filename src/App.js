@@ -18,10 +18,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="wrapitgood">
-          {this.props.user ? <NavBar /> : null}
-          <div className="body_position_rel">{routes}</div>
-        </div>
+        {this.props.user ? <NavBar /> : null}
+        <div>{routes}</div>
       </div>
     );
   }
