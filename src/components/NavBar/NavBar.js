@@ -13,9 +13,9 @@ export default class NavBar extends Component {
             <img src={DevMtnLogo} />
           </Link>
         </div>
-        <Link className="nb_links" to="/profile">
+        {/* <Link className="nb_links" to="/profile">
           <p>Profile</p>
-        </Link>
+        </Link> */}
 
         <Link className="nb_links" to="/calendar">
           <p> Calendar </p>
