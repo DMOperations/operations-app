@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { sideTask, getTask } from "../../ducks/reducer";
+import { sideTask, getTask, getComments } from "../../ducks/reducer";
 import moment from "moment";
 import Moment from "react-moment";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -30,8 +30,9 @@ class Task extends Component {
   };
 
   openSide = () => {
-    this.props.sideTask();
     this.props.getTask(this.props.id);
+    this.props.getComments(this.props.id);
+    this.props.sideTask();
   };
 
   render() {
@@ -68,5 +69,5 @@ const mapStateToProps = state => state;
 
 export default connect(
   mapStateToProps,
-  { sideTask, getTask }
+  { sideTask, getTask, getComments }
 )(Task);
