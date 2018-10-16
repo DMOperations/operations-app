@@ -21,6 +21,8 @@
   grid-column: 2 / -1;
   display: grid;
   grid-template-columns: 15px 1fr 15px;
+  position: fixed;
+  right: 0;
 }
 
 .dash_main {

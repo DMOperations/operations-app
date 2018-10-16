@@ -54,11 +54,16 @@ passport.use(
 
 passport.serializeUser((user, done) => {
   // console.log(user);
+  // create regex variable here
+  function validateEmail(email) {
+    return /^\"?[\w-_\.]*\"?@devmounta\.in$/.test(email);
+  }
+
   app
     .get("db")
     .getuser(user.id)
     .then(response => {
-      if (!response[0]) {
+      if (!response[0] && validateEmail(user.emails[0].value)) {
         app
           .get("db")
           .adduser([
