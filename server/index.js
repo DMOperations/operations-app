@@ -8,7 +8,7 @@ const session = require("express-session");
 const cors = require("cors");
 
 const moment = require("moment");
-const { getWeeklyTasks } = require("./controller");
+const { getUser } = require("./controller");
 const cj = require("./cron");
 
 const tc = require("./controller");
@@ -24,7 +24,10 @@ app.use(
   session({
     secret: "meh",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 7 * 24 * 60 * 60 * 1000
+    }
   })
 );
 
@@ -53,12 +56,10 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  // console.log(user);
   // create regex variable here
   function validateEmail(email) {
     return /^\"?[\w-_\.]*\"?@devmounta\.in$/.test(email);
   }
-
   app
     .get("db")
     .getuser(user.id)
@@ -108,23 +109,6 @@ function authenticated(req, res, next) {
   }
 }
 
-// const job = (req, res, next) => {
-//   new CronJob(
-//     "* * * * * *",
-//     function() {
-//       // console.log("working");
-//       getWeeklyTasks(req, res, next);
-//     },
-//     // getWeeklyTasks(req, res, next);
-//     // const myData = req.app;,
-//     null,
-//     true,
-//     "America/Chicago"
-//   );
-// };
-
-// job(app);
-
 //SEND USER TO REDUCER
 app.get("/getUser", (req, res) => {
   if (req.user) {
@@ -132,6 +116,7 @@ app.get("/getUser", (req, res) => {
   } else {
     res.status(401).send({ message: "Please login" });
   }
+  console.log(req.session);
 });
 
 //EMPLOYEE ENDPOINTS
