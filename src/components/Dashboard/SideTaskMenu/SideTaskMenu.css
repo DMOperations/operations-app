@@ -1,6 +1,7 @@
 .side_task_menu {
   display: grid;
   grid-template-rows: repeat(16, 1fr);
+  grid-template-columns: min-content 10px;
   background-color: #fafafa;
   filter: drop-shadow(0 0 20px rgba(192, 192, 192, 0.575));
   /* width: 30vw; */
@@ -8,16 +9,23 @@
   overflow: scroll;
   overflow-x: hidden;
   /* position: fixed; */
-  right: 0;
+  /* right: 0; */
+  grid-column: 2 / 3;
 }
 
 .task_information {
   grid-row: 2 / 7;
+  grid-column: 1/2;
   display: grid;
   grid-template-rows: 1fr 0.75fr 1fr 2fr;
 }
 
 .task_headline {
+  margin: 0;
+}
+
+.side_headline {
+  grid-row: 3 / 4;
   margin: 0;
 }
 
@@ -44,7 +52,7 @@
 .comment {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   background-color: #f2f2f2;
   filter: drop-shadow(0 0 20px rgba(192, 192, 192, 0.452));
   /* height: 20vh; */
