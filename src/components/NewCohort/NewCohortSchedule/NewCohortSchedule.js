@@ -26,11 +26,6 @@ class NewCohort extends Component {
           response =>
             console.log(response) || this.setState({ cohortId: response.data })
         );
-      axios.get("/api/getAllEmployees").then(response =>
-        this.setState({
-          employees: response.data
-        })
-      );
     }
   }
 
@@ -42,11 +37,6 @@ class NewCohort extends Component {
         response =>
           console.log(response) || this.setState({ cohortId: response.data })
       );
-    axios.get("/api/getAllEmployees").then(response =>
-      this.setState({
-        employees: response.data
-      })
-    );
   }
 
   render() {
@@ -59,7 +49,6 @@ class NewCohort extends Component {
           taskHeadline={e.task_headline}
           taskDate={e.task_date}
           position={e.position}
-          employees={this.state.employees}
           // adminLevel={this.props.user.admin_level}
         />
       );

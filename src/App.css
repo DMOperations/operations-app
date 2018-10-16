@@ -2,7 +2,7 @@
   /* text-align: center; */
   font-family: "Lato", sans-serif;
   font-weight: 100;
-  display: grid;
+  /* display: grid; */
   grid-template-columns: 0.05fr 1fr;
 }
 
@@ -24,6 +24,19 @@
 
 .App-intro {
   font-size: large;
+}
+
+.nav_container {
+  position: fixed;
+  left: 0;
+  width: 150px;
+  height: 100vh;
+}
+
+.route_container {
+  width: 90%;
+  margin-left: 150px;
+  margin-top: 0;
 }
 
 @keyframes App-logo-spin {
