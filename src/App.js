@@ -18,8 +18,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.props.user ? <NavBar /> : null}
-        <div>{routes}</div>
+        <div className="nav_container">
+          {this.props.user ? <NavBar /> : null}
+        </div>
+        <div className="route_container">{routes}</div>
       </div>
     );
   }
