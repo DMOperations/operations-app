@@ -72,7 +72,7 @@ class SideTaskMenu extends Component {
               {e.task_date}
             </Moment>
           </h3>
-          <h2 className="task_headline">{e.task_headline}</h2>
+          <h2 className="side_headline">{e.task_headline}</h2>
           <p>{e.task_body}</p>
         </div>
       );

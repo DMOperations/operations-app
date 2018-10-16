@@ -5,7 +5,7 @@
 .dash_with_task {
   display: grid;
   /* align-content: center; */
-  grid-template-columns: 1fr 0.4fr;
+  grid-template-columns: 1fr 0.45fr;
 }
 
 .dash_main_task {
@@ -19,7 +19,8 @@
 
 .side_task_grid {
   grid-column: 2 / -1;
-  background-color: mistyrose;
+  display: grid;
+  grid-template-columns: 15px 1fr 15px;
 }
 
 .dash_main {
