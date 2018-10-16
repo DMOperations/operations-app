@@ -19,6 +19,14 @@ export default class Todo extends Component {
     this.updateHeadline = this.updateHeadline.bind(this);
   }
 
+  componentDidMount() {
+    axios.get("/api/getAllEmployees").then(response =>
+      this.setState({
+        employees: response.data
+      })
+    );
+  }
+
   reassignEmployee = () => {
     this.setState({
       editEmployee: !this.state.editEmployee
@@ -74,7 +82,7 @@ export default class Todo extends Component {
   render() {
     console.log(this.state.newDate);
     let date = this.props.taskDate.replace(/"/g, "");
-    const employeeList = this.props.employees.map((e, i) => {
+    const employeeList = this.state.employees.map((e, i) => {
       return <option value={e.username}>{e.username}</option>;
     });
     return (
