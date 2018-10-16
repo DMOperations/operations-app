@@ -1,6 +1,36 @@
 const axios = require("axios");
 const moment = require("moment");
 
+const getUser = (req, res) => {
+  function validateEmail(email) {
+    return /^\"?[\w-_\.]*\"?@devmounta\.in$/.test(email);
+  }
+
+  const dbInstance = req.app.get("db");
+
+  dbInstance
+    .getuser(user.id)
+    .then(response => {
+      if (!response[0] && validateEmail(user.emails[0].value)) {
+        app
+          .get("db")
+          .adduser([
+            user.displayName,
+            user.id,
+            user.emails[0].value,
+            user.picture
+          ])
+          .then(response => res.status(200).send(response))
+          .catch(err => console.log(err));
+      } else {
+        // console.log(res);
+        // res.redirect("http://localhost:3000/#/");
+        return null;
+      }
+    })
+    .catch(err => console.log(err));
+};
+
 const completeProfile = (req, res, next) => {
   const dbInstance = req.app.get("db");
   const { id, position, campus } = req.body;
@@ -372,6 +402,7 @@ const addComment = (req, res) => {
 };
 
 module.exports = {
+  getUser,
   completeProfile,
   getAllTasks,
   getSingleTask,

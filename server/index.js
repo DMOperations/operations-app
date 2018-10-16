@@ -6,9 +6,10 @@ const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 const session = require("express-session");
 const cors = require("cors");
+const path = require("path");
 
 const moment = require("moment");
-const { getWeeklyTasks } = require("./controller");
+const { getUser } = require("./controller");
 const cj = require("./cron");
 
 const tc = require("./controller");
@@ -19,12 +20,16 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static(`${__dirname}/../build`));
 
 app.use(
   session({
     secret: "meh",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 7 * 24 * 60 * 60 * 1000
+    }
   })
 );
 
@@ -53,12 +58,10 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  // console.log(user);
   // create regex variable here
   function validateEmail(email) {
     return /^\"?[\w-_\.]*\"?@devmounta\.in$/.test(email);
   }
-
   app
     .get("db")
     .getuser(user.id)
@@ -95,7 +98,7 @@ app.get(
   "/login",
 
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000/#/dashboard",
+    successRedirect: "/#/dashboard",
     failureRedirect: "/login"
   })
 );
@@ -108,23 +111,6 @@ function authenticated(req, res, next) {
   }
 }
 
-// const job = (req, res, next) => {
-//   new CronJob(
-//     "* * * * * *",
-//     function() {
-//       // console.log("working");
-//       getWeeklyTasks(req, res, next);
-//     },
-//     // getWeeklyTasks(req, res, next);
-//     // const myData = req.app;,
-//     null,
-//     true,
-//     "America/Chicago"
-//   );
-// };
-
-// job(app);
-
 //SEND USER TO REDUCER
 app.get("/getUser", (req, res) => {
   if (req.user) {
@@ -132,6 +118,7 @@ app.get("/getUser", (req, res) => {
   } else {
     res.status(401).send({ message: "Please login" });
   }
+  console.log(req.session);
 });
 
 //EMPLOYEE ENDPOINTS
@@ -170,6 +157,10 @@ app.get("/cron", function(req, res) {
   job(req, res, function(err) {
     res.send("cron tasks executed");
   });
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 
 app.listen(port, () => {

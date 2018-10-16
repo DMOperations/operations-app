@@ -15,6 +15,13 @@ class App extends Component {
     this.props.getUser();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log(prevProps.user, this.props.user);
+    if (prevProps.user !== this.props.user) {
+      window.location.href = "/#/dashboard";
+    }
+  }
+
   render() {
     return (
       <div className="App">
