@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./SideTaskMenu.css";
 import { connect } from "react-redux";
+import { postComment } from "../../../ducks/reducer";
 import axios from "axios";
 import Moment from "react-moment";
 const moment = require("moment");
@@ -15,21 +16,6 @@ class SideTaskMenu extends Component {
     };
   }
 
-  componentDidMount() {
-    // axios.get(`/api/getSingleTask/${this.props.singleTask.id}`).then(response =>
-    //   this.setState({
-    //     sideTask: response.data
-    //   })
-    // );
-    // axios
-    //   .get(`/api/getComments/${this.props.singleTask[0].id}`)
-    //   .then(response => {
-    //     this.setState({
-    //       comments: response.data
-    //     });
-    //   });
-  }
-
   addComment = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -37,23 +23,22 @@ class SideTaskMenu extends Component {
   };
 
   postComment = e => {
-    axios
-      .post("/api/addComment", {
+    this.props
+      .postComment({
         task: this.props.singleTask[0].id,
         comment: this.state.addComment,
         user: this.props.user.user_id,
         date: new Date()
       })
-      .then(response => {
+      .then(
         this.setState({
-          addComment: "",
-          comments: response.data
-        });
-      });
+          addComment: ""
+        })
+      );
   };
 
   render() {
-    console.log(this.props);
+    console.log(this.state);
     const sideTask = this.props.singleTask.map((e, i) => {
       return (
         <div key={i} className="task_information">
@@ -78,7 +63,7 @@ class SideTaskMenu extends Component {
       );
     });
 
-    const comments = this.state.comments.map((e, i) => {
+    const comments = this.props.comments.map((e, i) => {
       var relativeDate = moment(e.comment_date).fromNow();
 
       return (
@@ -114,4 +99,7 @@ class SideTaskMenu extends Component {
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps)(SideTaskMenu);
+export default connect(
+  mapStateToProps,
+  { postComment }
+)(SideTaskMenu);

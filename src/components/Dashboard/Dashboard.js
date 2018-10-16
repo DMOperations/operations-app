@@ -17,11 +17,11 @@ class Dashboard extends Component {
         {this.props.sideTask ? (
           <div className="dash_with_task">
             <div className="dash_main_task">
-              <div className="dash_main_link">
+              {/* <div className="dash_main_link">
                 <Link to={`/addnewtask/${this.props.match.params.id}`}>
                   Add New Task
                 </Link>
-              </div>
+              </div> */}
               <div className="list_of_tasks">
                 <List />
               </div>
@@ -33,9 +33,9 @@ class Dashboard extends Component {
         ) : (
           <div className="dash_main">
             <div className="dash_main_link">
-              <Link to={`/addnewtask/${this.props.match.params.id}`}>
+              {/* <Link to={`/addnewtask/${this.props.match.params.id}`}>
                 Add New Task
-              </Link>
+              </Link> */}
             </div>
             <div className="list_of_tasks">
               <List />

@@ -351,7 +351,7 @@ const getComments = (req, res) => {
 
 const addComment = (req, res) => {
   const dbInstance = req.app.get("db");
-  const { task, comment, user, date } = req.body;
+  const { task, comment, user, date } = req.body.obj;
 
   dbInstance
     .add_comment([task, comment, user, date])
