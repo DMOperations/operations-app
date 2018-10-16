@@ -61,12 +61,14 @@ class Calendar extends Component {
 
     return (
       <div className="calendar_wrap">
-        <h1>Narrow it down:</h1>
-        <select value={this.state.select} onChange={this.handleCalendar}>
-          <option value="All">All</option>
-          <option value="One">Only Mine</option>
-          {cohortList}
-        </select>
+        <div className="calendar-select">
+          <h1>Narrow it down:</h1>
+          <select value={this.state.select} onChange={this.handleCalendar}>
+            <option value="All">All</option>
+            <option value="One">Only Mine</option>
+            {cohortList}
+          </select>
+        </div>
         <div className="calendar">
           <FullCalendar
             id="your-custom-ID"
