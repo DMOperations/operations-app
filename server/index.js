@@ -6,7 +6,7 @@ const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 const session = require("express-session");
 const cors = require("cors");
-// const path = require("path");
+const path = require("path");
 
 const moment = require("moment");
 const { getUser } = require("./controller");
@@ -20,7 +20,6 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
-// app.use(express.static(`${__dirname}/../build`));
 
 app.use(
   session({
@@ -160,9 +159,12 @@ app.get("/cron", function(req, res) {
   });
 });
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../build/index.html"));
-// });
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(`${__dirname}/../build`));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../build/index.html"));
+  });
+}
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
