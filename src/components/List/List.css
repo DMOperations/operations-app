@@ -11,7 +11,7 @@
 
 .tbc_headline {
   display: grid;
-  grid-template-columns: 0.3fr 1fr;
+  grid-template-columns: 0.45fr 1fr;
   margin: 0 0 0 2%;
 }
 
