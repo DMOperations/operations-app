@@ -98,7 +98,10 @@ app.get(
   "/login",
 
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000/#/dashboard",
+    successRedirect:
+      process.env.NODE_ENV === "production"
+        ? "/#/dashboard"
+        : "http://localhost:3000/#/dashboard",
     failureRedirect: "/login"
   })
 );
