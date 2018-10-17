@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NavBar from "./components/NavBar/NavBar";
 import "./App.css";
-import routes from "./routes";
+import Routes from "./routes";
 import { connect } from "react-redux";
 import { getUser } from "./ducks/reducer";
 import { withRouter } from "react-router-dom";
@@ -15,12 +15,12 @@ class App extends Component {
     this.props.getUser();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log(prevProps.user, this.props.user);
-    if (prevProps.user !== this.props.user) {
-      window.location.href = "/#/dashboard";
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log(prevProps.user, this.props.user);
+  //   if (prevProps.user == this.props.user) {
+  //     window.location.href = "/#/dashboard";
+  //   }
+  // }
 
   render() {
     return (
@@ -28,7 +28,9 @@ class App extends Component {
         <div className="nav_container">
           {this.props.user ? <NavBar /> : null}
         </div>
-        <div className="route_container">{routes}</div>
+        <div className="route_container">
+          <Routes user={this.props.user} />
+        </div>
       </div>
     );
   }
