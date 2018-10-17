@@ -6,7 +6,7 @@ const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 const session = require("express-session");
 const cors = require("cors");
-const path = require("path");
+// const path = require("path");
 
 const moment = require("moment");
 const { getUser } = require("./controller");
@@ -20,15 +20,15 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static(`${__dirname}/../build`));
+// app.use(express.static(`${__dirname}/../build`));
 
 app.use(
   session({
     secret: "meh",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {
-      maxAge: 7 * 24 * 60 * 60 * 1000
+      maxAge: 2 * 7 * 24 * 60 * 60 * 1000
     }
   })
 );
@@ -58,6 +58,7 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
+  console.log(app);
   // create regex variable here
   function validateEmail(email) {
     return /^\"?[\w-_\.]*\"?@devmounta\.in$/.test(email);
@@ -98,7 +99,7 @@ app.get(
   "/login",
 
   passport.authenticate("auth0", {
-    successRedirect: "/#/dashboard",
+    successRedirect: "http://localhost:3000/#/dashboard",
     failureRedirect: "/login"
   })
 );
@@ -159,9 +160,9 @@ app.get("/cron", function(req, res) {
   });
 });
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../build/index.html"));
+// });
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
