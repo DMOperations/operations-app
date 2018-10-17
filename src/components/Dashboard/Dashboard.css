@@ -20,7 +20,7 @@
 .side_task_grid {
   grid-column: 2 / -1;
   display: grid;
-  grid-template-columns: 15px 1fr 15px;
+  grid-template-columns: 15px 1fr;
   position: fixed;
   right: 0;
 }
