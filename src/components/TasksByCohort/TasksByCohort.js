@@ -11,7 +11,7 @@ export default class TasksByCohort extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     axios
       .get("/api/getActiveCohorts")
       .then(results => this.setState({ activeCohorts: results.data }));
