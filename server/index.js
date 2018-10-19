@@ -57,8 +57,6 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  console.log(app);
-  // create regex variable here
   function validateEmail(email) {
     return /^\"?[\w-_\.]*\"?@devmounta\.in$/.test(email);
   }
@@ -121,7 +119,6 @@ app.get("/getUser", (req, res) => {
   } else {
     res.status(401).send({ message: "Please login" });
   }
-  console.log(req.session);
 });
 
 //EMPLOYEE ENDPOINTS

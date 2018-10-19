@@ -23,8 +23,6 @@ const getUser = (req, res) => {
           .then(response => res.status(200).send(response))
           .catch(err => console.log(err));
       } else {
-        // console.log(res);
-        // res.redirect("http://localhost:3000/#/");
         return null;
       }
     })
@@ -40,15 +38,6 @@ const completeProfile = (req, res, next) => {
     .then(response => res.status(200).send(response))
     .catch(console.log);
 };
-
-// const getWeeklyTasks = (req, res, next) => {
-//   const dbInstance = req.app.get("db");
-
-//   dbInstance
-//     .get("db")
-//     .get_weekly_tasks()
-//     .then(response => res.status(200).send(response));
-// };
 
 const getAllTasks = (req, res) => {
   const dbInstance = req.app.get("db");
@@ -70,7 +59,6 @@ const getSingleTask = (req, res) => {
 };
 
 const allTasksByUser = (req, res) => {
-  // console.log(req.query);
   const dbInstance = req.app.get("db");
   const { user } = req.query;
 
@@ -157,7 +145,6 @@ const getPastDueTasks = (req, res, next) => {
           }
         });
         res.status(200).send(sorted);
-        // console.log("past due", response);
       })
       .catch(console.log);
   } else {
@@ -229,16 +216,10 @@ const createNewCohortObj = (req, res, next) => {
 };
 
 const handleInsert = (req, res) => {
-  // const { cohortId, cohortObj } = req.body;
-
   const { cohortObj, activites, cohortId } = req.body;
-
   Object.keys(cohortObj).forEach(key => {
-    // console.log(key);
     const myDate = key;
     cohortObj[key].forEach(val => {
-      // console.log(Object.keys(val));
-      // cohortId on request or params?
       req.app
         .get("db")
         .add_cohort_activities([
@@ -259,11 +240,8 @@ const handleInsertPre = (req, res) => {
   const { cohortObjPre, activites, cohortId } = req.body;
 
   Object.keys(cohortObjPre).forEach(key => {
-    // console.log(key);
     const myDate = key;
     cohortObjPre[key].forEach(val => {
-      // console.log(Object.keys(val));
-      // cohortId on request or params?
       req.app
         .get("db")
         .add_cohort_activities([

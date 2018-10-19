@@ -29,13 +29,9 @@ class List extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.user.position);
     axios
       .get(`/api/tasks?todaysdate=${date}&position=${this.props.user.position}`)
-      .then(
-        results => this.setState({ tasks: results.data })
-        // console.log(results)
-      );
+      .then(results => this.setState({ tasks: results.data }));
     axios
       .get(
         `/api/pastduetasks?todaysdate=${date}&position=${
@@ -44,7 +40,6 @@ class List extends Component {
       )
       .then(results => {
         this.setState({ pastDueTasks: results.data });
-        console.log("results", results.data);
       });
 
     axios
@@ -55,7 +50,6 @@ class List extends Component {
       )
       .then(results => {
         this.setState({ upcomingTasks: results.data });
-        // console.log("results", results.data);
       });
   }
 
@@ -69,10 +63,7 @@ class List extends Component {
         .get(
           `/api/tasks?todaysdate=${date}&position=${this.props.user.position}`
         )
-        .then(
-          results => this.setState({ tasks: results.data })
-          // console.log(results)
-        );
+        .then(results => this.setState({ tasks: results.data }));
       axios
         .get(
           `/api/pastduetasks?todaysdate=${date}&position=${
@@ -91,7 +82,6 @@ class List extends Component {
         )
         .then(results => {
           this.setState({ upcomingTasks: results.data });
-          // console.log("results", results.data);
         });
     }
   }
