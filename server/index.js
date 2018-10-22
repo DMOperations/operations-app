@@ -21,6 +21,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use(express.static(`${__dirname}/../build`));
+
+
 app.use(
   session({
     secret: "meh",
@@ -57,7 +60,6 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  console.log(app);
   // create regex variable here
   function validateEmail(email) {
     return /^\"?[\w-_\.]*\"?@devmounta\.in$/.test(email);

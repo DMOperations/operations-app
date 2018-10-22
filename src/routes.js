@@ -1,3 +1,4 @@
+
 /****** SOME OF THIS Courtesy Of Steven Isbell https://www.github.com/steven-isbell ******/
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
@@ -10,6 +11,7 @@ import Profile from "./components/Profile/Profile";
 import TasksByCohort from "./components/TasksByCohort/TasksByCohort";
 import NewCohortSchedule from "./components/NewCohort/NewCohortSchedule/NewCohortSchedule";
 import AddNewTask from "./components/NewCohort/AddNewTask/AddNewTask";
+
 
 const Routes = ({ user }) => (
   <Switch>
@@ -40,3 +42,4 @@ const Routes = ({ user }) => (
 
 export default Routes;
 /****** Courtesy Of Steven Isbell https://www.github.com/steven-isbell ******/
+
