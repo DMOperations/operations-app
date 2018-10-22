@@ -30,7 +30,7 @@ export default class NewCohort extends Component {
     this.postNewCohortObj = this.postNewCohortObj.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     var randomColor = Math.floor(Math.random() * 16777215).toString(16);
     this.setState({
       cohortColor: randomColor
