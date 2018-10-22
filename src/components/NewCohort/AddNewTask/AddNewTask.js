@@ -34,7 +34,6 @@ class AddNewTask extends Component {
   };
 
   render() {
-    console.log(this.state);
     const { headline, body, date, position } = this.state;
     return (
       <div className="addnewtask">

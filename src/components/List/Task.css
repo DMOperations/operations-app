@@ -15,7 +15,11 @@
 }
 
 .task:hover {
-  background-color: #c4c4c4;
+  box-shadow: -5px 5px 35px 10px rgba(212, 212, 212, 0.432);
+}
+
+.task_checkbox {
+  align-self: center;
 }
 
 .task_cohort {

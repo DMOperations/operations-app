@@ -23,7 +23,6 @@ app.use(cors());
 
 app.use(express.static(`${__dirname}/../build`));
 
-
 app.use(
   session({
     secret: "meh",
@@ -60,7 +59,6 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  // create regex variable here
   function validateEmail(email) {
     return /^\"?[\w-_\.]*\"?@devmounta\.in$/.test(email);
   }
@@ -123,7 +121,6 @@ app.get("/getUser", (req, res) => {
   } else {
     res.status(401).send({ message: "Please login" });
   }
-  console.log(req.session);
 });
 
 //EMPLOYEE ENDPOINTS

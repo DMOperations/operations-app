@@ -30,7 +30,7 @@ export default class NewCohort extends Component {
     this.postNewCohortObj = this.postNewCohortObj.bind(this);
   }
 
-  componentDidMount() 
+  componentDidMount() {
     var randomColor = Math.floor(Math.random() * 16777215).toString(16);
     this.setState({
       cohortColor: randomColor
@@ -51,7 +51,6 @@ export default class NewCohort extends Component {
     this.setState({
       dateAsKey: newObj
     });
-    console.log(this.state.dateAsKey);
   };
 
   datedToDoPre = preStart => {
@@ -68,7 +67,6 @@ export default class NewCohort extends Component {
     this.setState({
       dateAsKeyPre: newObj
     });
-    console.log(this.state.dateAsKeyPre);
   };
 
   updateCohortName(value) {
@@ -130,7 +128,6 @@ export default class NewCohort extends Component {
   }
 
   render() {
-    console.log("State", this.state);
     if (this.state.toNewSchedule) {
       return <Redirect to={`/cohortschedule/${this.state.cohortId}`} />;
     }
@@ -146,8 +143,6 @@ export default class NewCohort extends Component {
     let styles = {
       backgroundColor: "#" + this.state.cohortColor
     };
-
-    console.log(styles);
 
     return (
       <div>

@@ -12,9 +12,23 @@ class SideTaskMenu extends Component {
     this.state = {
       sideTask: [],
       addComment: "",
-      comments: []
+      comments: [],
+      status: false
     };
   }
+
+  updateStatus = () => {
+    axios
+      .put("/api/updateStatus", {
+        id: this.props.id,
+        status: !this.state.status
+      })
+      .then(
+        this.setState({
+          status: !this.state.status
+        })
+      );
+  };
 
   addComment = e => {
     this.setState({
@@ -38,7 +52,6 @@ class SideTaskMenu extends Component {
   };
 
   render() {
-    console.log(this.state);
     const sideTask = this.props.singleTask.map((e, i) => {
       return (
         <div key={i} className="task_information">
@@ -80,6 +93,11 @@ class SideTaskMenu extends Component {
     });
     return (
       <div className="side_task_menu">
+        <div>
+          <button onClick={this.updateStatus}>
+            {this.state.status ? "Completed" : "Mark Complete"}
+          </button>
+        </div>
         {sideTask}
         <h3 className="comment_title">Comments</h3>
         <div className="comment_list">{comments}</div>

@@ -14,7 +14,6 @@ const GET_COMMENTS = "GET_COMMENTS";
 const POST_COMMENT = "POST_COMMENT";
 
 function reducer(state = initialState, action) {
-  console.log(state, action);
   switch (action.type) {
     case `${GET_USER}_FULFILLED`:
       return Object.assign({}, state, { user: action.payload.data });
