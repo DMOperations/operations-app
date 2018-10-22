@@ -55,13 +55,11 @@ class Task extends Component {
         <div className="task_cohort">{this.props.cohortId}</div>
         <div className="task_headline">{this.props.task}</div>
 
-        <Moment
-          parse={"YYYY-MM-DD"}
-          format={"MMMM Do YYYY"}
-          className="task_date"
-        >
-          {this.props.taskDate}
-        </Moment>
+        <div className="task_date">
+          <Moment parse={"YYYY-MM-DD"} format={"MMMM Do YYYY"}>
+            {this.props.taskDate}
+          </Moment>
+        </div>
       </div>
     );
   }

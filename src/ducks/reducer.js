@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const initialState = {
-  user: [],
+  user: {},
   sideTask: false,
   singleTask: [],
   comments: []

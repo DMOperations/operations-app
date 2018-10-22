@@ -6,7 +6,7 @@ const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 const session = require("express-session");
 const cors = require("cors");
-// const path = require("path");
+const path = require("path");
 
 const moment = require("moment");
 const { getUser } = require("./controller");
@@ -20,7 +20,9 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
-// app.use(express.static(`${__dirname}/../build`));
+
+app.use(express.static(`${__dirname}/../build`));
+
 
 app.use(
   session({
@@ -28,7 +30,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
-      maxAge: 7 * 24 * 60 * 60 * 1000
+      maxAge: 2 * 7 * 24 * 60 * 60 * 1000
     }
   })
 );
@@ -52,7 +54,6 @@ passport.use(
       scope: "openid email profile"
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
-      console.log("hit");
       return done(null, profile);
     }
   )
@@ -99,7 +100,10 @@ app.get(
   "/login",
 
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000/#/dashboard",
+    successRedirect:
+      process.env.NODE_ENV === "production"
+        ? "/#/dashboard"
+        : "http://localhost:3000/#/dashboard",
     failureRedirect: "/login"
   })
 );
@@ -160,9 +164,12 @@ app.get("/cron", function(req, res) {
   });
 });
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../build/index.html"));
-// });
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(`${__dirname}/../build`));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../build/index.html"));
+  });
+}
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
