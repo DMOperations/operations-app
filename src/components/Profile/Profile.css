@@ -8,12 +8,12 @@
 
 .profile_side {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  padding-left: 12%;
   align-items: center;
-  height: 100vh;
+  height: 40vh;
   background-color: #34a9dc;
-  width: 40vw;
+  width: 100vw;
 }
 
 .profile_right {
@@ -69,8 +69,8 @@
 
 .profileCircle {
   border-radius: 50%;
-  height: 30vh;
-  width: 30vw;
+  height: 200px;
+  width: 200px;
 }
 
 .username {
