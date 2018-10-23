@@ -17,10 +17,17 @@ class SideTaskMenu extends Component {
     };
   }
 
+  // componentDidUpdate() {
+  //   this.setState({
+  //     status: !this.state.status
+  //   });
+  // }
+
   updateStatus = () => {
+    console.log(this.props.singleTask[0].id, this.state.status);
     axios
       .put("/api/updateStatus", {
-        id: this.props.id,
+        id: this.props.singleTask[0].id,
         status: !this.state.status
       })
       .then(
