@@ -67,10 +67,6 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-        <div className="stats_container">
-          <h1>Number of Tasks Completed</h1>
-          <h1>Active Cohorts</h1>
-        </div>
       </div>
     );
   }
