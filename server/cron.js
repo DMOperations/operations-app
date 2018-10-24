@@ -12,14 +12,14 @@ const job = db => {
 
         myData.forEach(function(part, index) {
           const dayOfWeek = myData[index].task_date;
-          const taskDateCalc = dayOfWeek => console.log("first");
-          moment()
-            .startOf("isoweek")
-            .add(dayOfWeek, "days")
-            .format("YYYY-MM-DD");
+          const taskDateCalc = dayOfWeek =>
+            moment()
+              .startOf("isoweek")
+              .add(dayOfWeek, "days")
+              .format("YYYY-MM-DD");
           myData[index].task_date = taskDateCalc(dayOfWeek);
         });
-        console.log(myData);
+        // console.log(myData);
 
         myData.forEach(val => {
           db.add_weekly_activities([
@@ -31,7 +31,7 @@ const job = db => {
             val.assigned_to,
             val.cohort_id
           ]);
-          // console.log("worked");
+          console.log("worked");
         });
       } catch (e) {
         console.log("error", e);
