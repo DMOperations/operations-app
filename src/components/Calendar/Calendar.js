@@ -44,7 +44,6 @@ class Calendar extends Component {
   }
 
   render() {
-    console.log(this.state);
     const cohortList = this.state.cohorts.map(e => {
       return <option>{e.cohort_id}</option>;
     });

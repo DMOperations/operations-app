@@ -80,7 +80,6 @@ export default class Todo extends Component {
   };
 
   render() {
-    console.log(this.state.newDate);
     let date = this.props.taskDate.replace(/"/g, "");
     const employeeList = this.state.employees.map((e, i) => {
       return <option value={e.username}>{e.username}</option>;
