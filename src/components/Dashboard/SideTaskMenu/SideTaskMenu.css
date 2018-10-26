@@ -13,6 +13,11 @@
   grid-column: 2 / 3;
 }
 
+.side_task_buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
 .task_information {
   grid-row: 2 / 7;
   grid-column: 2 / -1;

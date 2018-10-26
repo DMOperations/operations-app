@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./SideTaskMenu.css";
 import { connect } from "react-redux";
-import { postComment } from "../../../ducks/reducer";
+import { postComment, sideTaskExit } from "../../../ducks/reducer";
 import axios from "axios";
 import Moment from "react-moment";
 const moment = require("moment");
@@ -19,7 +19,7 @@ class SideTaskMenu extends Component {
 
   // componentDidUpdate() {
   //   this.setState({
-  //     status: !this.state.status
+  //     status: false
   //   });
   // }
 
@@ -59,6 +59,7 @@ class SideTaskMenu extends Component {
   };
 
   render() {
+    console.log(this.props);
     const sideTask = this.props.singleTask.map((e, i) => {
       return (
         <div key={i} className="task_information">
@@ -100,10 +101,11 @@ class SideTaskMenu extends Component {
     });
     return (
       <div className="side_task_menu">
-        <div>
+        <div className="side_task_buttons">
           <button onClick={this.updateStatus}>
             {this.state.status ? "Completed" : "Mark Complete"}
           </button>
+          <button onClick={this.props.sideTaskExit}>X</button>
         </div>
         {sideTask}
         <h3 className="comment_title">Comments</h3>
@@ -126,5 +128,5 @@ const mapStateToProps = state => state;
 
 export default connect(
   mapStateToProps,
-  { postComment }
+  { postComment, sideTaskExit }
 )(SideTaskMenu);
