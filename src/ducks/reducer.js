@@ -9,6 +9,7 @@ const initialState = {
 
 const GET_USER = "GET_USER";
 const SIDE_TASK_TOGGLE = "SIDE_TASK_TOGGLE";
+const SIDE_TASK_EXIT = "SIDE_TASK_EXIT";
 const GET_TASK = "GET_TASK";
 const GET_COMMENTS = "GET_COMMENTS";
 const POST_COMMENT = "POST_COMMENT";
@@ -24,6 +25,8 @@ function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         sideTask: true
       });
+    case SIDE_TASK_EXIT:
+      return Object.assign({}, state, { sideTask: false });
     case `${GET_TASK}_FULFILLED`:
       return Object.assign({}, state, { singleTask: action.payload.data });
     case `${GET_COMMENTS}_FULFILLED`:
@@ -47,6 +50,12 @@ export function getUser() {
 export function sideTask() {
   return {
     type: SIDE_TASK_TOGGLE
+  };
+}
+
+export function sideTaskExit() {
+  return {
+    type: SIDE_TASK_EXIT
   };
 }
 

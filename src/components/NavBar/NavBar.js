@@ -13,15 +13,15 @@ export default class NavBar extends Component {
             <img src={DevMtnLogo} />
           </Link>
         </div>
-        <Link className="nb_links" to="/profile">
+        <Link className="nb_links link_text" to="/profile">
           <p>Profile</p>
         </Link>
 
-        <Link className="nb_links" to="/calendar">
+        <Link className="nb_links link_text" to="/calendar">
           <p> Calendar </p>
         </Link>
 
-        <Link className="nb_links" to="/newcohort">
+        <Link className="nb_links link_text" to="/newcohort">
           <p> New Cohort </p>
         </Link>
         <div className="nb_cohorts">

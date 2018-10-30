@@ -4,7 +4,7 @@
   height: 100vh;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  /* align-items: center; */
   flex-direction: column;
   width: 149px;
 }
@@ -21,6 +21,18 @@
   color: #333;
   font-weight: bolder;
   justify-content: flex-start;
+}
+
+.link_text:hover {
+  background-color: rgba(51, 51, 51, 0.205);
+  border-bottom-right-radius: 30px;
+  border-top-right-radius: 30px;
+  width: 90%;
+  height: 6vh;
+}
+
+.nb_links p {
+  margin-left: 10%;
 }
 
 .nb_cohorts {
